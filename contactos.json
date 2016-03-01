@@ -1,9 +1,3 @@
-var contacts=[ {"name":"Blanca", "phone":"95555"},
+[ {"name":"Blanca", "phone":"95555"},
 				{"name":"pepe", "phone":"52351"},
 				{"name":"lola", "phone":"55"}]
-				
-
-
-
-
-				];
