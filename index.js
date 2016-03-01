@@ -8,7 +8,7 @@ app.get("/about",(req,res)=>{
 		contactos = JSON.parse(content);
 		res.write("<html><body>------Contacts-------<ul>");
 		contactos.forEach((contacto)=>{
-			res.write(" <li> "+contacto.name+")</li>");
+			res.write(" <li> "+contacto.name+"</li>");
 		});
 		res.write("</ul>------------</body></html>");
 		res.end();
