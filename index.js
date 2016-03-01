@@ -1,6 +1,5 @@
 var express = require("express");
 var fs= require("fs");
-var contactos = [];
 var app= express();
 
 app.get("/",(req,res)=>{
