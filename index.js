@@ -16,7 +16,7 @@ app.get("/about",(req,res)=>{
 });
 
 app.get("/about/country-types",(req,res)=>{
-	fs.readFile('country-types.json','utf-8',(err,content)=>{
+	fs.readFile('countrytypes.json','utf-8',(err,content)=>{
 		console.log("Data read");
 		country-types= JSON.parse(content);
 		res.write("<html><body> we can see the percentage of population listening music , besides the musical genre most listened<ul> ");
