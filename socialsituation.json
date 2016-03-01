@@ -1,6 +1,6 @@
 [
-{"country":"Spain"    ,"year":"2011",  "percentage":"67%",  "type":"digital" },
-{"country":"Italy"      ,"year":"2011",  "percentage":"45%",  "type":"cd" },
-{"country":"France"  ,"year":"2011",  "percentage":"88%",  "type":"cd" },
+{"country":"spain"    ,"year":"2011",  "percentage":"67%",  "type":"digital" },
+{"country":"italy"      ,"year":"2011",  "percentage":"45%",  "type":"cd" },
+{"country":"france"  ,"year":"2011",  "percentage":"88%",  "type":"cd" },
 {"country":"german"  ,"year":"2011",  "percentage":"93%",  "type":"digital"}
 ]
