@@ -3,7 +3,7 @@ var fs= require("fs");
 var app= express();
 
 app.get("/",(req,res)=>{
-	fs.readFile('contactos.json','utf8',(err,content)=>{
+	fs.readFile('contactos.json','utf-8',(err,content)=>{
 		console.log("Data read");
 		contactos = JSON.parse(content);
 		res.write("<html><body>------Contacts-------<ul>");
