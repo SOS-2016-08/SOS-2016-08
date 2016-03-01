@@ -19,10 +19,11 @@ app.get("/about/country-types",(req,res)=>{
 	fs.readFile('countrytypes.json','utf-8',(err,content)=>{
 		console.log("Data read");
 		country-types= JSON.parse(content);
-		res.write("<html><body> we can see the percentage of population listening music , besides the musical genre most listened<ul> ");
+		res.write("<html><body> we can see the percentage of population listening music , besides the musical genre most listened <ul>");
 		country-types.forEach((linea)=>{
 			res.write("<li>"+linea.country+" , "+linea.year+" , "+linea.percentage+" , "+linea.type+"</li>");
 		});
+		res.write("</ul>--------------------------------------------------------------------------</body></html>")
 		res.end();
 
 	});
