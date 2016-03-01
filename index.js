@@ -7,14 +7,14 @@ app.get("/",(req,res)=>{
 	fs.readFile('contactos.json','utf8',(err,content)=>{
 		console.log("Data read");
 		contactos = JSON.parse(content);
-		res.write("------Contacts-------");
+		res.write("<html><body>------Contacts-------<ul>");
 		contactos.forEach((contacto)=>{
-			res.write(" - "+contacto.name+"("+contacto.phone+")");
+			res.write(" <li> "+contacto.name+"("+contacto.phone+")</li>");
 		});
-		res.write("-------------");
+		res.write("</ul>------------</body></html>");
 		res.end();
 	});
 });
 
-app.listen(70444);
+app.listen(process.env.PORT);
 
