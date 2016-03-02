@@ -39,11 +39,11 @@ app.get("/about/social-situation",(req,res)=>{
 		res.write("<td><strong> year</strong></td>")
 		res.write("<td><strong> sales</strong></td>")
 		res.write("<td><strong> digital</strong></td>")
-		res.write("<td><strong> noDigital</strong></td></tr>")
+		res.write("<td><strong> noDigital</strong></td>")
 		
 		socialsituation.forEach((linea)=>{
 			//res.write("<li>"+linea.country  +" , "+linea.year+" , "+linea.sales+" , "+linea.digital+", "+linea.nodigital+"</li>");
-			res.write("<li><tr><td>"+linea.country+"</td></tr></li></table>")
+			res.write("<li><tr><td>"+linea.country+"</td></tr></li></tr></table>")
 			//res.write("<li><tr><td>"+linea.year+"</td></tr></li>")
 		});
 		res.write("</ul>--------------------------------------------------------------------------</body></html>");
