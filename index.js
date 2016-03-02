@@ -6,11 +6,11 @@ app.get("/about",(req,res)=>{
 	fs.readFile('contactos.json','utf-8',(err,content)=>{
 		console.log("Data read");
 		contactos = JSON.parse(content);
-		res.write("<html><body><b><H1><CENTER>Members</CENTER></H1></b><ul>");
+		res.write("<html><body><b><H1>Members</H1></b><ul>");
 		contactos.forEach((contacto)=>{
 			res.write("<li>"+contacto.name+"</li></CENTER>");
 		});
-		res.write("</ul><CENTER><HR></HR></CENTER></body></html>");
+		res.write("</ul><HR></HR></body></html>");
 		res.end();
 	});
 });
