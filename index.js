@@ -6,7 +6,7 @@ app.get("/about",(req,res)=>{
 	fs.readFile('contactos.json','utf-8',(err,content)=>{
 		console.log("Data read");
 		contactos = JSON.parse(content);
-		res.write("<html><body>------Members-------<ul>");
+		res.write("<html><body><b>------Members-------</b><ul>");
 		contactos.forEach((contacto)=>{
 			res.write("<li>"+contacto.name+"</li>");
 		});
