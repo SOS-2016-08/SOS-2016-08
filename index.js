@@ -35,7 +35,7 @@ app.get("/about/social-situation",(req,res)=>{
 		socialsituation= JSON.parse(content);
 
 		res.write("<html><body> Here we see the percentages according to digital music sales or physical format <ul>");
-		res.write("<table><tr><td><strong> country</strong></td>")
+		res.write("<tableborder: red 5px solid><tr><td><strong> country</strong></td>")
 		res.write("<td><strong> year</strong></td>")
 		res.write("<td><strong> sales</strong></td>")
 		res.write("<td><strong> digital</strong></td>")
