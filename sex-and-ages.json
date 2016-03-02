@@ -1,0 +1,6 @@
+[
+{"sex":"hombre", "country":"spain"    ,"year":"2013",  "pop":"22",  "pop-rock" },
+{"country":"italy"      ,"year":"2011",  "percentage":"45%",  "type":"cd" },
+{"country":"france"  ,"year":"2011",  "percentage":"88%",  "type":"cd" },
+{"country":"german"  ,"year":"2011",  "percentage":"93%",  "type":"digital"}
+]
