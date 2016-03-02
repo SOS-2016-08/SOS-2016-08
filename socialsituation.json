@@ -1,6 +1,10 @@
 [
-{"country":"spain"    ,"year":"2011",  "percentage":"67%",  "type":"digital" },
-{"country":"italy"      ,"year":"2011",  "percentage":"45%",  "type":"cd" },
-{"country":"france"  ,"year":"2011",  "percentage":"88%",  "type":"cd" },
-{"country":"german"  ,"year":"2011",  "percentage":"93%",  "type":"digital"}
+{"country":"spain"   ,"year":"2010","sales(millions €)":"160,54",  "digital":"48%",  "no digital":"55%" },
+{"country":"italy"   ,"year":"2010","sales(millions €)":"101,66",  "digital":"39%",  "no digital":"36%" },
+{"country":"france"  ,"year":"2010","sales(millions €)":"79,44",  "digital":"45%",  "no digital":"49%" },
+{"country":"german"  ,"year":"2010","sales(millions €)":"130,36",  "digital":"36%",  "no digital":"67%" },
+{"country":"spain"   ,"year":"2011","sales(millions €)":"155,66",  "digital":"57%",  "no digital":"76%" },
+{"country":"italy"   ,"year":"2011","sales(millions €)":"106,45",  "digital":"52%",  "no digital":"38%" },
+{"country":"france"  ,"year":"2011","sales(millions €)":"100,66",  "digital":"68%",  "no digital":"49%" },
+{"country":"german"  ,"year":"2011","sales(millions €)":"119,55",  "digital":"77%",  "no digital":"53%" }
 ]
