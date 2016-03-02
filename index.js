@@ -39,7 +39,7 @@ app.get("/about/social-situation",(req,res)=>{
 
 		
 		socialsituation.forEach((linea)=>{
-			res.write("<li><tr><td>"+linea.country+"</td></tr> , "+linea.year+" , "+linea.sales+" , "+linea.digital+", "+linea.nodigital+"</li>");
+			res.write("<tr><td>"+linea.country+"</td></tr> , "+linea.year+" , "+linea.sales+" , "+linea.digital+", "+linea.nodigital+"");
 		});
 		res.write("</ul>--------------------------------------------------------------------------</body></html>");
 		res.end();
