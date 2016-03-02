@@ -35,7 +35,7 @@ app.get("/about/social-situation",(req,res)=>{
 		socialsituation= JSON.parse(content);
 
 		res.write("<html><body> Here we see the percentages according to digital music sales or physical format <ul>");
-		res.write("<table ><tr><td background: red><strong> country</strong></td>")
+		res.write("<table ><tr><td ><strong> country</strong></td>")
 		res.write("<td><strong> year</strong></td>")
 		res.write("<td><strong> sales</strong></td>")
 		res.write("<td><strong> digital</strong></td>")
@@ -43,7 +43,7 @@ app.get("/about/social-situation",(req,res)=>{
 		
 		socialsituation.forEach((linea)=>{
 			//res.write("<li>"+linea.country  +" , "+linea.year+" , "+linea.sales+" , "+linea.digital+", "+linea.nodigital+"</li>");
-			res.write("<table><tr><td>"+linea.country+"  "+linea.year+"  "+linea.sales+"  "+linea.digital+"  "+linea.nodigital+"</td></tr></table>")
+			res.write("<table background: red><tr><td>"+linea.country+"  "+linea.year+"  "+linea.sales+"  "+linea.digital+"  "+linea.nodigital+"</td></tr></table>")
 
 		});
 		res.write("</ul>--------------------------------------------------------------------------</body></html>");
