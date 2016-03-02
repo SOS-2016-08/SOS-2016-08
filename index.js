@@ -34,6 +34,8 @@ app.get("/about/social-situation",(req,res)=>{
 		console.log("Data read");
 		socialsituation= JSON.parse(content);
 		res.write("<html><body> Here we see the percentages according to digital music sales or physical format <ul>");
+		res.write("<html><body> country    year    sales     digital     nodigital <ul>");
+		
 		socialsituation.forEach((linea)=>{
 			res.write("<li>"+linea.country+" , "+linea.year+" , "+linea.sales+" , "+linea.digital+", "+linea.nodigital+"</li>");
 		});
