@@ -4,7 +4,7 @@
   "description": "prueba heroku",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node miPgContactos.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Blanca Hernandez",
@@ -19,5 +19,6 @@
   "bugs": {
     "url": "https://github.com/SOS-2016-08/SOS-2016-08/issues"
   },
-  "homepage": "https://github.com/SOS-2016-08/SOS-2016-08#readme"
+  "homepage": "https://github.com/SOS-2016-08/SOS-2016-08#readme",
+  "devDependencies": {}
 }
