@@ -10,7 +10,7 @@ app.get("/about",(req,res)=>{
 		contactos.forEach((contacto)=>{
 			res.write("<li>"+contacto.name+"</li>");
 		});
-		res.write("</ul>------------------------------------------------------------</body></html>");
+		res.write("</ul>--------------------------------------------------------------------------</body></html>");
 		res.end();
 	});
 });
