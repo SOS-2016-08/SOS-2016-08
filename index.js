@@ -6,11 +6,11 @@ app.get("/about",(req,res)=>{
 	fs.readFile('contactos.json','utf-8',(err,content)=>{
 		console.log("Data read");
 		contactos = JSON.parse(content);
-		res.write("<html><body>------Members-------<ul>");
+		res.write("<html><body><b><H1><BLOCKQUOTE><U>Members</U></BLOCKQUOTE></H1></b><ul>");
 		contactos.forEach((contacto)=>{
-			res.write("<li>"+contacto.name+"</li>");
+			res.write("<li>"+contacto.name+"</li></CENTER>");
 		});
-		res.write("</ul>------------------------------------------------------------</body></html>");
+		res.write("</ul></body></html>");
 		res.end();
 	});
 });
@@ -33,9 +33,18 @@ app.get("/about/social-situation",(req,res)=>{
 	fs.readFile('socialsituation.json','utf-8',(err,content)=>{
 		console.log("Data read");
 		socialsituation= JSON.parse(content);
+
 		res.write("<html><body> Here we see the percentages according to digital music sales or physical format <ul>");
+		res.write("<table ><tr><td ><strong> country</strong></td>")
+		res.write("<td><strong> year</strong></td>")
+		res.write("<td><strong> sales</strong></td>")
+		res.write("<td><strong> digital</strong></td>")
+		res.write("<td><strong> noDigital</strong></td></tr></table>")
+		
 		socialsituation.forEach((linea)=>{
-			res.write("<li>"+linea.country+" , "+linea.year+" , "+linea.percentage+" , "+linea.type+"</li>");
+			//res.write("<li>"+linea.country  +" , "+linea.year+" , "+linea.sales+" , "+linea.digital+", "+linea.nodigital+"</li>");
+			res.write("<table><tr><td>"+linea.country+"  "+linea.year+"  "+linea.sales+"  "+linea.digital+"  "+linea.nodigital+"</td></tr></table>")
+
 		});
 		res.write("</ul>--------------------------------------------------------------------------</body></html>");
 		res.end();
