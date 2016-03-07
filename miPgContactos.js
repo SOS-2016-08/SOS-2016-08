@@ -5,7 +5,7 @@ var contacts = [];
 var app = express();
 
 app.get("/",(req,res)=>{
-	fs.readFile('contacts.json'´,'utf8',(err,content)=>{
+	fs.readFile('contacts.json','utf8',(err,content)=>{
 		console.log("Data read");
 		contacts = JSON.parse(content);
 		res.write("____Contacts____");
