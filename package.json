@@ -1,5 +1,5 @@
 {
-  "name": "heroku",
+  "name": "gontoracq",
   "version": "1.0.0",
   "description": "prueba heroku",
   "main": "index.js",
@@ -11,5 +11,13 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.13.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SOS-2016-08/SOS-2016-08.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SOS-2016-08/SOS-2016-08/issues"
+  },
+  "homepage": "https://github.com/SOS-2016-08/SOS-2016-08#readme"
 }

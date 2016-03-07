@@ -2,7 +2,7 @@
 {"sex":"hombre", "country":"spain"    ,"year":"2012",  "pop":"22",  "pop-rock":"1", 
 "rap":"12", "reggaeton":"31", "rock":"18", "classic":"3", "dance":"1", "flamenco":"2", 
 "heavy-metal":"0", "indie":"1", "jazz":"1" },
-{"sex":"mujer", "country":"spaain"    ,"year":"2012",  "pop":"66",  "pop-rock":"6", 
+{"sex":"mujer", "country":"spain"    ,"year":"2012",  "pop":"66",  "pop-rock":"6", 
 "rap":"8", "reggaeton":"40", "rock":"7", "classic":"1", "dance":"1", "flamenco":"6", 
 "heavy-metal":"2", "indie":"1", "jazz":"1" }
 ]
