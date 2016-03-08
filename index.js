@@ -1,6 +1,7 @@
 var express = require("express");
 var fs= require("fs");
 var app= express();
+var port = (process.env.PORT || 12345);
 
 
 
@@ -60,5 +61,18 @@ app.get("/about/social-situation",(req,res)=>{
 });
 
 
-app.listen(process.env.PORT);
+app.get("/about/time",(req,res)=>{
+	var now = new Date();
+	res.write("<li>It is </li>" +now);
+	res.end();
+
+});
+
+
+
+
+app.listen(port, ()=>{
+	console.log("Magic happens on port"+port);
+});
+
 
