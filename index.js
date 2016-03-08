@@ -1,16 +1,23 @@
 var express = require("express");
 var fs= require("fs");
 var app= express();
+var port = (process.env.PORT || 12345);
+
+app.use("/",express.static(__dirname+"/static"));
+
+
+
 
 app.get("/about",(req,res)=>{
 	fs.readFile('contactos.json','utf-8',(err,content)=>{
 		console.log("Data read");
 		contactos = JSON.parse(content);
-		res.write("<html><body>------Members-------<ul>");
+		res.write("<html><body><b><H1><BLOCKQUOTE><U>Members</U></BLOCKQUOTE></H1></b><ul>");
 		contactos.forEach((contacto)=>{
-			res.write("<li>"+contacto.name+"</li>");
+			res.write("<li>"+contacto.name+"</li></CENTER>");
 		});
-		res.write("</ul>--------------------------------------------------------------------------</body></html>");
+		res.write("</ul></body></html>");
+		res.write("</ul>-------------------------------------------------------------------------</body></html>");
 		res.end();
 	});
 });
@@ -23,7 +30,7 @@ app.get("/about/country-types",(req,res)=>{
 		countrytypes.forEach((linea)=>{
 			res.write("<li>"+linea.country+" , "+linea.year+" , "+linea.percentage+" , "+linea.type+"</li>");
 		});
-		res.write("</ul>--------------------------------------------------------------------------</body></html>");
+		res.write("</ul>-------------------------------------------------------------------------</body></html>");
 		res.end();
 
 	});
@@ -33,11 +40,20 @@ app.get("/about/social-situation",(req,res)=>{
 	fs.readFile('socialsituation.json','utf-8',(err,content)=>{
 		console.log("Data read");
 		socialsituation= JSON.parse(content);
+
 		res.write("<html><body> Here we see the percentages according to digital music sales or physical format <ul>");
+		res.write("<table ><tr><td ><strong> country</strong></td>")
+		res.write("<td><strong> year</strong></td>")
+		res.write("<td><strong> sales</strong></td>")
+		res.write("<td><strong> digital</strong></td>")
+		res.write("<td><strong> noDigital</strong></td></tr></table>")
+		
 		socialsituation.forEach((linea)=>{
-			res.write("<li>"+linea.country+" , "+linea.year+" , "+linea.percentage+" , "+linea.type+"</li>");
+			//res.write("<li>"+linea.country  +" , "+linea.year+" , "+linea.sales+" , "+linea.digital+", "+linea.nodigital+"</li>");
+			res.write("<table><tr><td>"+linea.country+"  "+linea.year+"  "+linea.sales+"  "+linea.digital+"  "+linea.nodigital+"</td></tr></table>")
+
 		});
-		res.write("</ul>--------------------------------------------------------------------------</body></html>");
+		res.write("</ul>------------------------------------------------------------------------</body></html>");
 		res.end();
 
 
@@ -46,6 +62,35 @@ app.get("/about/social-situation",(req,res)=>{
 	});
 });
 
+//app.get("/about/sex-and-ages",(req,res)=>{
+	//fs.readFile('sex-and-ages.json','utf8',(err,content)=>{
+		//console.log("Data read");
+		//sex-and-ages = JSON.parse(content);
+		//res.write("<html><body> Statistics of musical tastes based on the sex and age <ul>");
+		//sex-and-ages.forEach((linea)=>{
+			//res.write(" - "+linea.sex+"  "+linea.country+" "+linea.year+" "+linea.POP+" "+linea.POP-rock+" "+linea.rap+" "+
+				//linea.reggaeton+" "+linea.rock+" "+linea.classic+" "+linea.dance+" "+linea.flamenco+" "+linea.heavy-metal+" "+linea.indie);
+		//});
 
-app.listen(process.env.PORT);
+		//res.write("_____________");
+		//res.end();
+	//});
+//});
+
+
+app.get("/about/time",(req,res)=>{
+	var now = new Date();
+	res.write("It is" +now);
+	res.end();
+
+});
+
+
+
+
+
+app.listen(port, ()=>{
+	console.log("Magic happens on port"+port);
+});
+
 
