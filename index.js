@@ -3,7 +3,7 @@ var fs= require("fs");
 var app= express();
 var port = (process.env.PORT || 12345);
 
-app.use("/about/static",express.static(__dirname+"/static"));
+app.use("/",express.static(__dirname+"/static"));
 
 
 
@@ -65,7 +65,7 @@ app.get("/about/social-situation",(req,res)=>{
 
 app.get("/about/time",(req,res)=>{
 	var now = new Date();
-	res.write("<li>It is </li>" +now);
+	res.write("It is" +now);
 	res.end();
 
 });
