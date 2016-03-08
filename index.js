@@ -8,7 +8,7 @@ app.get("/time",(req,req)=>{
 	var now = new Date();
 	res.send("It is "+now);
 	console.log("New TIME")
-})
+});
 
 app.get("/about",(req,res)=>{
 	fs.readFile('contactos.json','utf-8',(err,content)=>{
