@@ -46,7 +46,7 @@ app.get("/about/social-situation",(req,res)=>{
 			res.write("<table><tr><td>"+linea.country+"  "+linea.year+"  "+linea.sales+"  "+linea.digital+"  "+linea.nodigital+"</td></tr></table>")
 
 		});
-		res.write("</ul>--------------------------------------------------------------------------</body></html>");
+		res.write("</ul>-------------------------------------------------------------------------</body></html>");
 		res.end();
 
 
