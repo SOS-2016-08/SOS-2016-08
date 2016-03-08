@@ -1,6 +1,12 @@
 var express = require("express");
 var fs= require("fs");
 var app= express();
+var port = (process.env.PORT || 12345);
+
+app.use("/",express.static(__dirname+"/static"));
+
+
+
 
 app.get("/about",(req,res)=>{
 	fs.readFile('contactos.json','utf-8',(err,content)=>{
@@ -11,7 +17,7 @@ app.get("/about",(req,res)=>{
 			res.write("<li>"+contacto.name+"</li></CENTER>");
 		});
 		res.write("</ul></body></html>");
-		res.write("</ul>--------------------------------------------------------------------------</body></html>");
+		res.write("</ul>-------------------------------------------------------------------------</body></html>");
 		res.end();
 	});
 });
@@ -24,7 +30,7 @@ app.get("/about/country-types",(req,res)=>{
 		countrytypes.forEach((linea)=>{
 			res.write("<li>"+linea.country+" , "+linea.year+" , "+linea.percentage+" , "+linea.type+"</li>");
 		});
-		res.write("</ul>--------------------------------------------------------------------------</body></html>");
+		res.write("</ul>-------------------------------------------------------------------------</body></html>");
 		res.end();
 
 	});
@@ -72,5 +78,19 @@ app.get("/about/sex-and-ages",(req,res)=>{
 });
 
 
-app.listen(process.env.PORT);
+app.get("/about/time",(req,res)=>{
+	var now = new Date();
+	res.write("It is" +now);
+	res.end();
+
+});
+
+
+
+
+
+app.listen(port, ()=>{
+	console.log("Magic happens on port"+port);
+});
+
 
