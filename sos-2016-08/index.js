@@ -1,1 +1,1 @@
-console.log("hola chicos estoy haciendo cambios para que en estos repositorios aparezcan los commits jejeje");
+console.log("hola chicoss estoy haciendo cambios para que en estos repositorios aparezcan los commits jejeje");
