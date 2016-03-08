@@ -68,11 +68,13 @@ app.get("/about/social-situation",(req,res)=>{
 app.get("/about/sex-and-ages",(req,res)=>{
 	fs.readFile('sex-and-ages.json','utf8',(err,content)=>{
 		console.log("Data read");
-		sex-and-ages = JSON.parse(content);
+		sexandages = JSON.parse(content);
+
 		res.write("<html><body> Statistics of musical tastes based on the sex and age <ul>");
-		sex-and-ages.forEach((linea)=>{
-			res.write(" - "+linea.sex+"  "+linea.country+" "+linea.year+" "+linea.POP+" "+linea.POP-rock+" "+linea.rap+" "+
-				linea.reggaeton+" "+linea.rock+" "+linea.classic+" "+linea.dance+" "+linea.flamenco+" "+linea.heavy-metal+" "+linea.indie);
+		
+		sexandages.forEach((linea)=>{
+			res.write(" - "+linea.sex+"  "+linea.country+" "+linea.year+" "+linea.POP+" "+linea.POProck+" "+linea.rap+" "+
+				linea.reggaeton+" "+linea.rock+" "+linea.classic+" "+linea.dance+" "+linea.flamenco+" "+linea.heavymetal+" "+linea.indie);
 		});
 
 		res.write("_____________");
