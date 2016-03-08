@@ -62,6 +62,9 @@ app.get("/about/social-situation",(req,res)=>{
 	});
 });
 
+//Gonzalo
+
+
 //app.get("/about/sex-and-ages",(req,res)=>{
 	//fs.readFile('sex-and-ages.json','utf8',(err,content)=>{
 		//console.log("Data read");
