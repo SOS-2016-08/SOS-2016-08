@@ -1,5 +1,5 @@
 [
-{"sex":"hombre", "country":"spain"    ,"year":"2012",  "pop":"22",  "pop-rock":"1", 
+{"sex":"hombre", "country":"spain"    ,"year":"2012",  "POP":"22",  "POP-rock":"1", 
 "rap":"12", "reggaeton":"31", "rock":"18", "classic":"3", "dance":"1", "flamenco":"2", 
 "heavy-metal":"0", "indie":"1", "jazz":"1" },
 {"sex":"mujer", "country":"spain"    ,"year":"2012",  "pop":"66",  "pop-rock":"6", 
