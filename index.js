@@ -11,6 +11,7 @@ app.get("/about",(req,res)=>{
 			res.write("<li>"+contacto.name+"</li></CENTER>");
 		});
 		res.write("</ul></body></html>");
+		res.write("</ul>--------------------------------------------------------------------------</body></html>");
 		res.end();
 	});
 });
