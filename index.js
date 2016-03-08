@@ -83,7 +83,7 @@ app.get("/about/sex-and-ages",(req,res)=>{
 });
 
 
-app.get("/about/time",(req,res)=>{
+app.get("/time",(req,res)=>{
 	var now = new Date();
 	res.write("It is" +now);
 	res.end();
