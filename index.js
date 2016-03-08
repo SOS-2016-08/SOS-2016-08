@@ -23,7 +23,7 @@ app.get("/about/country-types",(req,res)=>{
 		countrytypes.forEach((linea)=>{
 			res.write("<li>"+linea.country+" , "+linea.year+" , "+linea.percentage+" , "+linea.type+"</li>");
 		});
-		res.write("</ul>--------------------------------------------------------------------------</body></html>");
+		res.write("</ul>-------------------------------------------------------------------------</body></html>");
 		res.end();
 
 	});
