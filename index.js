@@ -3,6 +3,8 @@ var fs= require("fs");
 var app= express();
 var port = (process.env.PORT || 12345);
 
+app.use("/",express.static(__dirname+"/static"));
+
 
 
 
@@ -67,6 +69,7 @@ app.get("/about/time",(req,res)=>{
 	res.end();
 
 });
+
 
 
 
