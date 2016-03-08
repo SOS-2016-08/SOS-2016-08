@@ -30,7 +30,7 @@ app.get("/about/country-types",(req,res)=>{
 		countrytypes.forEach((linea)=>{
 			res.write("<li>"+linea.country+" , "+linea.year+" , "+linea.percentage+" , "+linea.type+"</li>");
 		});
-		res.write("</ul>-------------------------------------------------------------------------</body></html>");
+		res.write("</ul>------------------------------------------------------------------------</body></html>");
 		res.end();
 
 	});
@@ -62,20 +62,25 @@ app.get("/about/social-situation",(req,res)=>{
 	});
 });
 
-//app.get("/about/sex-and-ages",(req,res)=>{
-	//fs.readFile('sex-and-ages.json','utf8',(err,content)=>{
-		//console.log("Data read");
-		//sex-and-ages = JSON.parse(content);
-		//res.write("<html><body> Statistics of musical tastes based on the sex and age <ul>");
-		//sex-and-ages.forEach((linea)=>{
-			//res.write(" - "+linea.sex+"  "+linea.country+" "+linea.year+" "+linea.POP+" "+linea.POP-rock+" "+linea.rap+" "+
-				//linea.reggaeton+" "+linea.rock+" "+linea.classic+" "+linea.dance+" "+linea.flamenco+" "+linea.heavy-metal+" "+linea.indie);
-		//});
+//Gonzalo
 
-		//res.write("_____________");
-		//res.end();
-	//});
-//});
+
+app.get("/about/sex-and-ages",(req,res)=>{
+	fs.readFile('sex-and-ages.json','utf8',(err,content)=>{
+		console.log("Data read");
+		sexandages = JSON.parse(content);
+
+		res.write("<html><body> Statistics of musical tastes based on the sex and age <ul>");
+		
+		sexandages.forEach((linea)=>{
+			res.write(" - "+linea.sex+"  "+linea.country+" "+linea.year+" "+linea.POP+" "+linea.POProck+" "+linea.rap+" "+
+				linea.reggaeton+" "+linea.rock+" "+linea.classic+" "+linea.dance+" "+linea.flamenco+" "+linea.heavymetal+" "+linea.indie);
+		});
+
+		res.write("_____________");
+		res.end();
+	});
+});
 
 
 app.get("/about/time",(req,res)=>{
