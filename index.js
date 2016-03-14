@@ -15,6 +15,7 @@ app.get("/about",(req,res)=>{
 		res.write("<html><body><b><H1><BLOCKQUOTE><U>Members</U></BLOCKQUOTE></H1></b><ul>");
 		contactos.forEach((contacto)=>{
 			res.write("<li>"+contacto.name+"</li></CENTER>");
+			res
 		});
 		res.write("</ul></body></html>");
 		res.write("</ul>-------------------------------------------------------------------------</body></html>");
