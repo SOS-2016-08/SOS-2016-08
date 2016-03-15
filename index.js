@@ -8,9 +8,57 @@ app.use("/",express.static(__dirname+"/static"));
 app.use(bodyParser.json());
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 var aficiones=[];
 var parties=[];
 =======
+=======
+
+var music=[];
+
+app.get("api/sandbox/music/:name",(req,res)=>{
+	var name =req.params.name;
+	console.log("New GET "+name);
+	res.send(name);
+	res.sendStatus(200);
+});
+
+
+app.get("api/sandbox/music",(req,res)=>{
+	var name =req.params.name;
+	console.log("New GET ");
+	res.send(music);
+	res.sendStatus(200);
+});
+
+
+
+app.post("api/sandbox/music", (req,res)=>{ // crea y es de cliente a servidor
+	var mus= req.body; //recoge los datos
+	music.push(mus);
+	console.log("New post"+mus.name);
+	res.sendStatus(201);
+});
+
+
+
+app.post("api/sandbox/music/:name", (req,res)=>{ 
+	
+	console.log("Not possible");
+	res.sendStatus(404);
+});
+
+
+
+app.put("api/sandbox/music",(req,res)=>{
+	console.log("Not possible");
+	res.sendStatus(404);
+});
+
+
+
+
+>>>>>>> d76d9aa9a616919a9f2d7de5364ecedd3dd9604e
 var movies=[];
 >>>>>>> 1f1f4eb7f94c8a2d8c2f4941e4eabb1371c13bf0
 
@@ -73,6 +121,7 @@ app.post("/api/sandbox/movies/:name", (req,res)=>{
 	console.log("WARNING ");
 	res.sendStatus(404);
 });
+
 
 app.put("/api/sandbox/movies", (req,res)=>{
 	console.log("WARNING ");
