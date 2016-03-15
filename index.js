@@ -7,19 +7,20 @@ var port = (process.env.PORT || 12345);
 app.use("/",express.static(__dirname+"/static"));
 app.use(bodyParser.json());
 
+var aficiones=[];
 
-
-app.get("api/:name",(req,res)=>{
+app.get("/api/sandbox/:name",(req,res)=>{
 	var name =req.params.name;
-	res.send(contacts[0]);
+	res.send(aficiones);
 });
 
-app.post("/api", (req,res)=>{
-	var contact= req.body;
-	contacts.push(contact);
-	console.log("New post"+contact.name);
+app.post("/api/sandbox", (req,res)=>{
+	var aficion= req.body;
+	aficiones.push(aficion);
+	console.log("New post"+aficion.name);
 	res.sendStatus(200);
 });
+
 
 
 
