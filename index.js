@@ -8,6 +8,7 @@ app.use("/",express.static(__dirname+"/static"));
 app.use(bodyParser.json());
 
 var aficiones=[];
+var parties=[];
 
 app.get("/api/sandbox/:name",(req,res)=>{
 	var name =req.params.name;
@@ -15,10 +16,30 @@ app.get("/api/sandbox/:name",(req,res)=>{
 });
 
 app.post("/api/sandbox", (req,res)=>{
-	var aficion= req.body;
-	aficiones.push(aficion);
-	console.log("New post"+aficion.name);
-	res.sendStatus(200);
+
+	//if(res.rendstatus(404))
+	//	console.log("Error")
+	//else
+		var aficion= req.body;
+		aficiones.push(aficion);
+		console.log("New post"+aficion.name);
+		res.sendStatus(200);
+});
+
+app.get("/api/sandbox/:name",(req,res)=>{
+	var name =req.params.name;
+	res.send(parties);
+});
+
+app.post("/api/sandbox", (req,res)=>{
+
+	if(res.rendstatus(404))
+		console.log("Error")
+	else
+		var party= req.body;
+		parties.push(party);
+		console.log("New post"+party.name);
+		res.sendStatus(200);
 });
 
 
