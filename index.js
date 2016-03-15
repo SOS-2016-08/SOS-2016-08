@@ -55,6 +55,13 @@ app.get("/api/sandbox/movies",(req,res)=>{
 	res.sendStatus(200);
 });
 
+app.get("/api/sandbox/parties",(req,res)=>{
+	var name =req.params.name;
+	console.log("New get"+name);
+	res.send(parties);
+	res.sendStatus(200);
+});
+
 app.post("/api/sandbox/movies", (req,res)=>{
 	var aficion= req.body;
 	movies.push(aficion);
