@@ -7,13 +7,8 @@ var port = (process.env.PORT || 12345);
 app.use("/",express.static(__dirname+"/static"));
 app.use(bodyParser.json());
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 var aficiones=[];
 var parties=[];
-=======
-=======
-
 var music=[];
 
 app.get("api/sandbox/music/:name",(req,res)=>{
@@ -57,10 +52,8 @@ app.put("api/sandbox/music",(req,res)=>{
 
 
 
-
->>>>>>> d76d9aa9a616919a9f2d7de5364ecedd3dd9604e
 var movies=[];
->>>>>>> 1f1f4eb7f94c8a2d8c2f4941e4eabb1371c13bf0
+
 
 app.get("/api/sandbox/movies/:name",(req,res)=>{
 	var name =req.params.name;
@@ -69,7 +62,7 @@ app.get("/api/sandbox/movies/:name",(req,res)=>{
 	res.sendStatus(200);
 });
 
-<<<<<<< HEAD
+
 app.post("/api/sandbox", (req,res)=>{
 
 	//if(res.rendstatus(404))
@@ -81,21 +74,22 @@ app.post("/api/sandbox", (req,res)=>{
 		res.sendStatus(200);
 });
 
-app.get("/api/sandbox/:name",(req,res)=>{
-	var name =req.params.name;
-	res.send(parties);
-});
+//app.get("/api/sandbox/:name",(req,res)=>{
+//	var name =req.params.name;
+//	res.send(parties);
+//});
 
-app.post("/api/sandbox", (req,res)=>{
+//app.post("/api/sandbox", (req,res)=>{
 
-	if(res.rendstatus(404))
-		console.log("Error")
-	else
-		var party= req.body;
-		parties.push(party);
-		console.log("New post"+party.name);
-		res.sendStatus(200);
-=======
+	//if(res.rendstatus(404))
+	//	console.log("Error")
+	//else
+	//	var party= req.body;
+	//	parties.push(party);
+	//	console.log("New post"+party.name);
+	//	res.sendStatus(200);
+//}
+
 app.get("/api/sandbox/movies",(req,res)=>{
 	var name =req.params.name;
 	console.log("New get"+name);
@@ -103,12 +97,12 @@ app.get("/api/sandbox/movies",(req,res)=>{
 	res.sendStatus(200);
 });
 
-app.get("/api/sandbox/parties",(req,res)=>{
-	var name =req.params.name;
-	console.log("New get"+name);
-	res.send(parties);
-	res.sendStatus(200);
-});
+//app.get("/api/sandbox/parties",(req,res)=>{
+//	var name =req.params.name;
+//	console.log("New get"+name);
+//	res.send(parties);
+//	res.sendStatus(200);
+//});
 
 app.post("/api/sandbox/movies", (req,res)=>{
 	var aficion= req.body;
@@ -126,7 +120,6 @@ app.post("/api/sandbox/movies/:name", (req,res)=>{
 app.put("/api/sandbox/movies", (req,res)=>{
 	console.log("WARNING ");
 	res.sendStatus(404);
->>>>>>> 1f1f4eb7f94c8a2d8c2f4941e4eabb1371c13bf0
 });
 
 
