@@ -7,6 +7,7 @@ var port = (process.env.PORT || 12345);
 app.use("/",express.static(__dirname+"/static"));
 app.use(bodyParser.json());
 
+<<<<<<< HEAD
 
 var music=[];
 
@@ -52,7 +53,14 @@ app.put("api/sandbox/music",(req,res)=>{
 
 
 
+=======
+<<<<<<< HEAD
+var aficiones=[];
+var parties=[];
+=======
+>>>>>>> 26c49808515f8af56e8d2aa5b8f096532ddc1b6b
 var movies=[];
+>>>>>>> 1f1f4eb7f94c8a2d8c2f4941e4eabb1371c13bf0
 
 app.get("/api/sandbox/movies/:name",(req,res)=>{
 	var name =req.params.name;
@@ -61,6 +69,33 @@ app.get("/api/sandbox/movies/:name",(req,res)=>{
 	res.sendStatus(200);
 });
 
+<<<<<<< HEAD
+app.post("/api/sandbox", (req,res)=>{
+
+	//if(res.rendstatus(404))
+	//	console.log("Error")
+	//else
+		var aficion= req.body;
+		aficiones.push(aficion);
+		console.log("New post"+aficion.name);
+		res.sendStatus(200);
+});
+
+app.get("/api/sandbox/:name",(req,res)=>{
+	var name =req.params.name;
+	res.send(parties);
+});
+
+app.post("/api/sandbox", (req,res)=>{
+
+	if(res.rendstatus(404))
+		console.log("Error")
+	else
+		var party= req.body;
+		parties.push(party);
+		console.log("New post"+party.name);
+		res.sendStatus(200);
+=======
 app.get("/api/sandbox/movies",(req,res)=>{
 	var name =req.params.name;
 	console.log("New get"+name);
@@ -84,6 +119,7 @@ app.post("/api/sandbox/movies/:name", (req,res)=>{
 app.put("/api/sandbox/movies", (req,res)=>{
 	console.log("WARNING ");
 	res.sendStatus(404);
+>>>>>>> 1f1f4eb7f94c8a2d8c2f4941e4eabb1371c13bf0
 });
 
 
