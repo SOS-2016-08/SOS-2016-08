@@ -7,21 +7,57 @@ var port = (process.env.PORT || 12345);
 app.use("/",express.static(__dirname+"/static"));
 app.use(bodyParser.json());
 
-var aficiones=[];
+var movies=[];
 
 app.get("/api/sandbox/movies/:name",(req,res)=>{
 	var name =req.params.name;
-	res.send(aficiones);
-});
-
-app.post("/api/sandbox", (req,res)=>{
-	var aficion= req.body;
-	aficiones.push(aficion);
-	console.log("New post"+aficion.name);
+	console.log("New get"+name);
+	res.send(name);
 	res.sendStatus(200);
 });
 
+app.get("/api/sandbox/movies",(req,res)=>{
+	var name =req.params.name;
+	console.log("New get"+name);
+	res.send(movies);
+	res.sendStatus(200);
+});
 
+app.post("/api/sandbox/movies", (req,res)=>{
+	var aficion= req.body;
+	movies.push(aficion);
+	console.log("New post"+aficion.name);
+	res.sendStatus(201);
+});
+
+app.post("/api/sandbox/movies/:name", (req,res)=>{
+	console.log("WARNING ");
+	res.sendStatus(404);
+});
+
+app.put("/api/sandbox/movies", (req,res)=>{
+	console.log("WARNING ");
+	res.sendStatus(404);
+});
+
+
+app.put("/api/sandbox/movies/:name", (req,res)=>{
+	var a= req.body;
+	var id=req.params.name;
+	var mov=StrArray(id,mov);
+	if(mov != -1){
+		movies[mov].name=a.name;
+		res.send(200);
+	}
+	else{
+		res.send(404);
+	}
+});
+
+app.put("/api/sandbox/movies", (req,res)=>{
+	console.log("WARNING ");
+	res.sendStatus(404);
+});
 
 
 app.get("/about",(req,res)=>{
