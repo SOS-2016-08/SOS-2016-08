@@ -1,11 +1,16 @@
 0 info it worked if it ends with ok
 <<<<<<< HEAD
+<<<<<<< HEAD
 1 verbose cli [ 'D:\\SOS\\node.exe',
 1 verbose cli   'D:\\SOS\\node_modules\\npm\\bin\\npm-cli.js',
 =======
 1 verbose cli [ 'D:\\nodejs\\node.exe',
 1 verbose cli   'D:\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
 >>>>>>> f43930df383f6d9da4db1503347a74a6a514caa3
+=======
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+>>>>>>> 03da91d15a81561248f3f07e2a7672d1700113ac
 1 verbose cli   'start' ]
 2 info using npm@3.6.0
 3 info using node@v5.6.0
@@ -15,17 +20,23 @@
 7 info lifecycle blaherlas@1.0.0~start: blaherlas@1.0.0
 8 verbose lifecycle blaherlas@1.0.0~start: unsafe-perm in lifecycle true
 <<<<<<< HEAD
+<<<<<<< HEAD
 9 verbose lifecycle blaherlas@1.0.0~start: PATH: D:\SOS\node_modules\npm\bin\node-gyp-bin;C:\Users\usuario\Desktop\sos\SOS-2016-08\node_modules\.bin;C:\Users\usuario\bin;C:\Program Files (x86)\Git\mingw32\bin;C:\Program Files (x86)\Git\usr\local\bin;C:\Program Files (x86)\Git\usr\bin;C:\Program Files (x86)\Git\usr\bin;C:\Program Files (x86)\Git\mingw32\bin;C:\Program Files (x86)\Git\usr\bin;C:\Users\usuario\bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\Windows Live\Shared;D:\ECLIPSE\bin;D:\SOS;D:\SOS\Heroku\bin;C:\Program Files (x86)\git\cmd;C:\Users\usuario\AppData\Roaming\npm;C:\Program Files (x86)\Git\usr\bin\vendor_perl;C:\Program Files (x86)\Git\usr\bin\core_perl
 10 verbose lifecycle blaherlas@1.0.0~start: CWD: C:\Users\usuario\Desktop\sos\SOS-2016-08
 =======
 9 verbose lifecycle blaherlas@1.0.0~start: PATH: D:\nodejs\node_modules\npm\bin\node-gyp-bin;C:\Users\usuario\Desktop\sos-2016-08\SOS-2016-08\node_modules\.bin;C:\Users\usuario\bin;C:\Program Files (x86)\Git\mingw32\bin;C:\Program Files (x86)\Git\usr\local\bin;C:\Program Files (x86)\Git\usr\bin;C:\Program Files (x86)\Git\usr\bin;C:\Program Files (x86)\Git\mingw32\bin;C:\Program Files (x86)\Git\usr\bin;C:\Users\usuario\bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\Windows Live\Shared;C:\MinGW\bin;C:\TDM-GCC-32\bin;D:\nodejs;C:\Program Files (x86)\Heroku\bin;C:\Program Files (x86)\git\cmd;C:\Users\usuario\AppData\Roaming\npm;C:\Program Files (x86)\Git\usr\bin\vendor_perl;C:\Program Files (x86)\Git\usr\bin\core_perl
 10 verbose lifecycle blaherlas@1.0.0~start: CWD: C:\Users\usuario\Desktop\sos-2016-08\SOS-2016-08
 >>>>>>> f43930df383f6d9da4db1503347a74a6a514caa3
+=======
+9 verbose lifecycle blaherlas@1.0.0~start: PATH: C:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;C:\Users\gonzalo\Desktop\heroku\sos-2016-08\node_modules\.bin;C:\Users\gonzalo\bin;C:\Program Files (x86)\Git\mingw32\bin;C:\Program Files (x86)\Git\usr\local\bin;C:\Program Files (x86)\Git\usr\bin;C:\Program Files (x86)\Git\usr\bin;C:\Program Files (x86)\Git\mingw32\bin;C:\Program Files (x86)\Git\usr\bin;C:\Users\gonzalo\bin;C:\Program Files\Haskell\bin;C:\Program Files\Haskell Platform\7.10.2-a\lib\extralibs\bin;C:\Program Files\Haskell Platform\7.10.2-a\bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client;C:\Program Files\Intel\iCLS Client;C:\Program Files (x86)\AMD APP\bin\x86_64;C:\Program Files (x86)\AMD APP\bin\x86;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\MinGW\bin;C:\Program Files\TortoiseSVN\bin;C:\Program Files\Haskell Platform\7.10.2-a\mingw\bin;C:\Program Files\nodejs;C:\Program Files (x86)\Heroku\bin;C:\Program Files (x86)\git\cmd;C:\Users\gonzalo\AppData\Roaming\cabal\bin;C:\Users\gonzalo\AppData\Local\Programs\minghc-7.10.2-x86_64\switch;C:\Users\gonzalo\AppData\Local\Programs\minghc-7.10.2-x86_64\git-2.4.5.1\cmd;C:\Users\gonzalo\AppData\Local\Programs\minghc-7.10.2-x86_64\git-2.4.5.1\usr\bin;C:\Users\gonzalo\AppData\Local\Programs\minghc-7.10.2-x86_64\ghc-7.10.2\mingw\bin;C:\Users\gonzalo\AppData\Local\Programs\minghc-7.10.2-x86_64\ghc-7.10.2\bin;C:\Users\gonzalo\AppData\Local\Programs\minghc-7.10.2-x86_64\bin;C:\Users\gonzalo\AppData\Roaming\npm;C:\Program Files (x86)\Git\usr\bin\vendor_perl;C:\Program Files (x86)\Git\usr\bin\core_perl
+10 verbose lifecycle blaherlas@1.0.0~start: CWD: C:\Users\gonzalo\Desktop\heroku\sos-2016-08
+>>>>>>> 03da91d15a81561248f3f07e2a7672d1700113ac
 11 silly lifecycle blaherlas@1.0.0~start: Args: [ '/d /s /c', 'node index.js' ]
 12 silly lifecycle blaherlas@1.0.0~start: Returned: code: 1  signal: null
 13 info lifecycle blaherlas@1.0.0~start: Failed to exec start script
 14 verbose stack Error: blaherlas@1.0.0 start: `node index.js`
 14 verbose stack Exit status 1
+<<<<<<< HEAD
 <<<<<<< HEAD
 14 verbose stack     at EventEmitter.<anonymous> (D:\SOS\node_modules\npm\lib\utils\lifecycle.js:232:16)
 14 verbose stack     at emitTwo (events.js:100:13)
@@ -37,11 +48,18 @@
 14 verbose stack     at EventEmitter.emit (events.js:185:7)
 14 verbose stack     at ChildProcess.<anonymous> (D:\nodejs\node_modules\npm\lib\utils\spawn.js:24:14)
 >>>>>>> f43930df383f6d9da4db1503347a74a6a514caa3
+=======
+14 verbose stack     at EventEmitter.<anonymous> (C:\Program Files\nodejs\node_modules\npm\lib\utils\lifecycle.js:232:16)
+14 verbose stack     at emitTwo (events.js:100:13)
+14 verbose stack     at EventEmitter.emit (events.js:185:7)
+14 verbose stack     at ChildProcess.<anonymous> (C:\Program Files\nodejs\node_modules\npm\lib\utils\spawn.js:24:14)
+>>>>>>> 03da91d15a81561248f3f07e2a7672d1700113ac
 14 verbose stack     at emitTwo (events.js:100:13)
 14 verbose stack     at ChildProcess.emit (events.js:185:7)
 14 verbose stack     at maybeClose (internal/child_process.js:827:16)
 14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
 15 verbose pkgid blaherlas@1.0.0
+<<<<<<< HEAD
 <<<<<<< HEAD
 16 verbose cwd C:\Users\usuario\Desktop\sos\SOS-2016-08
 17 error Windows_NT 6.1.7601
@@ -51,6 +69,11 @@
 17 error Windows_NT 6.1.7601
 18 error argv "D:\\nodejs\\node.exe" "D:\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "start"
 >>>>>>> f43930df383f6d9da4db1503347a74a6a514caa3
+=======
+16 verbose cwd C:\Users\gonzalo\Desktop\heroku\sos-2016-08
+17 error Windows_NT 10.0.10586
+18 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "start"
+>>>>>>> 03da91d15a81561248f3f07e2a7672d1700113ac
 19 error node v5.6.0
 20 error npm  v3.6.0
 21 error code ELIFECYCLE
