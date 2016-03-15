@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 
 var aficiones=[];
 
-app.get("/api/sandbox/:name",(req,res)=>{
+app.get("/api/sandbox/movies/:name",(req,res)=>{
 	var name =req.params.name;
 	res.send(aficiones);
 });
