@@ -7,15 +7,16 @@ var port = (process.env.PORT || 12345);
 app.use("/",express.static(__dirname+"/static"));
 app.use(bodyParser.json());
 
-<<<<<<< HEAD
+
 var music=[];
 
 app.get("api/sandbox/music/:name",(req,res)=>{
 	var name =req.params.name;
 	console.log("New GET "+name);
-	res.send(music);
+	res.send(name);
 	res.sendStatus(200);
 });
+
 
 app.get("api/sandbox/music",(req,res)=>{
 	var name =req.params.name;
@@ -23,6 +24,8 @@ app.get("api/sandbox/music",(req,res)=>{
 	res.send(music);
 	res.sendStatus(200);
 });
+
+
 
 app.post("api/sandbox/music", (req,res)=>{ // crea y es de cliente a servidor
 	var mus= req.body; //recoge los datos
@@ -32,30 +35,23 @@ app.post("api/sandbox/music", (req,res)=>{ // crea y es de cliente a servidor
 });
 
 
+
 app.post("api/sandbox/music/:name", (req,res)=>{ 
 	
 	console.log("Not possible");
 	res.sendStatus(404);
 });
 
+
+
 app.put("api/sandbox/music",(req,res)=>{
 	console.log("Not possible");
 	res.sendStatus(404);
 });
 
-app.put("api/sandbox/music/:name",(req,res)=>{
-	var nameold =req.params.name;
-	var ind = music.indexOf(nameold);
-
-	music[ind]= name;
-	console.log(" New PUT" +nameold+ "for"+name);
 
 
-	res.sendStatus(200);
 
-
-});
-=======
 var movies=[];
 
 app.get("/api/sandbox/movies/:name",(req,res)=>{
@@ -83,7 +79,7 @@ app.post("/api/sandbox/movies/:name", (req,res)=>{
 	console.log("WARNING ");
 	res.sendStatus(404);
 });
->>>>>>> f43930df383f6d9da4db1503347a74a6a514caa3
+
 
 app.put("/api/sandbox/movies", (req,res)=>{
 	console.log("WARNING ");
