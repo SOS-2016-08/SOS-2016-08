@@ -7,14 +7,21 @@ var port = (process.env.PORT || 12345);
 app.use("/",express.static(__dirname+"/static"));
 app.use(bodyParser.json());
 
+<<<<<<< HEAD
 var aficiones=[];
 var parties=[];
+=======
+var movies=[];
+>>>>>>> 1f1f4eb7f94c8a2d8c2f4941e4eabb1371c13bf0
 
-app.get("/api/sandbox/:name",(req,res)=>{
+app.get("/api/sandbox/movies/:name",(req,res)=>{
 	var name =req.params.name;
-	res.send(aficiones);
+	console.log("New get"+name);
+	res.send(name);
+	res.sendStatus(200);
 });
 
+<<<<<<< HEAD
 app.post("/api/sandbox", (req,res)=>{
 
 	//if(res.rendstatus(404))
@@ -40,9 +47,51 @@ app.post("/api/sandbox", (req,res)=>{
 		parties.push(party);
 		console.log("New post"+party.name);
 		res.sendStatus(200);
+=======
+app.get("/api/sandbox/movies",(req,res)=>{
+	var name =req.params.name;
+	console.log("New get"+name);
+	res.send(movies);
+	res.sendStatus(200);
+});
+
+app.post("/api/sandbox/movies", (req,res)=>{
+	var aficion= req.body;
+	movies.push(aficion);
+	console.log("New post"+aficion.name);
+	res.sendStatus(201);
+});
+
+app.post("/api/sandbox/movies/:name", (req,res)=>{
+	console.log("WARNING ");
+	res.sendStatus(404);
+});
+
+app.put("/api/sandbox/movies", (req,res)=>{
+	console.log("WARNING ");
+	res.sendStatus(404);
+>>>>>>> 1f1f4eb7f94c8a2d8c2f4941e4eabb1371c13bf0
 });
 
 
+app.put("/api/sandbox/movies/:name", (req,res)=>{
+	var a= req.body;
+	var id=req.params.name;
+	var mov=StrArray(id,mov);
+	if(mov != -1){
+		movies[mov].name=a.name;
+		res.send(200);
+	}
+	else{
+		res.send(404);
+	}
+});
+
+
+app.put("/api/sandbox/movies", (req,res)=>{
+	console.log("WARNING ");
+	res.sendStatus(404);
+});
 
 
 app.get("/about",(req,res)=>{
