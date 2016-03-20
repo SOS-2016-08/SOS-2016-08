@@ -1,174 +1,118 @@
 var express = require("express");
-var bodyParser= require("body-parser");
-var fs= require("fs");
 var app= express();
+var bodyParser= require("body-parser");
+
+
 
 var port = (process.env.PORT || 12345);
 
 app.use("/",express.static(__dirname+"/static"));
 app.use(bodyParser.json());
 
-<<<<<<< HEAD
-
-=======
-var aficiones=[];
-var parties=[];
->>>>>>> 9bbe049b4d8b778b1f4d5a4796acd5da3a7923b3
-var music=[];
-
-app.get("api/sandbox/music/:name",(req,res)=>{
-	var name =req.params.name;
-	console.log("New GET "+name);
-	res.send(name);
-	res.sendStatus(200);
-});
+var fs= require("fs");
 
 
-app.get("api/sandbox/music",(req,res)=>{
-	var name =req.params.name;
-	console.log("New GET ");
-	res.send(music);
-	res.sendStatus(200);
-});
+////////////////////////////////////////////////////////
+/////////////////API CANDELA///////////////////////////
 
 
-
-app.post("api/sandbox/music", (req,res)=>{ // crea y es de cliente a servidor
-	var mus= req.body; //recoge los datos
-	music.push(mus);
-	console.log("New post"+mus.name);
-	res.sendStatus(201);
-});
-
-
-
-app.post("api/sandbox/music/:name", (req,res)=>{ 
-	
-	console.log("Not possible");
-	res.sendStatus(404);
-});
-
-
-
-app.put("api/sandbox/music",(req,res)=>{
-	console.log("Not possible");
-	res.sendStatus(404);
-});
-
-
-///API CANDELA
-
-<<<<<<< HEAD
-function positionArr(str,ele){
-	var acum=-1;
-	for (var i=0;i<ele.lenght;i++)
-		if (ele[i].name==str)
-			acum=i;
+function PosArray(str,elements){
+	var acum = -1;
+ for(var i=0;i<elements.length;i++)
+      if(elements[i].name==str)
+        acum=i;
 	return acum;
 };
 
+
 var movies=[{name:"Volver"},{name:"Marte"},{name:"Interestelar"}];
 
-app.get('/api-test/moviesFile/loadInitialData',function(req,res){
+app.get('/api-test/film/loadInitialData',function(req,res){
 	movies=[];
-	var file= fs.readFileSync('moviesFile.json','utf8');
+	var file= fs.readFileSync('film.json','utf8');
 	movies= JSON.parse(file);
 	res.sendStatus(200);
 });
 
-app.get("/api/sandbox/moviesFile",function (req,res){
+app.get("/api/sandbox/movies",(req,res)=>{
     console.log("New GET for directory listing");
-	res.status(200).jsonp(mBands);
-=======
-var movies=[];
-
-
-app.get("/api/sandbox/movies/:name",(req,res)=>{
-	var name =req.params.name;
-	console.log("New get"+name);
-	res.send(name);
-	res.sendStatus(200);
+	res.status(200).jsonp(movies);
 });
 
 
-app.post("/api/sandbox", (req,res)=>{
 
-	//if(res.rendstatus(404))
-	//	console.log("Error")
-	//else
-		var aficion= req.body;
-		aficiones.push(aficion);
-		console.log("New post"+aficion.name);
+app.get("/api/sandbox/movies/:name",(req,res)=>{ //get name
+     var name = req.params.name;
+      console.log("New GET of resource "+name);
+  	var m = PosArray(req.params.name,movies);
+  	console.log("Valor de m"+m)
+  	if(m != -1){
+      res.send(movies[m]);
+    }
+  	else{
+  		
+      res.sendStatus(404);
+    }
+  });
+
+app.post("/api/sandbox/movies", (req,res)=>{
+		var mov= req.body;
+		movies.push(mov);
+		console.log("New post"+mov.name);
 		res.sendStatus(200);
 });
 
-//app.get("/api/sandbox/:name",(req,res)=>{
-//	var name =req.params.name;
-//	res.send(parties);
-//});
-
-//app.post("/api/sandbox", (req,res)=>{
-
-	//if(res.rendstatus(404))
-	//	console.log("Error")
-	//else
-	//	var party= req.body;
-	//	parties.push(party);
-	//	console.log("New post"+party.name);
-	//	res.sendStatus(200);
-//}
-
-app.get("/api/sandbox/movies",(req,res)=>{
-	var name =req.params.name;
-	console.log("New get"+name);
-	res.send(movies);
-	res.sendStatus(200);
-});
-
-//app.get("/api/sandbox/parties",(req,res)=>{
-//	var name =req.params.name;
-//	console.log("New get"+name);
-//	res.send(parties);
-//	res.sendStatus(200);
-//});
 
 app.post("/api/sandbox/movies", (req,res)=>{
-	var aficion= req.body;
-	movies.push(aficion);
-	console.log("New post"+aficion.name);
-	res.sendStatus(201);
+	console.log("WARNING post");
+	res.sendStatus(403);
 });
-
-app.post("/api/sandbox/movies/:name", (req,res)=>{
-	console.log("WARNING ");
-	res.sendStatus(404);
-});
-
 
 app.put("/api/sandbox/movies", (req,res)=>{
-	console.log("WARNING ");
-	res.sendStatus(404);
+	console.log("WARNING put");
+	res.sendStatus(403);
 });
 
 
-app.put("/api/sandbox/movies/:name", (req,res)=>{
-	var a= req.body;
-	var id=req.params.name;
-	var mov=StrArray(id,mov);
-	if(mov != -1){
-		movies[mov].name=a.name;
-		res.send(200);
-	}
-	else{
-		res.send(404);
-	}
-});
 
 
-app.put("/api/sandbox/movies", (req,res)=>{
-	console.log("WARNING ");
-	res.sendStatus(404);
-});
+
+app.put('/api/sandbox/movies/:name',(request, response)=>{ //put
+      var temp = request.body;
+      var id = request.params.name;
+      if (mov != -1){
+          var mov = PosArray(id,movies);
+          movies[mov].name=temp.name;
+          response.send(200);
+  	}
+  	else{
+        response.send(404);
+    }
+  });
+
+
+
+// app.delete("/api/sandbox/movies/:name", (req,res)=>{
+//     var name=req.params.name;
+//     console.log("New DELETE of resource "+name);
+// 	var mov = PosArray(name,movies);
+// 	if (mov != -1)
+// 	{
+//     		movies.splice(mov,1);
+// 		res.sendStatus(200);
+// }
+//     	else
+// 		res.sendStatus(404);
+//   });
+
+
+// //Deletes all the resources in the given directory
+// app.delete("/api/sandbox/movies", (req,res)=>{
+// 	console.log("New DELETE of all resources");
+// 	movies.splice(0,movies.length);
+// 	res.sendStatus(200);
+//   });
+
 
 
 app.get("/about",(req,res)=>{
@@ -254,14 +198,6 @@ app.get("/time",(req,res)=>{
 
 });
 
-
-
-
-
-app.listen(port, ()=>{
-	console.log("Magic happens on port"+port);
-});
-
->>>>>>> 9bbe049b4d8b778b1f4d5a4796acd5da3a7923b3
-
-});
+app.listen(port,()=>{
+ 	console.log("Magic happens on port"+port);
+ });
