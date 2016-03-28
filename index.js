@@ -36,13 +36,6 @@ app.get('/api/v1/social_situation/loadInitialData',function(req,res){
 
 
 
-
-
-
-
-
-
-
 app.get("/api/v1/social_situation",(req,res)=>{
     console.log("New GET for directory listing");
 	res.status(200).jsonp(movies);
