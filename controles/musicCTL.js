@@ -1,23 +1,23 @@
+var fs= require("fs");
+
 var musical=[ {name : "pepe"},  {name : "juan"}, {name : "javi"}];
-
-
-
-
 
 
 module.exports.getLoad = function(req,res){
 	musical=[];
 	var mus= fs.readFileSync('countrytypes.json', 'utf8');
-	musical = JSON.parse(file);
-	res.sendStatus(200);
+	musical = JSON.parse(mus);
+	res.send(musical);
 	
 	
 
 };
 
+
+
 module.exports.getMusic = function(req,res){
 	console.log("New Get of music ");
-	res.send(musical);
+	res.status(200).jsonp(musical);
 	
 };
 
@@ -74,7 +74,7 @@ module.exports.putMusic2 = function(req,res){
 		if(musical[i].name = name){
 
 			musical[i].name = mus.name;
-			//musical[i].type = mus.type; AÑADIR PARAMETRO
+			
 			console.log(" New Put of music "+name);
 			res.send(mus);
 			break;
@@ -82,10 +82,9 @@ module.exports.putMusic2 = function(req,res){
 		}}	
 
 	console.log("Put of new "+name+" not found");
-	res.sendStatus(400);//asdfghjk
+	res.sendStatus(400);
 	//break;
 	
-		
 	
 
 };
@@ -107,7 +106,7 @@ module.exports.deleteMusic2 = function  (req,res)  {
 
     	}}
     console.log("Delete of music " + name + " no found");
-    res.send("Error 404: No music found");//sdfghjkl
+    res.send("Error 404: No music found");
     //break;
     
  

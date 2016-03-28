@@ -4,22 +4,9 @@ var fs= require("fs");
 
 var musicCtl = require('./controles/musicCTL.js');
 
-<<<<<<< HEAD
 var app= express();
 var port = (process.env.PORT || 12345);
 
-=======
-var aficiones=[];
-var parties=[];
-var music=[];
-
-app.get("api/sandbox/music/:name",(req,res)=>{
-	var name =req.params.name;
-	console.log("New GET "+name);
-	res.send(name);
-	res.sendStatus(200);
-});
->>>>>>> 9bbe049b4d8b778b1f4d5a4796acd5da3a7923b3
 
 app.use(bodyParser.json());
 app.use("/",express.static(__dirname+"/static"));
@@ -28,136 +15,26 @@ app.use("/",express.static(__dirname+"/static"));
 
 
 
-app.get("/api-test/music/loadInitialData", musicCtl.getLoad);
+app.get("/api/v1/music/loadInitialData", musicCtl.getLoad);//funciona
 
 
 
 app.get("/api/v1/music", musicCtl.getMusic);
-app.get("/api/v1/music/:name", musicCtl.getMusic2);
+app.get("/api/v1/music/:country", musicCtl.getMusic2);
 
 app.post("/api/v1/music", musicCtl.postMusic);
-app.post("api/v1/music/:name",musicCtl.postMusic2);
+app.post("api/v1/music/:country",musicCtl.postMusic2);
 
 app.put("api/v1/music", musicCtl.putMusic);
-app.put("api/v1/music/:name", musicCtl.putMusic2);
+app.put("api/v1/music/:country", musicCtl.putMusic2);
 
 app.delete("/api/v1/music", musicCtl.deleteMusic );
-app.delete("/api/v1/music/:name", musicCtl.deleteMusic2);
-/*
-/*var aficiones=[];
-var parties=[];
-
-var movies=[];
-
-<<<<<<< HEAD
-=======
-var movies=[];
->>>>>>> 9bbe049b4d8b778b1f4d5a4796acd5da3a7923b3
+app.delete("/api/v1/music/:country", musicCtl.deleteMusic2);
 
 
-app.get("/api/sandbox/movies/:name",(req,res)=>{
-	var name =req.params.name;
-	console.log("New get"+name);
-	res.send(name);
-	res.sendStatus(200);
-});
 
 
-app.post("/api/sandbox", (req,res)=>{
 
-	//if(res.rendstatus(404))
-	//	console.log("Error")
-	//else
-		var aficion= req.body;
-		aficiones.push(aficion);
-		console.log("New post"+aficion.name);
-		res.sendStatus(200);
-});
-
-//app.get("/api/sandbox/:name",(req,res)=>{
-//	var name =req.params.name;
-//	res.send(parties);
-//});
-
-//app.post("/api/sandbox", (req,res)=>{
-
-	//if(res.rendstatus(404))
-	//	console.log("Error")
-	//else
-	//	var party= req.body;
-	//	parties.push(party);
-	//	console.log("New post"+party.name);
-	//	res.sendStatus(200);
-//}
-
-<<<<<<< HEAD
-	if(res.rendstatus(404))
-		console.log("Error")
-	else
-		var party= req.body;
-		parties.push(party);
-		console.log("New post"+party.name);
-		res.sendStatus(200);
-
-=======
->>>>>>> 9bbe049b4d8b778b1f4d5a4796acd5da3a7923b3
-app.get("/api/sandbox/movies",(req,res)=>{
-	var name =req.params.name;
-	console.log("New get"+name);
-	res.send(movies);
-	res.sendStatus(200);
-});
-
-//app.get("/api/sandbox/parties",(req,res)=>{
-//	var name =req.params.name;
-//	console.log("New get"+name);
-//	res.send(parties);
-//	res.sendStatus(200);
-//});
-
-app.post("/api/sandbox/movies", (req,res)=>{
-	var aficion= req.body;
-	movies.push(aficion);
-	console.log("New post"+aficion.name);
-	res.sendStatus(201);
-});
-
-app.post("/api/sandbox/movies/:name", (req,res)=>{
-	console.log("WARNING ");
-	res.sendStatus(404);
-});
-
-
-app.put("/api/sandbox/movies", (req,res)=>{
-	console.log("WARNING ");
-	res.sendStatus(404);
-<<<<<<< HEAD
-
-=======
->>>>>>> 9bbe049b4d8b778b1f4d5a4796acd5da3a7923b3
-});
-
-
-app.put("/api/sandbox/movies/:name", (req,res)=>{
-	var a= req.body;
-	var id=req.params.name;
-	var mov=StrArray(id,mov);
-	if(mov != -1){
-		movies[mov].name=a.name;
-		res.send(200);
-	}
-	else{
-		res.send(404);
-	}
-});
-
-
-app.put("/api/sandbox/movies", (req,res)=>{
-	console.log("WARNING ");
-	res.sendStatus(404);
-});
-
-*/
 app.get("/about",(req,res)=>{
 	fs.readFile('contactos.json','utf-8',(err,content)=>{
 		console.log("Data read");
