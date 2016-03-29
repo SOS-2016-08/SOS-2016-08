@@ -76,7 +76,7 @@ module.exports.putMusic2 = function(req,res){
 			musical[i].name = mus.name;
 			
 			console.log(" New Put of music "+name);
-			res.send(mus);
+			res.send(200);
 			break;
 
 		}}	

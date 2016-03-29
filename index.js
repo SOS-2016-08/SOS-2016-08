@@ -17,8 +17,6 @@ app.use("/",express.static(__dirname+"/static"));
 
 app.get("/api/v1/music/loadInitialData", musicCtl.getLoad);//funciona
 
-
-
 app.get("/api/v1/music", musicCtl.getMusic);
 app.get("/api/v1/music/:country", musicCtl.getMusic2);
 
@@ -30,8 +28,6 @@ app.put("api/v1/music/:country", musicCtl.putMusic2);
 
 app.delete("/api/v1/music", musicCtl.deleteMusic );
 app.delete("/api/v1/music/:country", musicCtl.deleteMusic2);
-
-
 
 
 
