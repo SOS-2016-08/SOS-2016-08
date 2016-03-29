@@ -7,15 +7,21 @@ var musicCtl = require('./controles/musicCTL.js');
 var app= express();
 var port = (process.env.PORT || 12345);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> cf79c8ae193427a224ad57032c552dabcf6fb063
 var moviesCtl= require('./controles/moviesCtl.js');
 
 
 app.use("/",express.static(__dirname+"/static"));
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> cf79c8ae193427a224ad57032c552dabcf6fb063
 app.use(bodyParser.json());
 app.use("/",express.static(__dirname+"/static"));
 
@@ -33,7 +39,10 @@ app.get("/api/v1/music/:country/:year",musicCtl.getMusic3);// funciona
 
 app.get("/api/v1/music/:country",musicCtl.getMusic4); //año
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> cf79c8ae193427a224ad57032c552dabcf6fb063
 
 
 
@@ -53,6 +62,7 @@ app.delete("/api/v1/music/:country", musicCtl.deleteMusic2);//funciona
 ////////////////////////////////////////////////////////
 /////////////////API CANDELA///////////////////////////
 
+<<<<<<< HEAD
 
 
 
@@ -68,10 +78,14 @@ app.delete("/api/v1/music/:country", musicCtl.deleteMusic2);//funciona
 // 		res.end();
 
 
+=======
+
+>>>>>>> cf79c8ae193427a224ad57032c552dabcf6fb063
 
 app.get('/api/v1/social_situation/loadInitialData',moviesCtl.getLoad);
 app.get("/api/v1/social_situation",moviesCtl.getMovie);
 app.get("/api/v1/social_situation/:country",moviesCtl.getMovie2);
+<<<<<<< HEAD
 
 // 	});
 // });
@@ -92,17 +106,23 @@ app.get("/api/v1/social_situation/:country",moviesCtl.getMovie2);
 // 		socialsituation.forEach((linea)=>{
 // 			//res.write("<li>"+linea.country  +" , "+linea.year+" , "+linea.sales+" , "+linea.digital+", "+linea.nodigital+"</li>");
 // 			res.write("<table><tr><td>"+linea.country+"  "+linea.year+"  "+linea.sales+"  "+linea.digital+"  "+linea.nodigital+"</td></tr></table>")
+=======
 
-// 		});
-// 		res.write("</ul>------------------------------------------------------------------------</body></html>");
-// 		res.end();
+>>>>>>> cf79c8ae193427a224ad57032c552dabcf6fb063
+
+app.get("/api/v1/social_situation/:country/:year",moviesCtl.getMovie3);
 
 
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> cf79c8ae193427a224ad57032c552dabcf6fb063
 app.post("/api/v1/social_situation",moviesCtl.postMovie); 
 app.post("/api/v1/social_situation/:country",moviesCtl.postMovie2); 
 app.put("/api/v1/social_situation",moviesCtl.putMovie); 
 
+<<<<<<< HEAD
 
 		
 
@@ -116,6 +136,10 @@ app.put('/api/v1/social_situation/:country',moviesCtl.putMovie2);
 
 
 
+=======
+app.put('/api/v1/social_situation/:country',moviesCtl.putMovie2); 
+
+>>>>>>> cf79c8ae193427a224ad57032c552dabcf6fb063
 app.delete("/api/v1/social_situation/:country" ,moviesCtl.deleteMovie);
 
 //Deletes all the resources in the given directory

@@ -24,19 +24,54 @@ module.exports.getMovie=function(req,res){
 
 module.exports.getMovie2=function(req,res){ //get name
      var name = req.params.country;
-     var year = req.params.year;
-      console.log("New GET of resource "+name);
-  	var m = PosArray(name,movies);
-  	console.log("Valor de m = "+m);
-  	if(m != -1){
-      res.send(movies[m]);
-    }
-  	else{
-  		
-      res.sendStatus(404);
-    }
-  };
+     var y = req.params.year;
+   
+     result=[];
 
+     for (i=0;i<movies.length;i++){
+      if(movies[i].country==name || movies[i].year==name||movies[i].sales==name){
+        console.log("new get "+name+y);
+        result.push(movies[i]);
+
+      }
+     }
+     res.send(result);
+     res.sendStatus(404);
+};
+
+// module.exports.getMovie4=function(req,res){ //get name
+//      var y = req.params.year;
+//      result=[];
+//      for (i=0;i<movies.length-1;i++){
+//       if(movies[i].year==y){
+//         console.log("new get "+y);
+//         result.push(movies[i]);
+//         res.send(result);
+
+//       }
+//      }
+     
+//      res.sendStatus(404);
+// };
+
+   
+     
+module.exports.getMovie3=function(req,res){ //get name
+     var name = req.params.country;
+     var ye=req.params.year;
+     result=[];
+
+     for (i=0;i<movies.length;i++){
+      if(movies[i].country==name && movies[i].year==ye){
+        console.log("new get "+name);
+        result.push(movies[i]);
+
+      }
+     }
+     res.send(result);
+     res.sendStatus(404);
+};
+   
 
 
 module.exports.postMovie=function(req,res){
@@ -82,6 +117,9 @@ module.exports.putMovie2=function(req,res){//put
         res.send(404);
     }
   };
+
+
+
 
 
 module.exports.deleteMovie=function(req,res){
