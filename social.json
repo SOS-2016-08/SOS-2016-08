@@ -1,7 +1,7 @@
 [
-{"country":"spain"   ,"year":"2012","sales":"160,54",  "digital":"48%",  "nodigital":"55%" },
-{"country":"italy"   ,"year":"2012","sales":"101,66",  "digital":"39%",  "nodigital":"36%" },
-{"country":"france"  ,"year":"2012","sales":"79,44",  "digital":"45%",  "nodigital":"49%" },
-{"country":"grece"  ,"year":"2012","sales":"130,36",  "digital":"36%",  "nodigital":"67%" },
-{"country":"spain"   ,"year":"2012","sales":"155,66",  "digital":"57%",  "nodigital":"76%" }
+{"country":"spain"   ,"year":"2013","sales":"66,54",  "digital":"50%",  "nodigital":"50%" },
+{"country":"italy"   ,"year":"2013","sales":"44,66",  "digital":"33%",  "nodigital":"77%" },
+{"country":"france"  ,"year":"2013","sales":"251,44",  "digital":"34%",  "nodigital":"72%" },
+{"country":"grece"  ,"year":"2013","sales":"456,36",  "digital":"75%",  "nodigital":"14%" },
+{"country":"spain"   ,"year":"2013","sales":"164,16",  "digital":"57%",  "nodigital":"76%" }
 ]
