@@ -35,7 +35,7 @@ module.exports.getMusic3 = function(req,res){ //FUNCIONA
 
 	res.send(resul);	
 	console.log("Get of music "+ country + "not found");
-	res.sendStatus("Error 404");
+	res.sendStatus( 400);
 			//break;
 	
 };
@@ -53,7 +53,7 @@ module.exports.getMusic2 = function(req,res){//FUNCIONA
 		}}
 	res.send(resul);
 	console.log("Get of music "+ country + "not found");
-	res.send("Error 404");
+	res.send( 400);
 			//break;
 	
 
@@ -71,7 +71,7 @@ module.exports.getMusic4 = function(req,res){// ES IGUAL QUE COUNTRY (QUE SI FUN
 		}}
 	res.send(resul);
 	console.log("Get of music4"+ year + "not found");
-	res.sendStatus("Errooooor");
+	res.sendStatus(400);
 };
 
 
@@ -139,7 +139,7 @@ module.exports.deleteMusic2 = function  (req,res)  {
 
     	}}
     console.log("Delete of music " + name + " no found");
-    res.send("Error 404: No music found");
+    res.sendStatus( 404);
     //break;
     
  
