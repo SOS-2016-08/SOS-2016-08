@@ -1,10 +1,5 @@
 [
 {"country":"spain"   ,"year":"2010","sales":"160,54",  "digital":"48%",  "nodigital":"55%" },
 {"country":"italy"   ,"year":"2010","sales":"101,66",  "digital":"39%",  "nodigital":"36%" },
-{"country":"france"  ,"year":"2010","sales":"79,44",  "digital":"45%",  "nodigital":"49%" },
-{"country":"german"  ,"year":"2010","sales":"130,36",  "digital":"36%",  "nodigital":"67%" },
-{"country":"spain"   ,"year":"2011","sales":"155,66",  "digital":"57%",  "nodigital":"76%" },
-{"country":"italy"   ,"year":"2011","sales":"106,45",  "digital":"52%",  "nodigital":"38%" },
-{"country":"france"  ,"year":"2011","sales":"100,66",  "digital":"68%",  "nodigital":"49%" },
-{"country":"german"  ,"year":"2011","sales":"119,55",  "digital":"77%",  "nodigital":"53%" }
+{"country":"france"  ,"year":"2010","sales":"79,44",  "digital":"45%",  "nodigital":"49%" }
 ]
