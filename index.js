@@ -32,7 +32,6 @@ app.delete("/api/v1/music/:country", musicCtl.deleteMusic2);
 
 
 
-
 app.get("/about",(req,res)=>{
 	fs.readFile('contactos.json','utf-8',(err,content)=>{
 		console.log("Data read");
