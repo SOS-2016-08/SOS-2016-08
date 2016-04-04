@@ -1,5 +1,6 @@
 0 info it worked if it ends with ok
 <<<<<<< HEAD
+<<<<<<< HEAD
 1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
 1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
 =======
@@ -11,6 +12,10 @@
 1 verbose cli   'D:\\SOS\\node_modules\\npm\\bin\\npm-cli.js',
 >>>>>>> 20bcf46b57bde7261824f9b99b718a17136f0087
 >>>>>>> fd163621c8b1171630058f7aa06626804fc2318a
+=======
+1 verbose cli [ 'D:\\nodejs\\node.exe',
+1 verbose cli   'D:\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+>>>>>>> d6f168d408225b806105c3ebcd22edd1eb4a0adc
 1 verbose cli   'start' ]
 2 info using npm@3.6.0
 3 info using node@v5.6.0
@@ -36,23 +41,18 @@
 6 silly lifecycle blaherlas@1.0.0~prestart: no script for prestart, continuing
 7 info lifecycle blaherlas@1.0.0~start: blaherlas@1.0.0
 8 verbose lifecycle blaherlas@1.0.0~start: unsafe-perm in lifecycle true
-<<<<<<< HEAD
 9 verbose lifecycle blaherlas@1.0.0~start: PATH: D:\nodejs\node_modules\npm\bin\node-gyp-bin;C:\Users\usuario\Desktop\sos-2016-08\SOS-2016-08\node_modules\.bin;C:\Users\usuario\bin;C:\Program Files (x86)\Git\mingw32\bin;C:\Program Files (x86)\Git\usr\local\bin;C:\Program Files (x86)\Git\usr\bin;C:\Program Files (x86)\Git\usr\bin;C:\Program Files (x86)\Git\mingw32\bin;C:\Program Files (x86)\Git\usr\bin;C:\Users\usuario\bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\Windows Live\Shared;C:\MinGW\bin;C:\TDM-GCC-32\bin;D:\nodejs;C:\Program Files (x86)\Heroku\bin;C:\Program Files (x86)\git\cmd;C:\Users\usuario\AppData\Roaming\npm;C:\Program Files (x86)\Git\usr\bin\vendor_perl;C:\Program Files (x86)\Git\usr\bin\core_perl
 10 verbose lifecycle blaherlas@1.0.0~start: CWD: C:\Users\usuario\Desktop\sos-2016-08\SOS-2016-08
-=======
-9 verbose lifecycle blaherlas@1.0.0~start: PATH: D:\SOS\node_modules\npm\bin\node-gyp-bin;C:\Users\usuario\Desktop\sos\SOS-2016-08\node_modules\.bin;C:\Users\usuario\bin;C:\Program Files (x86)\Git\mingw32\bin;C:\Program Files (x86)\Git\usr\local\bin;C:\Program Files (x86)\Git\usr\bin;C:\Program Files (x86)\Git\usr\bin;C:\Program Files (x86)\Git\mingw32\bin;C:\Program Files (x86)\Git\usr\bin;C:\Users\usuario\bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\Windows Live\Shared;D:\ECLIPSE\bin;D:\SOS;D:\SOS\Heroku\bin;C:\Program Files (x86)\git\cmd;C:\Users\usuario\AppData\Roaming\npm;C:\Program Files (x86)\Git\usr\bin\vendor_perl;C:\Program Files (x86)\Git\usr\bin\core_perl
-10 verbose lifecycle blaherlas@1.0.0~start: CWD: C:\Users\usuario\Desktop\sos\SOS-2016-08
->>>>>>> 20bcf46b57bde7261824f9b99b718a17136f0087
 11 silly lifecycle blaherlas@1.0.0~start: Args: [ '/d /s /c', 'node index.js' ]
 12 silly lifecycle blaherlas@1.0.0~start: Returned: code: 1  signal: null
 13 info lifecycle blaherlas@1.0.0~start: Failed to exec start script
 14 verbose stack Error: blaherlas@1.0.0 start: `node index.js`
 14 verbose stack Exit status 1
-<<<<<<< HEAD
 14 verbose stack     at EventEmitter.<anonymous> (D:\nodejs\node_modules\npm\lib\utils\lifecycle.js:232:16)
 14 verbose stack     at emitTwo (events.js:100:13)
 14 verbose stack     at EventEmitter.emit (events.js:185:7)
 14 verbose stack     at ChildProcess.<anonymous> (D:\nodejs\node_modules\npm\lib\utils\spawn.js:24:14)
+<<<<<<< HEAD
 =======
 14 verbose stack     at EventEmitter.<anonymous> (D:\SOS\node_modules\npm\lib\utils\lifecycle.js:232:16)
 14 verbose stack     at emitTwo (events.js:100:13)
@@ -60,6 +60,8 @@
 14 verbose stack     at ChildProcess.<anonymous> (D:\SOS\node_modules\npm\lib\utils\spawn.js:24:14)
 >>>>>>> 20bcf46b57bde7261824f9b99b718a17136f0087
 >>>>>>> fd163621c8b1171630058f7aa06626804fc2318a
+=======
+>>>>>>> d6f168d408225b806105c3ebcd22edd1eb4a0adc
 14 verbose stack     at emitTwo (events.js:100:13)
 14 verbose stack     at ChildProcess.emit (events.js:185:7)
 14 verbose stack     at maybeClose (internal/child_process.js:827:16)
@@ -71,16 +73,18 @@
 18 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "start"
 =======
 15 verbose pkgid blaherlas@1.0.0
-<<<<<<< HEAD
 16 verbose cwd C:\Users\usuario\Desktop\sos-2016-08\SOS-2016-08
 17 error Windows_NT 6.1.7601
 18 error argv "D:\\nodejs\\node.exe" "D:\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "start"
+<<<<<<< HEAD
 =======
 16 verbose cwd C:\Users\usuario\Desktop\sos\SOS-2016-08
 17 error Windows_NT 6.1.7601
 18 error argv "D:\\SOS\\node.exe" "D:\\SOS\\node_modules\\npm\\bin\\npm-cli.js" "start"
 >>>>>>> 20bcf46b57bde7261824f9b99b718a17136f0087
 >>>>>>> fd163621c8b1171630058f7aa06626804fc2318a
+=======
+>>>>>>> d6f168d408225b806105c3ebcd22edd1eb4a0adc
 19 error node v5.6.0
 20 error npm  v3.6.0
 21 error code ELIFECYCLE

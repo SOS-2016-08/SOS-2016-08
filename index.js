@@ -14,9 +14,12 @@ var moviesCtl= require('./controles/moviesCtl.js');
 app.use("/",express.static(__dirname+"/static"));
 
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> d6f168d408225b806105c3ebcd22edd1eb4a0adc
 app.use(bodyParser.json());
 app.use("/",express.static(__dirname+"/static"));
 
@@ -35,8 +38,11 @@ app.get("/api/v1/music/:country/:year",musicCtl.getMusic3);// funciona
 app.get("/api/v1/music/:year",musicCtl.getMusic4); //año
 
 
+<<<<<<< HEAD
 app.post("/api/v1/music", musicCtl.postMusic); 
 app.post("/api/v1/music/:country",musicCtl.postMusic2);
+=======
+>>>>>>> d6f168d408225b806105c3ebcd22edd1eb4a0adc
 
 
 
@@ -55,6 +61,7 @@ app.get("/api/v1/social_situation",moviesCtl.getMovie);
 app.get("/api/v1/social_situation/:country",moviesCtl.getMovie2);
 
 
+<<<<<<< HEAD
 
 app.get("/api/v1/social_situation/:country/:year",moviesCtl.getMovie3);
 
@@ -66,27 +73,46 @@ app.put("/api/v1/social_situation",moviesCtl.putMovie);
 
 
 
+=======
 
 
+app.get('/api/v1/social_situation/loadInitialData',moviesCtl.getLoad);
+app.get("/api/v1/social_situation",moviesCtl.getMovie);
+app.get("/api/v1/social_situation/:country",moviesCtl.getMovie2);
+>>>>>>> d6f168d408225b806105c3ebcd22edd1eb4a0adc
+
+
+
+
+<<<<<<< HEAD
+app.put('/api/v1/social_situation/:country',moviesCtl.putMovie2); 
+
+
+=======
+app.get("/api/v1/social_situation/:country/:year",moviesCtl.getMovie3);
+>>>>>>> d6f168d408225b806105c3ebcd22edd1eb4a0adc
 
 
 app.put('/api/v1/social_situation/:country',moviesCtl.putMovie2); 
 
 
-
-
-app.put('/api/v1/social_situation/:country',moviesCtl.putMovie2); 
-
-
+<<<<<<< HEAD
 app.delete("/api/v1/social_situation/:country" ,moviesCtl.deleteMovie);
 
 app.delete("/api/v1/social_situation",moviesCtl.deleteMovie2); 
 
+=======
+app.post("/api/v1/social_situation",moviesCtl.postMovie); 
+app.post("/api/v1/social_situation/:country",moviesCtl.postMovie2); 
+app.put("/api/v1/social_situation",moviesCtl.putMovie); 
+
+>>>>>>> d6f168d408225b806105c3ebcd22edd1eb4a0adc
 
 
 ///////////////////////////////////////
 //////API GONZALO////////////
 
+<<<<<<< HEAD
 function PosArrayG(str,elements){
 	var acum = -1;
  for(var i=0;i<elements.length;i++)
@@ -94,6 +120,8 @@ function PosArrayG(str,elements){
         acum=i;
 	return acum;
 };
+=======
+>>>>>>> d6f168d408225b806105c3ebcd22edd1eb4a0adc
 
 var party=[{sex:"hombre", country:"spain"    ,year:"2012",  "POP":"22",  "POProck":"1", 
 "rap":"12", "reggaeton":"31", "rock":"18", "classic":"3", "dance":"1", "flamenco":"2", 
@@ -107,6 +135,7 @@ app.get('/api/v1/sex_and_ages/loadInitialData',function(req,res){
 });
 
 
+<<<<<<< HEAD
 
 app.get("/api/v1/sex_and_ages",(req,res)=>{
     console.log("New GET for directory listing");
@@ -163,6 +192,17 @@ app.put('/api/v1/sex_and_ages/:sex',(request, response)=>{ //put
         response.send(404);
     }
   });
+=======
+app.put('/api/v1/social_situation/:country',moviesCtl.putMovie2); 
+
+
+app.delete("/api/v1/social_situation/:country" ,moviesCtl.deleteMovie);
+
+
+app.delete("/api/v1/social_situation",moviesCtl.deleteMovie2); 
+
+
+>>>>>>> d6f168d408225b806105c3ebcd22edd1eb4a0adc
 
 
 

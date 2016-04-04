@@ -38,22 +38,6 @@ module.exports.getMovie2=function(req,res){ //get name
      res.send(result);
      res.sendStatus(404);
 };
-
-// module.exports.getMovie4=function(req,res){ //get name
-//      var y = req.params.year;
-//      result=[];
-//      for (i=0;i<movies.length-1;i++){
-//       if(movies[i].year==y){
-//         console.log("new get "+y);
-//         result.push(movies[i]);
-//         res.send(result);
-
-//       }
-//      }
-     
-//      res.sendStatus(404);
-// };
-
    
      
 module.exports.getMovie3=function(req,res){ //get name
