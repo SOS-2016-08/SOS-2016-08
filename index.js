@@ -2,6 +2,8 @@ var express = require("express");
 var bodyParser= require("body-parser");
 var fs= require("fs");
 
+
+
 var musicCtl = require('./controles/musicCTL.js');
 
 var app= express();
@@ -67,22 +69,18 @@ app.get("/api/v1/social_situation/:country/:year",moviesCtl.getMovie3);
 
 app.post("/api/v1/social_situation",moviesCtl.postMovie); 
 app.post("/api/v1/social_situation/:country",moviesCtl.postMovie2); 
+
+
 app.put("/api/v1/social_situation",moviesCtl.putMovie); 
 
 
 
 
 
-app.put('/api/v1/social_situation/:country',moviesCtl.putMovie2); 
-
-
-
-app.put('/api/v1/social_situation/:country',moviesCtl.putMovie2); 
+app.put('/api/v1/social_situation/:country/:year',moviesCtl.putMovie2); 
 
 
 app.delete("/api/v1/social_situation/:country" ,moviesCtl.deleteMovie);
-
-
 app.delete("/api/v1/social_situation",moviesCtl.deleteMovie2); 
 
 
