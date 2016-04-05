@@ -3,5 +3,16 @@
 {"country":"italy"   ,"year":"2013","sales":"44,66",  "digital":"33%",  "nodigital":"77%" },
 {"country":"france"  ,"year":"2013","sales":"251,44",  "digital":"34%",  "nodigital":"72%" },
 {"country":"grece"  ,"year":"2013","sales":"456,36",  "digital":"75%",  "nodigital":"14%" },
-{"country":"spain"   ,"year":"2013","sales":"164,16",  "digital":"57%",  "nodigital":"76%" }
+{"country":"spain"   ,"year":"2014","sales":"164,16",  "digital":"57%",  "nodigital":"76%" },
+{"country":"italy"   ,"year":"2014","sales":"44,66",  "digital":"33%",  "nodigital":"77%" },
+{"country":"france"  ,"year":"2014","sales":"251,44",  "digital":"34%",  "nodigital":"72%" },
+{"country":"grece"  ,"year":"2014","sales":"456,36",  "digital":"75%",  "nodigital":"14%" },
+{"country":"spain"   ,"year":"2015","sales":"66,54",  "digital":"50%",  "nodigital":"50%" },
+{"country":"italy"   ,"year":"2015","sales":"44,66",  "digital":"33%",  "nodigital":"77%" },
+{"country":"france"  ,"year":"2015","sales":"251,44",  "digital":"34%",  "nodigital":"72%" },
+{"country":"grece"  ,"year":"2015","sales":"456,36",  "digital":"75%",  "nodigital":"14%" },
+{"country":"spain"   ,"year":"2011","sales":"164,16",  "digital":"57%",  "nodigital":"76%" },
+{"country":"italy"   ,"year":"2011","sales":"44,66",  "digital":"33%",  "nodigital":"77%" },
+{"country":"france"  ,"year":"2011","sales":"251,44",  "digital":"34%",  "nodigital":"72%" },
+{"country":"grece"  ,"year":"2011","sales":"456,36",  "digital":"75%",  "nodigital":"14%" }
 ]

@@ -3,6 +3,8 @@ var bodyParser= require("body-parser");
 var fs= require("fs");
 
 
+var musicCtl = require('./controles/musicCTL.js');
+
 
 var app= express();
 var port = (process.env.PORT || 12345);
@@ -17,14 +19,12 @@ var moviesCtl= require('./controles/moviesCtl.js');
 
 //-----------API MUSIC-------------------------
 
-//CONTROLES
+
+
 app.get("/api/v1/music/loadInitialData",musicCtl.getLoad);//funciona
 
 app.get("/api/v1/music",musicCtl.getMusic);//funociona
-
-
 app.get("/api/v1/music/:country/:year",musicCtl.getMusicCountryandYear);// funciona (CIUDAD Y AÑO)
-
 app.get("/api/v1/music/:valor",musicCtl.getMusicCountryorYear); // funciona (YEAR O COUNTRY)
 
 
@@ -42,46 +42,27 @@ app.delete("/api/v1/music/:country", musicCtl.deleteMusic2);//funciona
 
 
 
-
-
-
-
-
-
-
-
 //--------- API MOVIES--------------------------
 app.get('/api/v1/social_situation/loadInitialData',moviesCtl.getLoad);
+
 app.get("/api/v1/social_situation",moviesCtl.getMovie);
 app.get("/api/v1/social_situation/:country",moviesCtl.getMovie2);
-
-
-
 app.get("/api/v1/social_situation/:country/:year",moviesCtl.getMovie3);
-
-
 
 app.post("/api/v1/social_situation",moviesCtl.postMovie); 
 app.post("/api/v1/social_situation/:country",moviesCtl.postMovie2); 
+
 app.put("/api/v1/social_situation",moviesCtl.putMovie); 
-
-
-
-
-
-
-
 app.put('/api/v1/social_situation/:country',moviesCtl.putMovie2); 
-
-
-
-
-app.put('/api/v1/social_situation/:country',moviesCtl.putMovie2); 
-
 
 app.delete("/api/v1/social_situation/:country" ,moviesCtl.deleteMovie);
-
 app.delete("/api/v1/social_situation",moviesCtl.deleteMovie2); 
+
+
+
+
+
+
 
 
 

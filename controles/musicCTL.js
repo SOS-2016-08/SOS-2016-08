@@ -2,8 +2,9 @@ var fs= require("fs");
 
 var musical=[ {country:"Spain"    ,year:"2010",  percentage:"88%",  type:"reggaeton" }];
 
+var pass=123;
 
-module.exports.getLoad = function(req,res){ //FUNCIONA
+/*module.exports.getLoad = function(req,res){ //FUNCIONA
 	musical=[];
 	var mus= fs.readFileSync('countrytypes.json', 'utf8');
 	musical = JSON.parse(mus);
@@ -11,14 +12,74 @@ module.exports.getLoad = function(req,res){ //FUNCIONA
 	res.sendStatus(200);
 	
 
+};*/
+
+module.exports.getLoad=function(req,res){
+  //lee datos
+  var apikey=req.query.apikey;
+  
+  if (apikey==pass){
+  	musical=[];
+    var file= fs.readFileSync('countrytypes.json','utf8');
+    musical= JSON.parse(file);
+    res.send(musical);
+    res.sendStatus(200);
+  }else{
+    
+    res.sendStatus(401);
+  }
+	
 };
 
-module.exports.getMusic = function(req,res){// FUNCIONA
+
+
+/*module.exports.getMusic = function(req,res){// FUNCIONA
 	console.log("New Get of music ");
 	res.status(200).jsonp(musical);
+};*/
+
+module.exports.getMusic=function(req,res){//get y limit general
+  fr = req.query.from;
+  to = req.query.to;
+  limit= req.query.limit;
+  offset= req.query.offset;
+  apikey= req.query.apikey;
+
+  var resul=[];
+
+  if(apikey==pass){
+
+    for (var i =0;i< musical.length ;  i++) {
+
+      resul.push(musical[i]);
+    }
+  
+    if ( fr && to){
+      for (var i=0; i<resul.length; i++){
+        if( resul[i].year < fr || resul[i].year > to){
+          resul.splice(i,1);
+          i=i-1;
+        }
+      }
+    }
+    if (limit && offset){
+      for (i=limit;i<offset;i++){
+        resul.push(musical[i]);
+
+      }
+      
+    }
+  res.send(resul);
+  }
+  else{
+
+    res.sendStatus(401);
+  }
+//res.send(resul);
+
 };
 
-module.exports.getMusicCountryandYear = function(req,res){ 
+/*module.exports.getMusicCountryandYear = function(req,res){ 
 
 	var name =req.params.country;
 	var año =req.params.year;
@@ -39,10 +100,38 @@ module.exports.getMusicCountryandYear = function(req,res){
 
 	}
 	
+};*/
+
+module.exports.getMusicCountryandYear=function(req,res){ //get country/year
+	var name = req.params.country;
+    var ye=req.params.year;
+    var limit = req.params.limit;
+    var offset = req.params.offset;
+    var apikey =req.query.apikey;
+    if(apikey==pass){
+    	console.log("apikey1 y pass1-->"+apikey+pass);
+      	result=[];
+      	for (i=0;i<musical.length;i++){
+      		if(musical[i].country==name && musical[i].year==ye){
+      			console.log("new get "+name);
+      			result.push(musical[i]);
+
+        	}
+
+      	}
+    res.send(result);
+    res.sendStatus(404);
+
+
+    }else{
+    	res.sendStatus(401);
+
+    }
+
 };
 
 
-module.exports.getMusicCountryorYear = function(req,res){
+/*module.exports.getMusicCountryorYear = function(req,res){
 	var valor = req.params.valor;
 	var resul = [];
 
@@ -64,35 +153,112 @@ module.exports.getMusicCountryorYear = function(req,res){
 		res.send(resul);
 		res.sendStatus(200);
 	}
+};*/
+
+module.exports.getMusicCountryorYear=function(req,res){ //get name or get year
+	var name = req.params.country;
+    var year = req.params.year;
+    var apikey=req.query.apikey;
+    var bool=true;
+    var result=[];
+    if(apikey==pass){
+
+    	for (i=0;i<movies.length;i++){
+
+    		if(musical[i].country==name || musical[i].year==name){
+
+    			console.log("new get "+name+year);
+    			result.push(musical[i]);
+    			bool=false;
+
+        	}
+
+      	}if(bool){
+        	res.sendStatus(404);
+
+      	}
+      	res.send(result);
+
+    }else{
+
+      	res.sendStatus(401);
+    }
+
+    
 };
 
 
 
 
-module.exports.postMusic = function(req,res){ // crea y es de cliente a servidor
+/*module.exports.postMusic = function(req,res){ // crea y es de cliente a servidor
 
 	var mus= req.body; //recoge los datos
 	musical.push(mus);
 	console.log("New Post of music ");
 	res.sendStatus(200);
 };
+*/
 
+module.exports.postMusic=function(req,res){
+	var apikey=req.query.apikey;
+	if(apikey==pass){
+		var mov= req.body;
+		movies.push(mov);
+		console.log("New post"+mov.name);
+		res.sendStatus(201);
+  	}else{
+  		res.sendStatus(401);
+  	}
 
-module.exports.postMusic2 = function (req,res){ 
+};
+
+/*module.exports.postMusic2 = function (req,res){ 
 
 	console.log("The Post of music is not possible");
 	//res.send("Error 405 : Method not allowed");
 	res.sendStatus(400);
+};*/
+
+module.exports.postMusic2=function(req,res){
+	var apikey=req.query.apikey;
+	if(apikey==pass){
+		console.log("WARNING post");
+		res.sendStatus(405);
+
+  	}else{
+  		res.sendStatus(401);
+  	}
+
+};
+function PosArray(str,elements){
+	var acum = -1;
+	for(var i=0;i<elements.length-1;i++)
+		if(elements[i].country==str)
+			acum=i;
+		    console.log("Prueba "+acum);
+    return acum;
 };
 
-module.exports.putMusic = function (req,res){
+/*module.exports.putMusic = function (req,res){
 
 	console.log("The Put of music is not possible");
 	res.sendStatus(400);//dfghjkl
+};*/
+
+module.exports.putMusic=function(req,res){
+	var apikey=req.query.apikey;
+	if(apikey==pass){
+		console.log("WARNING put");
+		res.sendStatus(405);
+	}else{
+		res.sendStatus(401);
+	}
+	
 };
 
 
-module.exports.putMusicCountryandYear = function(req,res){
+
+/*module.exports.putMusicCountryandYear = function(req,res){
 	var country = req.params.country;
 	var year = req.params.year;
  	var nuevo = req.body;
@@ -107,15 +273,61 @@ module.exports.putMusicCountryandYear = function(req,res){
     }
   	res.sendStatus(400);
 
+};*/
+module.exports.putMusicCountryandYear=function(req,res){
+	var apikey=req.query.apikey;
+	var country=req.params.country;
+	var year=req.params.year;
+	var temp = req.body;
+	if(apikey==pass){
+		for (var i=0;i<movies.length;i++){
+			if(movies[i].country==country && movies[i].year==year){
+				movies.splice(i,1);
+				movies.push(temp);
+				res.sendStatus(200);
+				break;
+      		}
+      
+    	}
+  	}else{
+  		res.sendStatus(401);
+  	}
+ 	 
+
 };
 
-module.exports.deleteMusic = function(req,res)  {
+
+
+
+/*module.exports.deleteMusic = function(req,res)  {
 	console.log("New Delete all resources");
 	musical.splice(musical);
 	res.sendStatus(200);
+};*/
+
+module.exports.deleteMusic=function(req,res){
+	var apikey=req.query.apikey;
+	var name=req.params.country;
+	console.log("New DELETE of resource "+name);
+	var mov = PosArray(name,movies);
+	if(apikey==pass){
+		if(mov!=-1){
+			movies.splice(mov,1);
+			res.sendStatus(200);
+    	}else{
+    		res.sendStatus(404);
+    	}
+  	}else{
+  		res.sendStatus(401);
+	}
 };
 
-module.exports.deleteMusic2 = function  (req,res)  {
+
+
+
+
+
+/*module.exports.deleteMusic2 = function  (req,res)  {
 	var name = req.params.country;
 	for(var i=0;i<musical.length;i++){
 		if(musical[i].country == name){
@@ -130,4 +342,18 @@ module.exports.deleteMusic2 = function  (req,res)  {
     //break;
     
  
+};*/
+module.exports.deleteMusic2=function(req,res){
+	var apikey=req.query.apikey;
+	if(apikey==pass){
+		console.log("New DELETE of all resources");
+		movies.splice(0,movies.length);
+		res.sendStatus(200);
+
+
+    }else{
+    	res.sendStatus(401);
+    }
+	
 };
+
