@@ -239,18 +239,31 @@ module.exports.getMovie3=function(req,res){ //get country/year
 
 
 module.exports.postMovie=function(req,res){
-  var apikey=req.query.apikey;
-  if(apikey==pass){
+  var apikey = req.query.apikey;
 
-		var mov= req.body;
-		movies.push(mov);
-		console.log("New post"+mov.name);
-		res.sendStatus(201);
+  if(apikey == pass){
+    var contact = req.body;
+    var ok = true;
+
+    movies.forEach(function(value, key){
+      if(value.country == contact.country && value.year == contact.year ){
+        ok =  false;
+      }
+    });
+    
+    if(!ok){
+      res.sendStatus(409);
+    }else{
+      movies.push(contact);
+      //console.log("New POST of resource "+contact.name);
+      res.sendStatus(201);
+      
+    } 
   }else{
     res.sendStatus(401);
   }
-
 };
+
 
 module.exports.postMovie2=function(req,res){
   var apikey=req.query.apikey;
