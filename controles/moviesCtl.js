@@ -73,6 +73,7 @@ resultado.splice(limit,resultado.length-limit);
 }
 
 res.send(resultado);
+res.sendStatus(200);
 }
 
 else
@@ -82,90 +83,7 @@ else
 
 
 };
-//get y limit general
-//   var limit = req.query.limit;
-//   var offset = req.query.offset;
-//   fr = req.query.from;
-//   to = req.query.to;
-//   var paginacion=[];
-//   var apikey=req.query.apikey;
-//   if (apikey==pass){
-//     if (limit && offset){
-//       for (i=limit;i<offset;i++){
-//         paginacion.push(movies[i]);
 
-//       }
-//     if ( fr && to){
-//       for (var i=0; i<movies.length; i++){
-//         //console.log("FROM Y TO "+fr+to);
-//         if( movies[i].year < fr || movies[i].year > to){
-//           paginacion.splice(i,1);
-//           i=i-1;
-//         }
-//       }
-//     }
-
-//     }else{
-//       res.status(200).jsonp(movies);
-//       console.log("limit0 y offset0-->"+limit  +  offset);
-//       console.log("New GET for directory listing");
-
-//     }
-//     res.status(200).jsonp(paginacion);
-
-
-//   }else{
-//     res.sendStatus(401);
-
-//   }
-
-// };
-// module.exports.getMovie=function(req,res){//get y limit general
-//   fr = req.query.from;
-//   to = req.query.to;
-//   limit= req.query.limit;
-//   offset= req.query.offset;
-//   apikey= req.query.apikey;
-
-//   var resul=[];
-
-//   if(apikey==pass){
-
-//     for (var i =0;i< movies.length ;  i++) {
-
-//       resul.push(movies[i]);
-//     }
-  
-//     if ( fr && to){
-//       for (var i=0; i<resul.length; i++){
-//         if( resul[i].year < fr || resul[i].year > to){
-//           resul.splice(i,1);
-//           i=i-1;
-//         }
-//       }
-//     }
-//     if (limit && offset){
-//       for (i=limit;i<offset;i++){
-//         resul.push(movies[i]);
-
-//       }
-      
-//     }
-//   res.send(resul);
-//   }
-//   else{
-
-//     res.sendStatus(401);
-//   }
-// //res.send(resul);
-
-// };
-
-
-
-
-
-  
 
 
 
@@ -332,21 +250,6 @@ module.exports.putMovie2=function(req,res){
 
 
 
-
-//     if (mov != -1){
-//       var mov = PosArray(id,movies);
-//       movies[mov].country=temp.country;
-//       res.send(200);
-
-//     }else{
-//       res.send(404);
-//     }
-
-//   }else{
-//     res.sendStatus(401);
-
-//   }
-// };
 
 
 module.exports.deleteMovie=function(req,res){
