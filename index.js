@@ -101,13 +101,6 @@ app.post("/api/v1/social_situation/:country",moviesCtl.postMovie2);
 
 app.put("/api/v1/social_situation",moviesCtl.putMovie); 
 
-<<<<<<< HEAD
-
-=======
-///////////////////////////////////////
-//////API GONZALO////////////
->>>>>>> 370675654d7fbdea3985d300f0118d66e28dc502
-
 
 
 app.put('/api/v1/social_situation/:country/:year',moviesCtl.putMovie2); 
