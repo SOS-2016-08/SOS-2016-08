@@ -8,6 +8,7 @@ module.exports.getLoad = function(req,res){ //FUNCIONA
 	var mus= fs.readFileSync('countrytypes.json', 'utf8');
 	musical = JSON.parse(mus);
 	res.send(musical);
+	res.sendStatus(200);
 	
 	
 
@@ -21,7 +22,7 @@ module.exports.getMusic = function(req,res){// FUNCIONA
 	
 };
 
-module.exports.getMusic3 = function(req,res){ //FUNCIONA
+module.exports.getMusic3 = function(req,res){ 
 
 	var name =req.params.country;
 	var año =req.params.year;
@@ -31,30 +32,41 @@ module.exports.getMusic3 = function(req,res){ //FUNCIONA
 			console.log("New Get of resourse "+ name);
 			//res.send(musical[i]);
 			resul.push(musical[i]);		
-		}}
+		}
+	}
+	if( resul.length == 0){
+		res.sendStatus( 400);
 
-	res.send(resul);	
-	console.log("Get of music "+ country + "not found");
-	res.sendStatus( 400);
-			//break;
+	}else{
+		res.send(resul);
+		res.sendStatus(200);
+
+	}
 	
 };
 
 
+
 module.exports.getMusic2 = function(req,res){//FUNCIONA
 	var name =req.params.country;
-	//var limit = req.query.limit;
 	var resul= [];
 	for ( var i=0; i < musical.length; i++) {
 		if(musical[i].country == name){			
 			console.log("New Get of resourse "+ name);
-			//res.send(musical[i]);
 			resul.push(musical[i]);
-		}}
-	res.send(resul);
-	console.log("Get of music "+ country + "not found");
-	res.send( 400);
-			//break;
+		}
+	}
+	if (resul.length ==0){
+		//console.log("Get of music "+ country + "not found");
+		res.sendStatus(400);
+		
+		
+
+	}else{
+		res.send(resul);
+		res.sendStatus(200);
+
+	}
 	
 
 	
@@ -68,10 +80,13 @@ module.exports.getMusic4 = function(req,res){// ES IGUAL QUE COUNTRY (QUE SI FUN
 		if(musical[i].year == year){
 			console.log("New get of resource year" + year);
 			resul.push(musical[i]);
-		}}
-	res.send(resul);
-	console.log("Get of music4"+ year + "not found");
-	res.sendStatus(400);
+		}
+	}
+	if(resul.length == 0){
+		res.sendStatus(400);
+	}else{
+		res.send(resul);
+	}
 };
 
 
@@ -90,13 +105,13 @@ module.exports.postMusic2 = function (req,res){
 
 	console.log("The Post of music is not possible");
 	//res.send("Error 405 : Method not allowed");
-	res.sendStatus(405);
+	res.sendStatus(400);
 };
 
 module.exports.putMusic = function (req,res){
 
 	console.log("The Put of music is not possible");
-	res.send("Error 405: Method no allowed");//dfghjkl
+	res.sendStatus(400);//dfghjkl
 };
 
 module.exports.putMusic2 = function(req,res){
@@ -109,14 +124,13 @@ module.exports.putMusic2 = function(req,res){
 		if(musical[i].country = country){
 			musical[i].country = mus.country;
 			console.log(" New Put of music "+ country);
-			res.send(200);
+			res.sendStatus(200);
 			break;
 
-		}}	
-
-	console.log("Put of new "+ country+" not found");
+		}
+	}	
 	res.sendStatus(400);
-	//break;
+
 	
 	
 
@@ -139,7 +153,7 @@ module.exports.deleteMusic2 = function  (req,res)  {
 
     	}}
     console.log("Delete of music " + name + " no found");
-    res.sendStatus( 404);
+    res.sendStatus( 400);
     //break;
     
  
