@@ -281,7 +281,7 @@ module.exports.postMusic=function(req,res){
     	res.sendStatus(409);
 
     }else{
-      	movies.push(contact);
+      	musical.push(contact);
       	//console.log("New POST of resource "+contact.name);
       	res.sendStatus(201);
       
@@ -290,6 +290,15 @@ module.exports.postMusic=function(req,res){
     res.sendStatus(401);
   }
 };
+
+
+
+
+
+
+
+
+
 
 /*module.exports.postMusic2 = function (req,res){ 
 
