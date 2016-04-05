@@ -32,74 +32,134 @@ module.exports.getLoad=function(req,res){
 	
 };
 
-/*module.exports.getMovie=function(req,res){//get y limit general
-  var limit = req.query.limit;
-  var offset = req.query.offset;
-  var 
-  var apikey=req.query.apikey;
-  if (apikey==pass){
-    paginacion=[];
-    if (limit){
-      for (i=limit;i<offset;i++){
-        paginacion.push(movies[i]);
-
-      }
-
-    }else{
-      res.status(200).jsonp(movies);
-      console.log("limit0 y offset0-->"+limit  +  offset);
-      console.log("New GET for directory listing");
-
-    }
-    res.status(200).jsonp(paginacion);
+module.exports.getMovie=function(req,res){
 
 
-  }else{
-    res.sendStatus(401);
 
-  }
-
-};*/
-module.exports.getMovie=function(req,res){//get y limit general
-  fr = req.query.from;
+  from = req.query.from;
   to = req.query.to;
-  limit= req.query.limit;
-  offset= req.query.offset;
-  apikey= req.query.apikey;
+  limit = req.query.limit;
+  offset = req.query.offset;
+  apikey = req.query.apikey;
+  var resultado = [];
 
-  var resul=[];
 
-  if(apikey==pass){
+if (apikey==pass)
+{
 
-    for (var i =0;i< movies.length ;  i++) {
+for(var i=0;i<movies.length;i++)
+{
+  resultado.push(movies[i]);
+}
 
-      resul.push(movies[i]);
-    }
-  
-    if ( fr && to){
-      for (var i=0; i<resul.length; i++){
-        if( resul[i].year < fr || resul[i].year > to){
-          resul.splice(i,1);
-          i=i-1;
-        }
-      }
-    }
-    if (limit && offset){
-      for (i=limit;i<offset;i++){
-        resul.push(movies[i]);
+if (from && to)
+{
+for(var i=0;i<resultado.length;i++)
+{
+if(resultado[i].year < from  ||  resultado[i].year > to)
+{
+  resultado.splice(i,1);
+  i = i - 1;
+}}}
 
-      }
-      
-    }
-  res.send(resul);
-  }
-  else{
 
-    res.sendStatus(401);
-  }
-//res.send(resul);
+
+if(limit && offset)
+{
+
+resultado.splice(0,offset);
+resultado.splice(limit,resultado.length-limit);
+
+}
+
+res.send(resultado);
+}
+
+else
+{
+  res.sendStatus(401);
+}
+
 
 };
+//get y limit general
+//   var limit = req.query.limit;
+//   var offset = req.query.offset;
+//   fr = req.query.from;
+//   to = req.query.to;
+//   var paginacion=[];
+//   var apikey=req.query.apikey;
+//   if (apikey==pass){
+//     if (limit && offset){
+//       for (i=limit;i<offset;i++){
+//         paginacion.push(movies[i]);
+
+//       }
+//     if ( fr && to){
+//       for (var i=0; i<movies.length; i++){
+//         //console.log("FROM Y TO "+fr+to);
+//         if( movies[i].year < fr || movies[i].year > to){
+//           paginacion.splice(i,1);
+//           i=i-1;
+//         }
+//       }
+//     }
+
+//     }else{
+//       res.status(200).jsonp(movies);
+//       console.log("limit0 y offset0-->"+limit  +  offset);
+//       console.log("New GET for directory listing");
+
+//     }
+//     res.status(200).jsonp(paginacion);
+
+
+//   }else{
+//     res.sendStatus(401);
+
+//   }
+
+// };
+// module.exports.getMovie=function(req,res){//get y limit general
+//   fr = req.query.from;
+//   to = req.query.to;
+//   limit= req.query.limit;
+//   offset= req.query.offset;
+//   apikey= req.query.apikey;
+
+//   var resul=[];
+
+//   if(apikey==pass){
+
+//     for (var i =0;i< movies.length ;  i++) {
+
+//       resul.push(movies[i]);
+//     }
+  
+//     if ( fr && to){
+//       for (var i=0; i<resul.length; i++){
+//         if( resul[i].year < fr || resul[i].year > to){
+//           resul.splice(i,1);
+//           i=i-1;
+//         }
+//       }
+//     }
+//     if (limit && offset){
+//       for (i=limit;i<offset;i++){
+//         resul.push(movies[i]);
+
+//       }
+      
+//     }
+//   res.send(resul);
+//   }
+//   else{
+
+//     res.sendStatus(401);
+//   }
+// //res.send(resul);
+
+// };
 
 
 
@@ -179,18 +239,31 @@ module.exports.getMovie3=function(req,res){ //get country/year
 
 
 module.exports.postMovie=function(req,res){
-  var apikey=req.query.apikey;
-  if(apikey==pass){
+  var apikey = req.query.apikey;
 
-		var mov= req.body;
-		movies.push(mov);
-		console.log("New post"+mov.name);
-		res.sendStatus(201);
+  if(apikey == pass){
+    var contact = req.body;
+    var ok = true;
+
+    movies.forEach(function(value, key){
+      if(value.country == contact.country && value.year == contact.year ){
+        ok =  false;
+      }
+    });
+    
+    if(!ok){
+      res.sendStatus(409);
+    }else{
+      movies.push(contact);
+      //console.log("New POST of resource "+contact.name);
+      res.sendStatus(201);
+      
+    } 
   }else{
     res.sendStatus(401);
   }
-
 };
+
 
 module.exports.postMovie2=function(req,res){
   var apikey=req.query.apikey;
