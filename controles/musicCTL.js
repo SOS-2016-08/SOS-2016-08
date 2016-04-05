@@ -10,26 +10,22 @@ module.exports.getLoad = function(req,res){ //FUNCIONA
 	res.send(musical);
 	res.sendStatus(200);
 	
-	
 
 };
-
-
 
 module.exports.getMusic = function(req,res){// FUNCIONA
 	console.log("New Get of music ");
 	res.status(200).jsonp(musical);
-	
 };
 
-module.exports.getMusic3 = function(req,res){ 
+module.exports.getMusicCountryandYear = function(req,res){ 
 
 	var name =req.params.country;
 	var año =req.params.year;
 	var resul= [];
 	for ( var i=0; i < musical.length; i++) {
 		if(musical[i].country == name && musical[i].year == año){
-			console.log("New Get of resourse "+ name);
+			console.log("New Get of resourse ");
 			//res.send(musical[i]);
 			resul.push(musical[i]);		
 		}
@@ -46,46 +42,27 @@ module.exports.getMusic3 = function(req,res){
 };
 
 
-
-module.exports.getMusic2 = function(req,res){//FUNCIONA
-	var name =req.params.country;
-	var resul= [];
-	for ( var i=0; i < musical.length; i++) {
-		if(musical[i].country == name){			
-			console.log("New Get of resourse "+ name);
-			resul.push(musical[i]);
-		}
-	}
-	if (resul.length ==0){
-		//console.log("Get of music "+ country + "not found");
-		res.sendStatus(400);
-		
-		
-
-	}else{
-		res.send(resul);
-		res.sendStatus(200);
-
-	}
-	
-
-	
-};
-
-
-module.exports.getMusic4 = function(req,res){// ES IGUAL QUE COUNTRY (QUE SI FUNCIONA) Y YEAR NO
-	var year = req.params.year;
+module.exports.getMusicCountryorYear = function(req,res){
+	var valor = req.params.valor;
 	var resul = [];
+
+
+
 	for ( var i=0; i< musical.length; i++) {
-		if(musical[i].year == year){
-			console.log("New get of resource year" + year);
+		if(musical[i].year == valor){
+			console.log("New get of resource year" );
 			resul.push(musical[i]);
+		}else if( musical[i].country == valor){
+			console.log("New get of resource country" );
+			resul.push(musical[i]);
+
 		}
 	}
 	if(resul.length == 0){
 		res.sendStatus(400);
 	}else{
 		res.send(resul);
+		res.sendStatus(200);
 	}
 };
 
@@ -96,7 +73,7 @@ module.exports.postMusic = function(req,res){ // crea y es de cliente a servidor
 
 	var mus= req.body; //recoge los datos
 	musical.push(mus);
-	console.log("New Post of music "+mus);
+	console.log("New Post of music ");
 	res.sendStatus(200);
 };
 
@@ -114,25 +91,21 @@ module.exports.putMusic = function (req,res){
 	res.sendStatus(400);//dfghjkl
 };
 
-module.exports.putMusic2 = function(req,res){
 
+module.exports.putMusicCountryandYear = function(req,res){
 	var country = req.params.country;
-	var mus = req.body;
-	for (var i = 0; i < musical.length; i++) {
+	var year = req.params.year;
+ 	var nuevo = req.body;
+    for (var i=0; i<=musical.length;i++){
 
-
-		if(musical[i].country = country){
-			musical[i].country = mus.country;
-			console.log(" New Put of music "+ country);
-			res.sendStatus(200);
-			break;
-
-		}
-	}	
-	res.sendStatus(400);
-
-	
-	
+      	if(musical[i].country == country && musical[i].year == year){
+        	musical.splice(i, 1);
+        	musical.push(nuevo);
+        	res.sendStatus(200);
+        	break;
+      	}
+    }
+  	res.sendStatus(400);
 
 };
 
