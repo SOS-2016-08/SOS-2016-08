@@ -38,7 +38,7 @@ module.exports.getLoad=function(req,res){
 	res.status(200).jsonp(musical);
 };*/
 
-module.exports.getMusic=function(req,res){//get y limit general
+/*module.exports.getMusic=function(req,res){//get y limit general
   fr = req.query.from;
   to = req.query.to;
   limit= req.query.limit;
@@ -76,6 +76,60 @@ module.exports.getMusic=function(req,res){//get y limit general
     res.sendStatus(401);
   }
 //res.send(resul);
+
+};*/
+
+
+
+module.exports.getMusic=function(req,res){
+
+
+
+  from = req.query.from;
+  to = req.query.to;
+  limit = req.query.limit;
+  offset = req.query.offset;
+  apikey = req.query.apikey;
+  var resultado = [];
+
+
+if (apikey==pass)
+{
+
+for(var i=0;i<musical.length;i++)
+{
+  resultado.push(musical[i]);
+}
+
+if (from && to)
+{
+for(var i=0;i<resultado.length;i++)
+{
+if(resultado[i].year < from  ||  resultado[i].year > to)
+{
+  resultado.splice(i,1);
+  i = i - 1;
+}}}
+
+
+
+if(limit && offset)
+{
+
+resultado.splice(0,offset);
+resultado.splice(limit,resultado.length-limit);
+
+}
+
+res.send(resultado);
+res.sendStatus(200);
+}
+
+else
+{
+  res.sendStatus(401);
+}
+
 
 };
 
@@ -199,7 +253,7 @@ module.exports.getMusicCountryorYear=function(req,res){ //get name or get year
 };
 */
 
-module.exports.postMusic=function(req,res){
+/*module.exports.postMusic=function(req,res){
 	var apikey=req.query.apikey;
 	if(apikey==pass){
 		var mov= req.body;
@@ -210,6 +264,31 @@ module.exports.postMusic=function(req,res){
   		res.sendStatus(401);
   	}
 
+};*/
+
+module.exports.postMusic=function(req,res){
+	var apikey = req.query.apikey;
+	if(apikey == pass){
+		var contact = req.body;
+		var ok = true;
+		music.forEach(function(value, key){
+			if(value.country == contact.country && value.year == contact.year ){
+				ok =  false;
+      		}
+    	});
+    
+    if(!ok){
+    	res.sendStatus(409);
+
+    }else{
+      	movies.push(contact);
+      	//console.log("New POST of resource "+contact.name);
+      	res.sendStatus(201);
+      
+    } 
+  	}else{
+    res.sendStatus(401);
+  }
 };
 
 /*module.exports.postMusic2 = function (req,res){ 
