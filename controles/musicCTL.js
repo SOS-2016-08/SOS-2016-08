@@ -162,6 +162,7 @@ module.exports.getMusicCountryandYear=function(req,res){ //get country/year
     var limit = req.params.limit;
     var offset = req.params.offset;
     var apikey =req.query.apikey;
+    var bool= true;
     if(apikey==pass){
     	console.log("apikey1 y pass1-->"+apikey+pass);
       	result=[];
@@ -169,12 +170,19 @@ module.exports.getMusicCountryandYear=function(req,res){ //get country/year
       		if(musical[i].country==name && musical[i].year==ye){
       			console.log("new get "+name);
       			result.push(musical[i]);
+      			bool=false;
 
         	}
 
       	}
-    res.send(result);
-    res.sendStatus(404);
+      	if(bool){
+
+        	res.sendStatus(404);
+
+      	}
+      	res.send(result);
+
+    
 
 
     }else{
@@ -210,18 +218,18 @@ module.exports.getMusicCountryandYear=function(req,res){ //get country/year
 };*/
 
 module.exports.getMusicCountryorYear=function(req,res){ //get name or get year
-	var name = req.params.country;
-    var year = req.params.year;
+	var valor = req.params.valor;
+    
     var apikey=req.query.apikey;
     var bool=true;
     var result=[];
     if(apikey==pass){
 
-    	for (i=0;i<movies.length;i++){
+    	for (i=0;i<musical.length;i++){
 
-    		if(musical[i].country==name || musical[i].year==name){
+    		if(musical[i].country==valor || musical[i].year== valor){
 
-    			console.log("new get "+name+year);
+    			console.log("new get "+valor);
     			result.push(musical[i]);
     			bool=false;
 
@@ -271,21 +279,22 @@ module.exports.postMusic=function(req,res){
 	if(apikey == pass){
 		var contact = req.body;
 		var ok = true;
-		music.forEach(function(value, key){
+		musical.forEach(function(value, key){
+
 			if(value.country == contact.country && value.year == contact.year ){
 				ok =  false;
       		}
     	});
     
-    if(!ok){
-    	res.sendStatus(409);
+    	if(!ok){
+    		res.sendStatus(409);
 
-    }else{
-      	musical.push(contact);
+    	}else{
+      		musical.push(contact);
       	//console.log("New POST of resource "+contact.name);
-      	res.sendStatus(201);
+      		res.sendStatus(201);
       
-    } 
+    	} 
   	}else{
     res.sendStatus(401);
   }
@@ -367,15 +376,24 @@ module.exports.putMusicCountryandYear=function(req,res){
 	var country=req.params.country;
 	var year=req.params.year;
 	var temp = req.body;
+	var bool=true;
 	if(apikey==pass){
-		for (var i=0;i<movies.length;i++){
-			if(movies[i].country==country && movies[i].year==year){
-				movies.splice(i,1);
-				movies.push(temp);
-				res.sendStatus(200);
-				break;
+		
+		for (var i=0;i<musical.length;i++){
+			if(musical[i].country==country && musical[i].year==year){
+				bool=false;
+				musical.splice(i,1);
+				
       		}
       
+    	}
+    	if(bool){
+    		res.sendStatus(404);
+
+    	}else{
+    		
+			musical.push(temp);
+			res.sendStatus(200);
     	}
   	}else{
   		res.sendStatus(401);
@@ -393,28 +411,41 @@ module.exports.putMusicCountryandYear=function(req,res){
 	res.sendStatus(200);
 };*/
 
-module.exports.deleteMusic=function(req,res){
-	var apikey=req.query.apikey;
-	var name=req.params.country;
-	console.log("New DELETE of resource "+name);
-	var mov = PosArray(name,movies);
-	if(apikey==pass){
-		if(mov!=-1){
-			movies.splice(mov,1);
-			res.sendStatus(200);
-    	}else{
-    		res.sendStatus(404);
-    	}
-  	}else{
-  		res.sendStatus(401);
-	}
+module.exports.deleteMusic2=function(req,res){
+
+	var country = req.params.country;
+    var year=req.params.year;
+    var apikey =req.query.apikey;
+    var bool= true;
+    if(apikey==pass){
+    	for (i=0;i<musical.length;i++){
+
+      		if(musical[i].country==country && musical[i].year==year){
+
+      			
+      			bool=false;
+
+        	}
+
+      	}
+      	if(bool){
+
+        	res.sendStatus(404);
+
+      	}else{
+      		musical.splice(i,1);
+      		res.sendStatus(200);
+      	}
+
+    
+
+
+    }else{
+
+    	res.sendStatus(401);
+
+    }
 };
-
-
-
-
-
-
 /*module.exports.deleteMusic2 = function  (req,res)  {
 	var name = req.params.country;
 	for(var i=0;i<musical.length;i++){
@@ -431,11 +462,11 @@ module.exports.deleteMusic=function(req,res){
     
  
 };*/
-module.exports.deleteMusic2=function(req,res){
+module.exports.deleteMusic=function(req,res){
 	var apikey=req.query.apikey;
 	if(apikey==pass){
 		console.log("New DELETE of all resources");
-		movies.splice(0,movies.length);
+		musical.splice(0,musical.length);
 		res.sendStatus(200);
 
 

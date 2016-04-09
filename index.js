@@ -38,7 +38,7 @@ app.put("/api/v1/music", musicCtl.putMusic);//funciona
 app.put("/api/v1/music/:country/:year", musicCtl.putMusicCountryandYear);// funciona
 
 app.delete("/api/v1/music", musicCtl.deleteMusic );//funciona
-app.delete("/api/v1/music/:country", musicCtl.deleteMusic2);//funciona
+app.delete("/api/v1/music/:country/:year", musicCtl.deleteMusic2);//funciona
 
 
 
