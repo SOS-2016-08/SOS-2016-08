@@ -4,5 +4,6 @@
 {"country":"Belgium"  ,"year":"2011",  "percentage":"45%",  "type":"rock" },
 {"country":"Denmark"  ,"year":"2011",  "percentage":"90%",  "type":"classic"},
 {"country":"USA"  	  ,"year":"2012",  "percentage":"98%",  "type":"folk"},
-{"country":"Spain"    ,"year":"2010",  "percentage":"53%",  "type":"folk" }
+{"country":"Spain"    ,"year":"2012",  "percentage":"53%",  "type":"folk" },
+{"country":"Spain"    ,"year":"2013",  "percentage":"3%",  "type":"other" }
 ]
