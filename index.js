@@ -2,10 +2,6 @@ var express = require("express");
 var bodyParser= require("body-parser");
 var fs= require("fs");
 
-
-var musicCtl = require('./controles/musicCTL.js');
-
-
 var app= express();
 var port = (process.env.PORT || 12345);
 
@@ -38,24 +34,20 @@ app.put("/api/v1/music", musicCtl.putMusic);//funciona
 app.put("/api/v1/music/:country/:year", musicCtl.putMusicCountryandYear);// funciona
 
 
-<<<<<<< HEAD
-
 app.delete("/api/v1/music", musicCtl.deleteMusic );//funciona
 app.delete("/api/v1/music/:country/:year", musicCtl.deleteMusicRecurso);//funciona
-=======
+
 ////////////////////////////CANDELA//////////////////////////////////////
-app.delete("/api/v1/music", musicCtl.deleteMusic );//funciona
-app.delete("/api/v1/music/:country/:year", musicCtl.deleteMusic2);//funciona
-
->>>>>>> 48695fc97b5a6e444c7a7765e51357fd1a3fec45
 
 
 
-<<<<<<< HEAD
+
+
+
+
 //--------- API MOVIES--------------------------
 app.get('/api/v1/social_situation/loadInitialData',moviesCtl.getLoad);
 
-=======
 
 app.get("/api/v1/social_situation/loadInitialData",moviesCtl.getLoad);
 
@@ -63,7 +55,7 @@ app.get("/api/v1/social_situation/loadInitialData",moviesCtl.getLoad);
 app.get('/api/v1/social_situation/loadInitialData',moviesCtl.getLoad);
 
 
->>>>>>> 48695fc97b5a6e444c7a7765e51357fd1a3fec45
+
 app.get("/api/v1/social_situation",moviesCtl.getMovie);
 app.get("/api/v1/social_situation/:country",moviesCtl.getMovie2);
 app.get("/api/v1/social_situation/:country/:year",moviesCtl.getMovie3);
@@ -83,10 +75,8 @@ app.post("/api/v1/social_situation",moviesCtl.postMovie);
 app.post("/api/v1/social_situation/:country",moviesCtl.postMovie2); 
 
 app.put("/api/v1/social_situation",moviesCtl.putMovie); 
-<<<<<<< HEAD
 
-=======
->>>>>>> 48695fc97b5a6e444c7a7765e51357fd1a3fec45
+
 app.put('/api/v1/social_situation/:country',moviesCtl.putMovie2); 
 app.put('/api/v1/social_situation/:country/:year',moviesCtl.putMovie2); 
 
@@ -101,10 +91,6 @@ app.delete("/api/v1/social_situation",moviesCtl.deleteMovie2);
 
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 48695fc97b5a6e444c7a7765e51357fd1a3fec45
 
 
 
@@ -123,5 +109,4 @@ app.get("/time",(req,res)=>{
 app.listen(port, ()=>{
 	console.log("Magic happens on port "+port);
 });
-
 

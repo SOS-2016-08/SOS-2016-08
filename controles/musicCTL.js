@@ -152,37 +152,37 @@ module.exports.getMusic=function(req,res){
 
 module.exports.getMusicCountryandYear=function(req,res){ //get country/year
 	var name = req.params.country;
-    var ye=req.params.year;
-    var limit = req.params.limit;
-    var offset = req.params.offset;
-    var apikey =req.query.apikey;
-    var bool= true;
-    if(apikey==pass){
-    	console.log("apikey1 y pass1-->"+apikey+pass);
-      	result=[];
-      	for (i=0;i<musical.length;i++){
-      		if(musical[i].country==name && musical[i].year==ye){
-      			console.log("new get "+name);
-      			result.push(musical[i]);
-      			bool=false;
+  var ye=req.params.year;
+  var limit = req.params.limit;
+  var offset = req.params.offset;
+  var apikey =req.query.apikey;
+  var bool= true;
+  if(apikey==pass){
 
-        	}
+    console.log("apikey1 y pass1-->"+apikey+pass);
+    result=[];
+    for (i=0;i<musical.length;i++){
+      if(musical[i].country==name && musical[i].year==ye){
+        console.log("new get "+name);
+      	result.push(musical[i]);
+      	bool=false;
 
-      	}
-      	if(bool){
+      }
 
-        	res.sendStatus(404);
+    }
+    if(bool){
+      res.sendStatus(404);
 
-      	}
-      	res.send(result);
+    }
+    res.send(result);
 
     
 
 
-    }else{
-    	res.sendStatus(401);
+  }else{
+    res.sendStatus(401);
 
-    }
+  }
 
 };
 
@@ -214,31 +214,29 @@ module.exports.getMusicCountryandYear=function(req,res){ //get country/year
 module.exports.getMusicCountryorYear=function(req,res){ //get name or get year
 	var valor = req.params.valor;
     
-    var apikey=req.query.apikey;
-    var bool=true;
-    var result=[];
-    if(apikey==pass){
+  var apikey=req.query.apikey;
+  var bool=true;
+  var result=[];
+  if(apikey==pass){
+    for (i=0;i<musical.length;i++){
+      if(musical[i].country==valor || musical[i].year== valor){
+        console.log("new get "+valor);
+    		result.push(musical[i]);
+    		bool=false;
 
-    	for (i=0;i<musical.length;i++){
+      }
 
-    		if(musical[i].country==valor || musical[i].year== valor){
-
-    			console.log("new get "+valor);
-    			result.push(musical[i]);
-    			bool=false;
-
-        	}
-
-      	}if(bool){
-        	res.sendStatus(404);
-
-      	}
-      	res.send(result);
-
-    }else{
-
-      	res.sendStatus(401);
     }
+    if(bool){
+      res.sendStatus(404);
+
+
+    }
+    res.send(result);
+
+  }else{
+    res.sendStatus(401);
+  }
 
     
 };
@@ -315,9 +313,9 @@ module.exports.postMusic2=function(req,res){
 		console.log("WARNING post");
 		res.sendStatus(405);
 
-  	}else{
-  		res.sendStatus(401);
-  	}
+  }else{
+  	res.sendStatus(401);
+  }
 
 };
 function PosArray(str,elements){
@@ -352,16 +350,16 @@ module.exports.putMusicYearandCountry = function(req,res){
 	var country = req.params.country;
 	var year = req.params.year;
  	var nuevo = req.body;
-    for (var i=0; i<=musical.length;i++){
+  for (var i=0; i<=musical.length;i++){
 
-      	if(musical[i].country == country && musical[i].year == year){
-        	musical.splice(i, 1);
-        	musical.push(nuevo);
-        	res.sendStatus(200);
-        	break;
-      	}
+    if(musical[i].country == country && musical[i].year == year){
+      musical.splice(i, 1);
+      musical.push(nuevo);
+      res.sendStatus(200);
+      break;
     }
-  	res.sendStatus(400);
+  }
+  res.sendStatus(400);
 
 };
 function CheckBody(body){
@@ -373,10 +371,10 @@ function CheckBody(body){
 
 function validar(str1,str2,elements){
   var cont = -1;
- for(var i=0;i<elements.length;i++)
-      if(elements[i].country==str1 && elements[i].year==str2){
-        cont=i;
-      }
+  for(var i=0;i<elements.length;i++)
+    if(elements[i].country==str1 && elements[i].year==str2){
+      cont=i;
+    }
   return cont;
 };
 
@@ -516,9 +514,9 @@ module.exports.deleteMusic=function(req,res){
 		res.sendStatus(200);
 
 
-    }else{
+  }else{
     	res.sendStatus(401);
-    }
+  }
 	
 };
 
