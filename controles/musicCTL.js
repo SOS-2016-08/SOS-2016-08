@@ -346,7 +346,7 @@ module.exports.putMusic=function(req,res){
 
 
 
-module.exports.putMusicYearandCountry = function(req,res){
+/*module.exports.putMusicYearandCountry = function(req,res){
 	var country = req.params.country;
 	var year = req.params.year;
  	var nuevo = req.body;
@@ -361,8 +361,8 @@ module.exports.putMusicYearandCountry = function(req,res){
   }
   res.sendStatus(400);
 
-};
-function CheckBody(body){
+};*/
+/*function CheckBody(body){
     return body.country && body.year && body.percentage && body.type;
     
 }
@@ -376,7 +376,7 @@ function validar(str1,str2,elements){
       cont=i;
     }
   return cont;
-};
+};*/
 
 /*module.exports.putMusicCountryandYear=function (req,res){ 
   var apikey=req.query.apikey;
