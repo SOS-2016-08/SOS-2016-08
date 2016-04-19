@@ -36,7 +36,7 @@ app.post("/api/v1/music/:country/:year",musicCtl.postMusic2);//funciona
 
 app.put("/api/v1/music", musicCtl.putMusic);//funciona
 app.put("/api/v1/music/:country/:year", musicCtl.putMusicCountryandYear);// funciona
-app.put("/api/v1/music/:year/:country", musicCtl.putMusicYearandCountry);// funciona
+
 
 
 app.delete("/api/v1/music", musicCtl.deleteMusic );//funciona
