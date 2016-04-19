@@ -185,27 +185,27 @@ module.exports.getMovie3=function(req,res){ //get country/year
 
 module.exports.postMovie=function(req,res){
 
-  if(apikey==pass){
-    var sc = req.body;
-    if(CheckBody(sc)){
-      var array2=validar(sc.country,sc.year,situation);
-      if(array2==-1){//not exist the resource
-        situation.push(sc);
-        console.log("New POST of resource "+sc.country+" "+sc.year);
-        res.sendStatus(201);//created
-            
-      }else{//if exist the resource CONFLICT
-        res.sendStatus(409);// Conflict 
-      }
+  var apikey = req.query.apikey;
+  var country = req.params.country;
+  var year = req.params.year;
+  var datos= req.body;
+  if(apikey == pass){
+    for (var i=0; i< situation.length; i++){
+      if(  situation[i].country== datos.country && situation[i].year == datos.year){
+        res.sendStatus(409);
 
-    }else{
-      res.sendStatus(400);// Bad request
+      }
     }
-    
-    
+    if (datos.country == "" || datos.year==""|| datos.sales==""|| datos.digital==""|| datos.nodigital==""){
+      res.sendStatus(400);
+    }else{
+      situation.push(datos);
+      res.sendStatus(201);
+    }
   }else{
-    console.log("you must identificate");
-    res.sendStatus(401);//Unauthorized
+    res.sendStatus(401);
+  
+    
   }
         
 };
@@ -214,7 +214,7 @@ module.exports.postMovie2=function(req,res){
   var apikey=req.query.apikey;
   if(apikey==pass){
 	 console.log("WARNING post");
-	 res.sendStatus(403);
+	 res.sendStatus(405);
   }else{
     res.sendStatus(401);
   }
@@ -252,31 +252,45 @@ module.exports.putMovie=function(req,res){
 
 
 module.exports.putMovie2=function (req,res){ 
-   var apikey=req.query.apikey;
-  if(apikey==pass){
-    console.log(req.body);
-    console.log(req.params.country);
-    console.log(req.params.year);
-    if(CheckBody(req.body) && req.body.country==req.params.country && req.body.year==req.params.year){
-        var si = validar(req.params.country,req.params.year,situation);
-        console.log("valor de si",si);//req url
-          if (si != -1){
-            situation[si].country=req.body.country;//req body
-            situation[si].year=req.body.year;
-            situation[si].sales=req.body.sales;
-            situation[si].digital=req.body.digital;
-            situation[si].nodigital=req.body.nodigital;
-            res.sendStatus(200);//ok
-          }else{
-          res.sendStatus(404);//Not Found
-          }
-    }else{
-      res.sendStatus(400);//bad request
+  var country = req.params.country;
+  var year = req.params.year;
+  var assist = req.body;
+  var find = true;
+  var good = true;
+  var key = req.query.apikey;
+  if(key==123){
+    if(assist.country==""||assist.year==""||assist.sales==""||assist.digital==""||assist.nodigital==""){
+      res.sendStatus(400);
+      //console.console.log(("Put Bad request"));
+      good = false;
     }
+    for(i=0;i<situation.length;i++){
+      if(assist.country!=country||assist.year!=year){
+        res.sendStatus(400);
+        //console.log("Put Bad Request");
+        break;
+      }
+      if(situation[i].country == country && situation[i].year == year && good){
+        situation[i].country = assist.country;
       
+        situation[i].year = assist.year;
+        situation[i].sales = assist.sales;
+        situation[i].digital = assist.digital;
+        situation[i].nodigital = assist.nodigital;
+        res.sendStatus(201);
+        //console.log("New PUT of resource " + team +" "+year);
+        res.send(situation[i]);
+        find=false;
+        break;
+      }
+    }
+    if(find){
+      //console.log("PUT of " + team +" "+year+ " not found");
+      res.sendStatus(404);
+    }
   }else{
-    console.log("you must identificate");
-    res.sendStatus(401);//Unauthorized
+    res.sendStatus(401);
+    //console.log("Invalid Key");
   }
     
 };
