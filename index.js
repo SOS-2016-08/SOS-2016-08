@@ -40,8 +40,6 @@ app.delete("/api/v1/music/:country/:year", musicCtl.deleteMusicRecurso);//funcio
 ////////////////////////////CANDELA//////////////////////////////////////
 
 
-
-
 //--------- API MOVIES--------------------------
 app.get('/api/v1/social_situation/loadInitialData',moviesCtl.getLoad);
 
