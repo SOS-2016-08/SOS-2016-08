@@ -40,7 +40,7 @@ app.put("/api/v1/music/:country/:year", musicCtl.putMusicCountryandYear);// func
 
 ////////////////////////////CANDELA//////////////////////////////////////
 app.delete("/api/v1/music", musicCtl.deleteMusic );//funciona
-app.delete("/api/v1/music/:country/:year", musicCtl.deleteMusic2);//funciona
+app.delete("/api/v1/music/:country/:year", musicCtl.deleteMusicRecurso);//funciona
 
 
 //////get////
