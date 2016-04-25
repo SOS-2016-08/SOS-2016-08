@@ -71,52 +71,6 @@ module.exports.getMusic=function(req,res){
   }else{
     res.sendStatus(401);
   }
-<<<<<<< HEAD
-//res.send(resul);
-
-};*/
-
-
-
-module.exports.getMusic=function(req,res){
-  from = req.query.from;
-  to = req.query.to;
-  limit = req.query.limit;
-  offset = req.query.offset;
-  apikey = req.query.apikey;
-  var resultado = [];
-  if (apikey==pass){
-    for(var i=0;i<musical.length;i++){
-      resultado.push(musical[i]);
-    }
-    if (from && to){
-      for(var i=0;i<resultado.length;i++){
-        if(resultado[i].year < from  ||  resultado[i].year > to){
-          resultado.splice(i,1);
-          i = i - 1;
-        }
-      }
-    }
-    if(limit && offset){
-      resultado.splice(0,offset);
-      resultado.splice(limit,resultado.length-limit);
-    
-
-    /*if (resultado.length==0){
-      //res.send(resultado);
-      res.sendStatus(404);
-    */
-    }else{
-      res.status(200).jsonp(resultado);
-      
-    }
-    
-
-  }else{
-    res.sendStatus(401);
-  }
-=======
->>>>>>> 2c26cdd5bf999175fb7080be33606692e3d297ac
 };
 
 
@@ -256,38 +210,6 @@ module.exports.putMusic=function(req,res){
 
 
 
-<<<<<<< HEAD
-module.exports.putMusicYearandCountry = function(req,res){
-	var country = req.params.country;
-	var year = req.params.year;
- 	var nuevo = req.body;
-    for (var i=0; i<=musical.length;i++){
-
-      	if(musical[i].country == country && musical[i].year == year){
-        	musical.splice(i, 1);
-        	musical.push(nuevo);
-        	res.sendStatus(200);
-        	break;
-      	}
-    }
-  	res.sendStatus(400);
-
-};
-function CheckBody(body){
-    return body.country && body.year && body.percentage && body.type;
-    
-}
-
-
-
-function validar(str1,str2,elements){
-  var cont = -1;
- for(var i=0;i<elements.length;i++)
-      if(elements[i].country==str1 && elements[i].year==str2){
-        cont=i;
-      }
-  return cont;
-=======
 
 module.exports.putMusicCountryandYear = function(req, res){
   var country = req.params.country;
@@ -329,92 +251,11 @@ module.exports.putMusicCountryandYear = function(req, res){
     res.sendStatus(401);
     //console.log("Invalid Key");
   }
->>>>>>> 2c26cdd5bf999175fb7080be33606692e3d297ac
-};
-
-/*module.exports.putMusicCountryandYear=function (req,res){ 
-  var apikey=req.query.apikey;
-  if(apikey==pass){
-    console.log(req.body);
-    console.log(req.params.country);
-    console.log(req.params.year);
-    if(CheckBody(req.body) && req.body.country==req.params.country && req.body.year==req.params.year){
-        var si = validar(req.params.country,req.params.year,musical);
-        console.log("valor de si",si);//req url
-          if (si != -1){
-            musical[si].country=req.body.country;//req body
-            musical[si].year=req.body.year;
-            musical[si].percentage=req.body.percentage;
-            musical[si].type=req.body.type;
-            
-            res.sendStatus(200);//ok
-          }else{
-          res.sendStatus(400);//Not Found
-          }
-    }else{
-      res.sendStatus(404);//bad request
-    }
-      
-  }else{
-    console.log("you must identificate");
-    res.sendStatus(401);//Unauthorized
-  }
-    
-};
-
-*/
-module.exports.putMusicCountryandYear = function(req, res){
-  var country = req.params.country;
-  var year = req.params.year;
-  var assist = req.body;
-  var find = true;
-  var good = true;
-  var key = req.query.apikey;
-  if(key==123){
-    if(assist.country==""||assist.year==""||assist.percentage==""||assist.type==""){
-      res.sendStatus(400);
-      //console.console.log(("Put Bad request"));
-      good = false;
-    }
-    for(i=0;i<musical.length;i++){
-      if(assist.country!=country||assist.year!=year){
-        res.sendStatus(400);
-        //console.log("Put Bad Request");
-        break;
-      }
-      if(musical[i].country == country && musical[i].year == year && good){
-        musical[i].country = assist.country;
-      
-        musical[i].year = assist.year;
-        musical[i].percentage = assist.percentage;
-        musical[i].type = assist.type;
-        res.sendStatus(201);
-        //console.log("New PUT of resource " + team +" "+year);
-        res.send(musical[i]);
-        find=false;
-        break;
-      }
-    }
-    if(find){
-      //console.log("PUT of " + team +" "+year+ " not found");
-      res.sendStatus(404);
-    }
-  }else{
-    res.sendStatus(401);
-    //console.log("Invalid Key");
-  }
 };
 
 
-<<<<<<< HEAD
-/*module.exports.deleteMusic = function(req,res)  {
-	console.log("New Delete all resources");
-	musical.splice(musical);
-	res.sendStatus(200);
-};*/
 
-=======
->>>>>>> 2c26cdd5bf999175fb7080be33606692e3d297ac
+
 module.exports.deleteMusicRecurso=function(req,res){
 
 	var country = req.params.country;
