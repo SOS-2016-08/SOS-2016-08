@@ -2,12 +2,8 @@ var express = require("express");
 var bodyParser= require("body-parser");
 var fs= require("fs");
 
-
-var musicCtl = require('./controles/musicCTL.js');
-
-
 var app= express();
-var port = (process.env.PORT || 10000);
+var port = (process.env.PORT || 12345);
 
 app.use("/",express.static(__dirname+"/static"));
 app.use(bodyParser.json());
@@ -30,7 +26,7 @@ app.get("/api/v1/music/:valor",musicCtl.getMusicCountryorYear); // funciona (YEA
 
 
 app.post("/api/v1/music", musicCtl.postMusic); //funciona
-app.post("/api/v1/music/:country",musicCtl.postMusic2);//funciona
+app.post("/api/v1/music/:country/:year",musicCtl.postMusic2);//funciona
 
 
 
@@ -38,19 +34,21 @@ app.put("/api/v1/music", musicCtl.putMusic);//funciona
 app.put("/api/v1/music/:country/:year", musicCtl.putMusicCountryandYear);// funciona
 
 
-////////////////////////////CANDELA//////////////////////////////////////
 app.delete("/api/v1/music", musicCtl.deleteMusic );//funciona
 app.delete("/api/v1/music/:country/:year", musicCtl.deleteMusicRecurso);//funciona
 
+////////////////////////////CANDELA//////////////////////////////////////
 
-//////get////
 
+//--------- API MOVIES--------------------------
+app.get('/api/v1/social_situation/loadInitialData',moviesCtl.getLoad);
 
 
 app.get("/api/v1/social_situation/loadInitialData",moviesCtl.getLoad);
 
 //--------- API MOVIES--------------------------
 app.get('/api/v1/social_situation/loadInitialData',moviesCtl.getLoad);
+
 
 
 app.get("/api/v1/social_situation",moviesCtl.getMovie);
@@ -72,6 +70,8 @@ app.post("/api/v1/social_situation",moviesCtl.postMovie);
 app.post("/api/v1/social_situation/:country",moviesCtl.postMovie2); 
 
 app.put("/api/v1/social_situation",moviesCtl.putMovie); 
+
+
 app.put('/api/v1/social_situation/:country',moviesCtl.putMovie2); 
 app.put('/api/v1/social_situation/:country/:year',moviesCtl.putMovie2); 
 
@@ -104,5 +104,4 @@ app.get("/time",(req,res)=>{
 app.listen(port, ()=>{
 	console.log("Magic happens on port "+port);
 });
-
 
