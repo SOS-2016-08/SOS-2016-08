@@ -1,23 +1,41 @@
 <html>
     <head>
-        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Table Social Situation</title>
         <link rel="stylesheet" type="text/css" href="style.css" />
         <script src="jquery-1.12.2.min.js"></script>
         <script type="text/javascript" src="datasocial.js"></script>
-  </head>
+        <link rel="stylesheet" type="text/css" href="easyui/themes/default/easyui.css">
+        <link rel="stylesheet" type="text/css" href="easyui/themes/icon.css">
+        <link rel="stylesheet" type="text/css" href="easyui/demo.css">
+        <script type="text/javascript" src="easyui/jquery.min.js"></script>
+        <script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+      </head>
   
 
     <body>
-      <h2>Social Situation</h2>
-            <table class="social" id="social" rules="all" > 
-        <tr>
-          <th>Country</th>
-          <th>Year</th>
-          <th>Sales</th>
-          <th>Digital</th>
-          <th>No_Digital</th>
-        </tr>
-      </table>
-    </body>
+    
+    <h2>Basic DataGrid</h2>
+    <p>TABLE SOCIAL SITUATION</p>
+     <div style="margin:20px 0;"></div>
+  
+    
+    <table class="easyui-datagrid" id"social" rules="all" title="Social Situation" style="width:420px;height:250px"
+           data-options="singleSelect:true,collapsible:true,url:'/api/v1/social_situation?apikey=123',method:'GET'">
+        <thead>
+       
+            <tr>
+                <th  class="easyui-datagrid" data-options="field:'country',align:'center',width:80">Country</th>
+                <th data-options="field:'year',width:80,align:'center'">Year</th>
+                <th data-options="field:'sales',width:80,align:'center'">Sales</th>
+                <th data-options="field:'digital',width:80,align:'center'">Digital</th>
+                <th data-options="field:'nodigital',width:80,align:'center'">NoDigital</th>
+            
+            </tr>
+            
+        </thead>
+    </table>
+ </div>
+</body>
 </html>
+   

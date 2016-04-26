@@ -1,3 +1,16 @@
 hr{
-	border : 1px solid green;
+	width: 250px;
+	border : 10px solid green;
+	border-collapse: collapse;
+
+}
+
+table tr:nth-child(odd) {
+	width: 250px;
+	
+	background-color: #66FFCC;
+}
+table tr:nth-child(even) {
+
+	background-color: #D8D8D8 ;
 }
