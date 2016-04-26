@@ -19,6 +19,9 @@ $(document).ready(function (){
       console.log(trHTML);
     }
   });
+
+
+  
   request.done((data)=>{
     console.log("data received");
     console.log(data);

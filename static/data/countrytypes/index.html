@@ -1,24 +1,60 @@
-<html>
-
-    <head>
-        <meta charset="utf-8">
-        <title>Table Country and types of music</title>
-        <link rel="stylesheet" type="text/css" href="style.css" />
-        <script src="jquery-1.12.3.min.js"></script>
-        <script type="text/javascript" src="countrytypes.js"></script>
-  </head>
-  
-
-    <body>
-      <h2> <p>Country and Types of music</p></h2>
-            <table class="social" id="country" rules="all" >
-        <tr>
-          <th>Country</th>
-          <th>Year</th>
-          <th>Percentage</th>
-          <th>Type</th>
-          
-        </tr>
-      </table>
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id="Description">Table of Country music </title>
+    <link rel="stylesheet" href="jqwidgets-ver4.1.1/jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="jqwidgets-ver4.1.1/scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="jqwidgets-ver4.1.1/jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="jqwidgets-ver4.1.1/jqwidgets/jqxdata.js"></script> 
+    <script type="text/javascript" src="jqwidgets-ver4.1.1/jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="jqwidgets-ver4.1.1/jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="jqwidgets-ver4.1.1/jqwidgets/jqxdatatable.js"></script> 
+    <script type="text/javascript" src="jqwidgets-ver4.1.1/scripts/demos.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // prepare the data
+            var source =
+            {
+                dataType: "jsonp",
+                dataFields: [
+                    { name: 'country', type: 'string' },
+                    { name: 'year', type: 'number' },
+                    { name: 'percentage', type: 'float' },
+                    { name: 'type', type: 'string' }
+                ],
+                url: "http://sos-2016-08.herokuapp.com/data/countrytypes/restClient/"
+            };
+            var dataAdapter = new $.jqx.dataAdapter(source, 
+                {
+                    formatData: function (data) {
+                        $.extend(data, {
+                            featureClass: "P",
+                            style: "full",
+                            
+                            maxRows: 10
+                        });
+                        return data;
+                    }
+                }
+            );
+            $("#dataTable").jqxDataTable(
+            {
+                width: 850,
+                pageable: true,
+                pagerButtonsCount: 10,
+                source: dataAdapter,
+                columnsResize: true,
+                columns: [
+                    { text: 'Country ', dataField: 'country', width: 200 },
+                    { text: 'Year', dataField: 'year', width: 250 },
+                    { text: 'Percentage', dataField: 'percentage', cellsFormat: 'f', width: 250 },
+                    { text: 'Type', dataField: 'type' }
+                ]
+            });
+        });
+    </script>
+</head>
+<body class='default'>
+    <div id="dataTable"></div>
+</body>
 </html>
