@@ -10,6 +10,7 @@ app.use(bodyParser.json());
 
 var musicCtl = require('./controles/musicCTL.js');
 var moviesCtl= require('./controles/moviesCtl.js');
+app.use('/',express.static(__dirname + '/public'));
 
 
 

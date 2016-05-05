@@ -1,0 +1,114 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="style.css"/>
+		<script src = "https://code.jquery.com/jquery-1.12.2.min.js"></script> 
+		
+		<script type="text/javascript" src="methods.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  	<link rel="stylesheet" href="countrytypes/jqwidgets-ver4.1.1/jqwidgets/styles/jqx.base.css" type="text/css" />
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css" />
+    	
+	</head>
+	<body>
+		
+			<h5>RestClient of Country types</h5>
+      <br/><hr/>
+      		  <label for="url">URL</label>
+            <i class="material-icons">http</i>
+			     <input id="url" size="30" value="/api/v1/music"/>
+			<br><br/>
+      <div class="container">
+      <div class="row">
+      <div class="col l6 s12">
+      		
+      		<label for="apikey">Apikey</label>
+          <i class="material-icons">https</i>
+      		<input id="apikey" type="text" class="validate" length="4" value="">
+
+      		<label for="from">From</label>
+      		<input  id="from" type="text" class="validate" length="4" value=" ">
+
+      		<label for="to">To</label>
+      		<input  id="to" type="text" class="validate" length="4" value="">
+
+      		<label for="offset">Offset</label>
+      		<input  id="offset" type="text" class="validate" value="">
+
+      		<label for="limit">Limit</label>
+      		<input  id="limit" type="text" class="validate" value="">
+
+      </div>
+     	
+			    
+
+
+              
+              
+        <div class="col l6 s12">   
+            <label  class="btn btn-secundary"> PAYLOAD: Introduce the datas </label>
+            
+            <br><br/>    
+                         
+            <label for="payload1">Country</label>
+            <input id="payload1" type="text" class="btn-primary" length="10" value="">
+            
+
+            <label for="payload2">Year</label>
+            <input id="payload2" type="text" class="btn-primary" length="4" value="">
+            
+
+            <label for="payload3">Percentage</label>
+            <input id="payload3" type="text" class=" btn-primary" length="2" value="">
+            
+
+            <label for="payload4">Type</label>
+            <input id="payload4" type="text" class=" btn-primary" length="10" value="">
+        </div>
+
+            <br/><br/>
+
+            
+			
+			
+			
+			
+			<button title="Search resource" id="search" class="btn btn-primary">Search</button>
+			<button title="Add resource" id="add" class="btn btn-primary">Add</button>
+			<button title="Delete resource" id="delete" class="btn btn-primary">Delete</button>
+			<button title="Edit resource" id="edit" class="btn btn-primary">Edit</button>
+          
+		
+		
+
+
+			HTTP Status: <span id="status"></span>			
+		
+			<br/><hr/>
+			<table id="country" border='1' class="centered" rules="all">
+        <tr>
+          <th class="black-text center-align">Country</th>
+          <th class="black-text center-align">Year</th>
+          <th class="black-text center-align">Percentage</th>
+          <th class="black-text center-align">Type</th>
+        </tr>
+      </table>
+			<br/><hr/>
+			<span id ="list"></span>
+			<br><hr/>
+			Log: <span id ="log"></span>
+		</div>
+    </div>
+		
+	</body>
+
+</html>
+
+
+            
+        
+  
