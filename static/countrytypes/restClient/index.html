@@ -15,19 +15,30 @@
     	
 	</head>
 	<body>
+
 		
-			<h5>RestClient of Country types</h5>
+			<label  class="btn btn-secundary"> RestClient of Country types </label>
       <br/><hr/>
       		  <label for="url">URL</label>
-            <i class="material-icons">http</i>
+            
 			     <input id="url" size="30" value="/api/v1/music"/>
 			<br><br/>
+      <br/><hr/>
+      <table id="country" border='1' class="centered" rules="all">
+        <tr>
+          <th class="black-text center-align">Country</th>
+          <th class="black-text center-align">Year</th>
+          <th class="black-text center-align">Percentage</th>
+          <th class="black-text center-align">Type</th>
+        </tr>
+      </table>
+      <br/><hr/>
       <div class="container">
       <div class="row">
       <div class="col l6 s12">
       		
       		<label for="apikey">Apikey</label>
-          <i class="material-icons">https</i>
+          
       		<input id="apikey" type="text" class="validate" length="4" value="">
 
       		<label for="from">From</label>
@@ -88,16 +99,7 @@
 
 			HTTP Status: <span id="status"></span>			
 		
-			<br/><hr/>
-			<table id="country" border='1' class="centered" rules="all">
-        <tr>
-          <th class="black-text center-align">Country</th>
-          <th class="black-text center-align">Year</th>
-          <th class="black-text center-align">Percentage</th>
-          <th class="black-text center-align">Type</th>
-        </tr>
-      </table>
-			<br/><hr/>
+			
 			<span id ="list"></span>
 			<br><hr/>
 			Log: <span id ="log"></span>
