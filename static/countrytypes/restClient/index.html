@@ -12,47 +12,71 @@
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css" />
+
+
+
+    
     	
 	</head>
 	<body>
+    <div class="card-panel  blue lighten-4">
+      <h5 class="center-align">RestClient of Country types</h5>
+    </div>
+    <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <label for="url" class="black-text"></label>
+          <input id="url"  value="/api/v1/music"/>
+        </div>
+        <div class="input-field col s6">
+          <span id="log"  class="btn btn-primary blue lighten-4 black-text"> All right? </span>
+          <span id="msg" class="btn btn-primary blue lighten-4 black-text"></span>
+        </div>
+      </div>
+      </form>
+      </div>
 
-		
-			<label  class="btn btn-secundary"> RestClient of Country types </label>
-      <br/><hr/>
-      		  <label for="url">URL</label>
-            
-			     <input id="url" size="30" value="/api/v1/music"/>
+
+		  
+
+
+      		  
 			<br><br/>
       <br/><hr/>
       <table id="country" border='1' class="centered" rules="all">
         <tr>
-          <th class="black-text center-align">Country</th>
-          <th class="black-text center-align">Year</th>
-          <th class="black-text center-align">Percentage</th>
-          <th class="black-text center-align">Type</th>
+          <th class="blue lighten-4 black-text center-align">Country</th>
+          <th class="blue lighten-2 black-text center-align">Year</th>
+          <th class="blue lighten-4 black-text center-align">Percentage</th>
+          <th class="blue lighten-2 black-text center-align">Type</th>
         </tr>
       </table>
       <br/><hr/>
       <div class="container">
       <div class="row">
       <div class="col l6 s12">
+     
       		
-      		<label for="apikey">Apikey</label>
+      		<label for="apikey" class="black-text">Apikey</label>
           
-      		<input id="apikey" type="text" class="validate" length="4" value="">
+      		<input id="apikey" type="text" class="validate " length="4" value="">
 
-      		<label for="from">From</label>
+      		<label for="from" class="black-text">From</label>
       		<input  id="from" type="text" class="validate" length="4" value=" ">
 
-      		<label for="to">To</label>
+      		<label for="to" class="black-text">To</label>
       		<input  id="to" type="text" class="validate" length="4" value="">
 
-      		<label for="offset">Offset</label>
+      		<label for="offset" class="black-text">Offset</label>
       		<input  id="offset" type="text" class="validate" value="">
 
-      		<label for="limit">Limit</label>
+      		<label for="limit" class="black-text">Limit</label>
       		<input  id="limit" type="text" class="validate" value="">
+          <button title="Click to go to the previous page" id="previous" class="btn btn-primary blue lighten-4 black-text">Previous</button>
+          <button title="Click to go to the back page" id="back" class="btn btn-primary blue lighten-4 black-text">Back</button>
 
+     
       </div>
      	
 			    
@@ -60,49 +84,34 @@
 
               
               
-        <div class="col l6 s12">   
-            <label  class="btn btn-secundary"> PAYLOAD: Introduce the datas </label>
+        <div class="col l4 offset-l2 s12">   
+            <label  class="btn btn-primary blue lighten-4 black-text">  Introduce the datas </label>
             
             <br><br/>    
                          
-            <label for="payload1">Country</label>
+            <label for="payload1" class="black-text">Country</label>
             <input id="payload1" type="text" class="btn-primary" length="10" value="">
             
 
-            <label for="payload2">Year</label>
+            <label for="payload2" class="black-text">Year</label>
             <input id="payload2" type="text" class="btn-primary" length="4" value="">
             
 
-            <label for="payload3">Percentage</label>
+            <label for="payload3" class="black-text">Percentage</label>
             <input id="payload3" type="text" class=" btn-primary" length="2" value="">
             
 
-            <label for="payload4">Type</label>
+            <label for="payload4" class="black-text">Type</label>
             <input id="payload4" type="text" class=" btn-primary" length="10" value="">
+
+            <button title="Search resource" id="search" class="btn btn-primary blue lighten-4 black-text">Load</button>
+            <button title="Add resource" id="add" class="btn btn-primary blue lighten-4 black-text">Add</button>
+            <br/><br/>
+            <button title="Delete resource" id="delete" class="btn btn-primary blue lighten-4 black-text">Delete</button>
+            <button title="Edit resource" id="edit" class="btn btn-primary blue lighten-4 black-text">Edit</button>
         </div>
 
-            <br/><br/>
-
-            
-			
-			
-			
-			
-			<button title="Search resource" id="search" class="btn btn-primary">Search</button>
-			<button title="Add resource" id="add" class="btn btn-primary">Add</button>
-			<button title="Delete resource" id="delete" class="btn btn-primary">Delete</button>
-			<button title="Edit resource" id="edit" class="btn btn-primary">Edit</button>
-          
-		
-		
-
-
-			HTTP Status: <span id="status"></span>			
-		
-			
-			<span id ="list"></span>
-			<br><hr/>
-			Log: <span id ="log"></span>
+      
 		</div>
     </div>
 		

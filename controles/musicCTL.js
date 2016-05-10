@@ -73,8 +73,7 @@ else
 module.exports.getMusicCountryandYear=function(req,res){ //get country/year
 	var name = req.params.country;
   var ye=req.params.year;
-  var limit = req.query.limit;
-  var offset = req.query.offset;
+
   var apikey =req.query.apikey;
   var bool= true;
   if(apikey==pass){
@@ -112,14 +111,19 @@ module.exports.getMusicCountryorYear=function(req,res){ //get name or get year
   
   var limit= req.query.limit;
   var offset= req.query.offset;
+  var from= req.query.from;
+  var to =req.query.to;
     
   var apikey=req.query.apikey;
   var bool=true;
   var result=[];
   if(apikey==pass){
 
-    for (i=0;i<musical.length;i++){
+
+    for (var i=0;i<musical.length;i++){
+
       if(musical[i].country==valor || musical[i].year== valor){
+
         console.log("new get "+valor);
         result.push(musical[i]);
         bool=false;
@@ -128,18 +132,28 @@ module.exports.getMusicCountryorYear=function(req,res){ //get name or get year
 
 
     }
+    if (from && to){
+      for(var i=0;i<result.length;i++){
+
+        if(result[i].year < from  ||  result[i].year > to){
+          result.splice(i,1);
+          i = i - 1;
+        }
+      }
+    }
     if(limit && offset){
       result.splice(0,offset);
       result.splice(limit,result.length-limit);
       bool=false;
     }
   
+    
+    res.send(result);
     if(bool){
       res.sendStatus(404);
 
 
     }
-    res.send(result);
 
   }else{
     res.sendStatus(401);
