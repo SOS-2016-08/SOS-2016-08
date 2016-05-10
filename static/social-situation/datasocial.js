@@ -77,7 +77,7 @@
               },
               error:(jqXHR)=>{
                 if(jqXHR.status==409)
-                  alert("ERROR recurso ya existente")
+                  alert("ERROR resource exits")
               }
 
 
@@ -143,7 +143,7 @@
                                         alert("Wrong API Key")
                                     }else{
                                       if(jqXHR.status==409)
-                                        alert("ERROR recurso ya existente")
+                                        alert("ERROR ")
                                     }
                                     //$('#dg').datagrid('reload');
                                 }
