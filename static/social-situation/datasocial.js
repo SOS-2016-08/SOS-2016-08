@@ -1,5 +1,7 @@
  
- 
+            var contador1=0;
+            var contador2=0;
+            var contador=0;
  
  $(document).ready(function (){
 
@@ -122,9 +124,7 @@
         }
 
         function recargar(){
-            var contador1=0;
-            var contador2=0;
-            var contador=0;
+            
 
             var key=$('#apikey').val();
                
@@ -231,7 +231,7 @@ function paginacion(value){
 
         function siguienteCountry(value){
             //var limit=$('#limit').val();
-            var contador1=1;
+            
 
             var limite=parseInt( $("#limit").val() );
             contador2=contador1;
@@ -248,13 +248,78 @@ function paginacion(value){
             method="GET";
             //var row = $('#dg').datagrid('getSelected');
             var country=$('#buscador').val();
-            console.log(country);
-            contador+=limite;
-           //var country=value;
-            if(country==="undefined"){
-              console.log("problemas");
+            var request =$.ajax({
 
+                        type: method,
+                        url: "/api/v1/social_situation/"+country+"?apikey=123&offset="+contador+"&limit="+limite+"&from="+from+"&to="+to,
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function(data)
+                                {  
+
+                                  $('#dg').datagrid('loadData', {"total":data.length,"rows":data});
+                                  $('#next').linkbutton('enable');
+                                  $('#previus').linkbutton('enable');
+
+                                 if(limite>data.length){
+                                   $('#next').linkbutton('disable');
+                                    console.log("entra");
+                                 }else{
+                                  
+
+                                 
+                                    contador+=limite;
+                                    
+                                 } 
+                                 
+
+                                  
+                                },
+                        error: function (jqXHR)
+                                { if(jqXHR.status==401){
+                                        alert("Wrong API Key");
+                                    }else if(jqXHR.status==404){
+                                        alert("NOT FOUND: Please write another country");
+                                    }
+                                }
+                        
+                        
+                    });
+
+
+        }
+
+
+
+
+        function anteriorCountry(value){
+
+            //var limit=$('#limit').val();
+            
+
+            var limite=parseInt( $("#limit").val() );
+            contador-=limite;
+            contador2=contador1;
+            contador1=limite;
+            if(contador1!=contador2){
+                contador=0;
             }
+
+           
+
+            var from=$('#from').val();
+            var to=$('#to').val();
+            console.log(contador);
+            method="GET";
+            //var row = $('#dg').datagrid('getSelected');
+            var country=$('#buscador').val();
+            console.log(country);
+          
+           //var country=value;
+            // if(country==="undefined"){
+            //   console.log("problemas");
+
+            // }
           
             
              
@@ -269,16 +334,11 @@ function paginacion(value){
 
                                   $('#dg').datagrid('loadData', {"total":data.length,"rows":data});
                                   $('#next').linkbutton('enable');
-                                 if(limite>data.length){
-                                   $('#next').linkbutton('disable');
+                                 if(contador<=0){
+                                   $('#previus').linkbutton('disable');
                                     console.log("entra");
-                                 }else{
-                                  
-
-                                 
                                     contador+=limite;
-                                    
-                                 } 
+                                 }
                                  
 
                                   

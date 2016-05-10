@@ -15,7 +15,7 @@ $(document).ready(() =>{
 
   request.done(function(data,status) {
     google.charts.setOnLoadCallback(drawMap);
-    console.log("dentro del done ..data.."+data);
+    
 
 
   
@@ -24,12 +24,12 @@ $(document).ready(() =>{
     function drawMap() {
     
 
-      var data_resource = [ ['country', 'sales']];
+      var data_resource = [ ['country', 'year']];
       console.log("dentro de la fuinciona pinta mapa"+data_resource);
       for(i=0;i<data.length;i++){
           //resource=data[i];
           
-            var resource_for_widjet=[data[i].country,data[i].sales];
+            var resource_for_widjet=[data[i].country,data[i].year];
             data_resource.push(resource_for_widjet);
             console.log("dentro del done ..resource_for_widjet.."+resource_for_widjet);
       }
