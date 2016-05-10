@@ -1,0 +1,9 @@
+hr{
+	border : 1px solid #008080;
+}
+
+#button{
+	background-color: #008080;
+	cursor : pointer;
+	padding: 7px;
+}

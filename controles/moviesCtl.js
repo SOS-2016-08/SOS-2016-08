@@ -1,11 +1,15 @@
 var situation=[ {country:"spain"   ,year:"2010",sales:"160,54",  digital:"48%",  nodigital:"55%" },
-{"country":"italy"   ,"year":"2010","sales":"101,66",  "digital":"39%",  "nodigital":"36%" },
-{"country":"france"  ,"year":"2012","sales":"79,44",  "digital":"45%",  "nodigital":"49%" },
+{"country":"italy"    ,"year":"2010","sales":"101,66",  "digital":"39%",  "nodigital":"36%" },
+{"country":"france"   ,"year":"2012","sales":"79,44",  "digital":"45%",  "nodigital":"49%" },
 {"country":"rumania"  ,"year":"2012","sales":"130,36",  "digital":"36%",  "nodigital":"67%" },
-{"country":"noruega"   ,"year":"2013","sales":"155,66",  "digital":"57%",  "nodigital":"76%" },
-{"country":"eeuu"  ,"year":"2012","sales":"79,44",  "digital":"45%",  "nodigital":"49%" },
-{"country":"indonesia"  ,"year":"2012","sales":"130,36",  "digital":"36%",  "nodigital":"67%" },
-{"country":"spain"   ,"year":"2008","sales":"155,66",  "digital":"57%",  "nodigital":"76%" }
+{"country":"noruega"  ,"year":"2013","sales":"155,66",  "digital":"57%",  "nodigital":"76%" },
+{"country":"eeuu"     ,"year":"2012","sales":"79,44",  "digital":"45%",  "nodigital":"49%" },
+{"country":"indonesia","year":"2012","sales":"130,36",  "digital":"36%",  "nodigital":"67%" },
+{"country":"spain"   ,"year":"2008","sales":"155,66",  "digital":"57%",  "nodigital":"76%" },
+{"country":"spain"   ,"year":"2009","sales":"155,66",  "digital":"57%",  "nodigital":"76%" },
+{"country":"spain"   ,"year":"2011","sales":"155,66",  "digital":"57%",  "nodigital":"76%" },
+{"country":"spain"   ,"year":"2012","sales":"155,66",  "digital":"57%",  "nodigital":"76%" },
+{"country":"spain"   ,"year":"2013","sales":"155,66",  "digital":"57%",  "nodigital":"76%" }
 ];
 var fs= require("fs");
 
@@ -74,7 +78,8 @@ if(resultado[i].year < from  ||  resultado[i].year > to)
 {
   resultado.splice(i,1);
   i = i - 1;
-}}}
+}}
+}
 
 
 
@@ -108,22 +113,56 @@ module.exports.getMovie2=function(req,res){ //get name or get year
      var year = req.params.year;
      var apikey=req.query.apikey;
      var bool=true;
+      from = req.query.from;
+      to = req.query.to;
+      limit = req.query.limit;
+      offset = req.query.offset;
    
-     result=[];
+     resultado=[];
      if(apikey==pass){
       for (i=0;i<situation.length;i++){
         if(situation[i].country==name || situation[i].year==name){
           console.log("new get 222 "+name+year);
-          result.push(situation[i]);
+          resultado.push(situation[i]);
           bool=false;
 
         }
+         
 
-      }if(bool){
+      }
+     
+
+
+      if(bool){
         res.sendStatus(404);
 
       }
-      res.send(result);
+     
+
+      
+
+      if (from && to|| limit && offset)
+        {
+          resultado.splice(0,offset);
+          resultado.splice(limit,resultado.length-limit);
+        for(var i=0;i<resultado.length;i++)
+        {
+        if(resultado[i].year < from  ||  resultado[i].year > to)
+        {
+          resultado.splice(i,1);
+          i = i - 1;
+        }
+      }
+       
+
+    }
+
+
+
+        
+        
+
+
 
      }else{
 
@@ -131,6 +170,8 @@ module.exports.getMovie2=function(req,res){ //get name or get year
 
 
      }
+    res.send(resultado); 
+    
   };
 
 
@@ -139,8 +180,10 @@ module.exports.getMovie2=function(req,res){ //get name or get year
 module.exports.getMovie3=function(req,res){ //get country/year
      var name = req.params.country;
      var ye=req.params.year;
-     var limit = req.params.limit;
-     var offset = req.params.offset;
+     from = req.query.from;
+      to = req.query.to;
+      limit = req.query.limit;
+      offset = req.query.offset;
      var apikey =req.query.apikey;
       bool=false;
      if(apikey==pass){
@@ -182,13 +225,13 @@ module.exports.getMovie3=function(req,res){ //get country/year
 
 
 
-
 module.exports.postMovie=function(req,res){
 
   var apikey = req.query.apikey;
   var country = req.params.country;
   var year = req.params.year;
   var datos= req.body;
+  console.log("los dato de postMovie",datos);
   if(apikey == pass){
     for (var i=0; i< situation.length; i++){
       if(  situation[i].country== datos.country && situation[i].year == datos.year){
@@ -200,6 +243,7 @@ module.exports.postMovie=function(req,res){
       res.sendStatus(400);
     }else{
       situation.push(datos);
+      res.send(situation);
       res.sendStatus(201);
     }
   }else{
@@ -207,7 +251,7 @@ module.exports.postMovie=function(req,res){
   
     
   }
-        
+
 };
 
 module.exports.postMovie2=function(req,res){
@@ -258,39 +302,45 @@ module.exports.putMovie2=function (req,res){
   var find = true;
   var good = true;
   var key = req.query.apikey;
+  console.log("New putMovie2", assist);
   if(key==123){
     if(assist.country==""||assist.year==""||assist.sales==""||assist.digital==""||assist.nodigital==""){
       res.sendStatus(400);
-      //console.console.log(("Put Bad request"));
+      console.console.log(("1.Put Bad request"));
       good = false;
     }
     for(i=0;i<situation.length;i++){
       if(assist.country!=country||assist.year!=year){
         res.sendStatus(400);
-        //console.log("Put Bad Request");
+        console.log("2.Put Bad Request");
         break;
       }
       if(situation[i].country == country && situation[i].year == year && good){
         situation[i].country = assist.country;
       
-        situation[i].year = assist.year;
-        situation[i].sales = assist.sales;
-        situation[i].digital = assist.digital;
-        situation[i].nodigital = assist.nodigital;
+        situation[i].year = req.body.year;
+        situation[i].sales = req.body.sales;
+        situation[i].digital =req.body.digital;
+        situation[i].nodigital = req.body.nodigital;
         res.sendStatus(201);
-        //console.log("New PUT of resource " + team +" "+year);
-        res.send(situation[i]);
+        
+        
+        console.log("3.New PUT of resource " + country +" "+year);
+        
         find=false;
         break;
       }
+
     }
     if(find){
-      //console.log("PUT of " + team +" "+year+ " not found");
+      console.log("4.PUT of " + country +" "+year+ " not found");
       res.sendStatus(404);
     }
+    //res.send(situation);
+    res.send(situation[i]);
   }else{
     res.sendStatus(401);
-    //console.log("Invalid Key");
+    console.log("5.Invalid Key");
   }
     
 };
@@ -305,6 +355,7 @@ module.exports.deleteMovie=function(req,res){
   if(apikey==pass){
     if(mov!=-1){
       situation.splice(mov,1);
+      res.send(situation);
       res.sendStatus(200);
     }else{
       res.sendStatus(404);
