@@ -16,8 +16,6 @@ app.use('/',express.static(__dirname + '/public'));
 
 //-----------API MUSIC-------------------------
 
-
-
 app.get("/api/v1/music/loadInitialData",musicCtl.getLoad);//funciona
 
 app.get("/api/v1/music",musicCtl.getMusic);//funociona
