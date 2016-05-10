@@ -377,52 +377,83 @@ $("#add").click(() => {
     });
   });
 
-/*$("#previous").click(() => {
-  console.log("Data updated");
-  dir=diretion_put();
-  var request=$.ajax({
-    url: dir,
-    type: "PUT",
-    data:"{" + ' "country": ' + '"' + $("#payload1").val() + '"'  
-             + "," +'"year": ' + '"' + $("#payload2").val() + '"' 
-             + "," + ' "percentage": ' + '"' + $("#payload3").val()+'"'
-             + "," + ' "type": ' + '"' + $("#payload4").val() + '"' + "}",
-    contentType: "application/json"
-  });
+var contador=parseInt(0);
+var o=parseInt(0);
+
+$("#previous").click(() => {
+  
+  dir=diretion_bus();
+    var request = $.ajax({
+
+      url:"/api/v1/music/?apikey=123",
+      type: "GET",
+      data:"{"+ ' "country": ' + '"' + $("#payload1").val() + '"'  
+              + "," +'"year": ' + '"' + $("#payload2").val() + '"' 
+              + "," + ' "percentage": ' + '"' + $("#payload3").val()+'"'+ "," 
+              + ' "type": ' + '"' + $("#payload4").val() + '"' + "}",
+      contentType: "application/json; charset=utf-8"
+
+    });
 
   var request2=$.ajax({
-    url: "/api/v1/musci/?apikey=123",
+    url: "/api/v1/music/?apikey=123",
     type: "GET",
     contentType: "application/json"
   });
 
 
   request.done(function(data,status,jqXHR) {
-    console.log("Handling request (OK)");
-    console.log("Data received:");
+    
     $("#status").html(jqXHR.status);
     $("#log").html(status);
     $("#msg").html("Everything is correct.");
+    var todo_rec=data;
+
   });
 
-  request.done(function(data,status,jqXHR) {
-    var total_rec=data.length;
-    var offset = $("#offset").val();
-    var limit= $("#limit").val;
-    var pag=total_rec/offset;
-    
-    $("#country").find("tr:gt(0)").remove();    //delete all rows
-    for (i=0;i<data.length;i++){
-      var row = $('<tr/>');
-      $("#country").append(row);
-      $('<td></td>').text(data[i].country).appendTo(row);
-      $('<td></td>').text(data[i].year).appendTo(row);
-      $('<td></td>').text(data[i].percentage).appendTo(row);
-      $('<td></td>').text(data[i].type).appendTo(row);
+  request.done(function(data,status,jqXHR){
+    var l=parseInt($("#limit").val());     
+    if (contador ==0){
+      
+
+      if($("#offset").val()=="" || $("#limit").val()==""){
+        $("#log").html("WARNING");
+        $("#msg").html("Fill in the fields of offset and limit");
+      }else if($("#offset").val()>=0 || $("#limit").val()>=0) {
+         $("#country").find("tr:gt(0)").remove();
+        console.log("entra en else, valor de limit"+l);
+        for(var i=parseInt($("#offset").val());i<l;i++){      
+
+            var row = $('<tr/>');
+            $("#country").append(row);
+            $('<td></td>').text(data[i].country).appendTo(row);
+            $('<td></td>').text(data[i].year).appendTo(row);
+            $('<td></td>').text(data[i].percentage).appendTo(row);
+            $('<td></td>').text(data[i].type).appendTo(row);
+        }
+        
+        contador++;
+        console.log("valor de contador tendria que ser 1"+contador);
+        o=parseInt($("#offset").val())+l;
+        console.log("imprime o dentro del if " +o);
+      }
+    }else if (contador<0){
+      console.log(" EEEEELLLLLSSSSEEEEE");
+      for(var i=o;i<l;i++){      
+
+        var row = $('<tr/>');
+            $("#country").append(row);
+            $('<td></td>').text(data[i].country).appendTo(row);
+            $('<td></td>').text(data[i].year).appendTo(row);
+            $('<td></td>').text(data[i].percentage).appendTo(row);
+            $('<td></td>').text(data[i].type).appendTo(row);
+      }
+        
+      contador++;
+      console.log("valor de contador tendria que ser 1"+contador);
+      o=o+l;
+      console.log("imprime o dentro del if " +o);
     }
-    $("#status").html(jqXHR.status);
-    $("#log").html(status);
-    $("#msg").html("The resource has been modificated.");
   });
 
   request.always(function (jqXHR,status){
@@ -448,7 +479,10 @@ $("#add").click(() => {
 
   });
 });
-*/
+});
 
-});// final del todo
+
+
+
+// final del todo
     
