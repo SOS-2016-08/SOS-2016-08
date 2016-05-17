@@ -11,9 +11,12 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.0",
+    "cors": "^2.7.1",
     "express": "^4.13.4",
+    "governify": "0.0.10",
     "parse": "^1.7.1",
-    "query": "^0.2.0"
+    "query": "^0.2.0",
+    "request": "^2.72.0"
   },
   "repository": {
     "type": "git",

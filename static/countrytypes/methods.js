@@ -1,3 +1,6 @@
+
+var o =0;
+var c =0;
 $(document).ready(() => {
   console.log("Jquery ready!");
   var dir;
@@ -95,6 +98,83 @@ $(document).ready(() => {
   return dir;
 }; // fin funtion dirertion_post
 
+
+$("#ini").click(() => {
+    dir=diretion_bus();
+    var request = $.ajax({
+
+      url:dir,
+      type: "GET",
+      data:"{"+ ' "country": ' + '"' + $("#payload1").val() + '"'  
+              + "," +'"year": ' + '"' + $("#payload2").val() + '"' 
+              + "," + ' "percentage": ' + '"' + $("#payload3").val()+'"'+ "," 
+              + ' "type": ' + '"' + $("#payload4").val() + '"' + "}",
+      contentType: "application/json; charset=utf-8"
+
+    });
+    var request2=$.ajax({
+      url: "/api/v1/music/loadInitialdata?apikey=123",
+      type: "GET",
+      contentType: "application/json"
+    });
+
+    request2.done(function(data,status,jqXHR) {
+      console.log("Handling request (OK)");
+      console.log("Data received:");
+
+      $("#country").find("tr:gt(0)").remove();    //delete all rows
+      for (i=0;i<data.length;i++){
+        var row = $('<tr/>');
+        $("#country").append(row);
+        $('<td></td>').text(data[i].country).appendTo(row);
+        $('<td></td>').text(data[i].year).appendTo(row);
+        $('<td></td>').text(data[i].percentage).appendTo(row);
+        $('<td></td>').text(data[i].type).appendTo(row);
+      }
+      
+      
+      $("#status").html(jqXHR.status);
+      $("#log").html(status);
+      //$("#msg").html("Everything is correct.");
+
+      
+
+    });
+
+    request.always(function (jqXHR,status){
+        if(status=="error"){
+          console.log("Status: "+jqXHR.status);
+          if($("#apikey").val()==0){
+            console.log("ENTRA EN APIKEY");
+            $("#status").html(jqXHR.status);
+            $("#log").html(status);
+            $("#msg").html("Introduce the password. (apikey)");
+            
+            
+        }else if($("#apikey").val()!="123" && $("apikey").val()!=0){
+
+          $("#status").html(jqXHR.status);
+          $("#log").html(status);
+          $("#msg").html("The password is incorrect, try again");
+          
+          
+        }
+        
+      }else{
+      $("#status").html(jqXHR.status);
+      $("#log").html(status);
+      $("#msg").html("Everything is correct.");
+      }
+
+    });
+});
+
+
+      
+
+
+
+
 $("#search").click(() => {
     dir=diretion_bus();
     var request = $.ajax({
@@ -108,8 +188,13 @@ $("#search").click(() => {
       contentType: "application/json; charset=utf-8"
 
     });
+    var request2=$.ajax({
+      url: "/api/v1/music/?apikey=123",
+      type: "GET",
+      contentType: "application/json"
+    });
 
-    request.done(function(data,status,jqXHR) {
+    request2.done(function(data,status,jqXHR) {
       console.log("Handling request (OK)");
       console.log("Data received:");
 
@@ -160,6 +245,10 @@ $("#search").click(() => {
     });
 }); // fin de ver
 
+
+
+
+
 $("#edit").click(() => {
   console.log("Data updated");
   dir=diretion_put();
@@ -174,7 +263,7 @@ $("#edit").click(() => {
   });
 
   var request2=$.ajax({
-    url: "/api/v1/musci/?apikey=123",
+    url: "/api/v1/music/?apikey=123",
     type: "GET",
     contentType: "application/json"
   });
@@ -377,15 +466,15 @@ $("#add").click(() => {
     });
   });
 
-var contador=parseInt(0);
-var o=parseInt(0);
 
-$("#previous").click(() => {
+
+
+/*$("#previous").click(() => {
   
   dir=diretion_bus();
     var request = $.ajax({
 
-      url:"/api/v1/music/?apikey=123",
+      url:dir,
       type: "GET",
       data:"{"+ ' "country": ' + '"' + $("#payload1").val() + '"'  
               + "," +'"year": ' + '"' + $("#payload2").val() + '"' 
@@ -407,53 +496,37 @@ $("#previous").click(() => {
     $("#status").html(jqXHR.status);
     $("#log").html(status);
     $("#msg").html("Everything is correct.");
-    var todo_rec=data;
-
+   
   });
 
   request.done(function(data,status,jqXHR){
-    var l=parseInt($("#limit").val());     
-    if (contador ==0){
-      
-
-      if($("#offset").val()=="" || $("#limit").val()==""){
+    var l=parseInt($("#limit").val());
+    console.log(" valor de c  "+c);
+    c=c+l;
+    if( $("#limit").val()==""){
         $("#log").html("WARNING");
         $("#msg").html("Fill in the fields of offset and limit");
-      }else if($("#offset").val()>=0 || $("#limit").val()>=0) {
-         $("#country").find("tr:gt(0)").remove();
-        console.log("entra en else, valor de limit"+l);
-        for(var i=parseInt($("#offset").val());i<l;i++){      
-
-            var row = $('<tr/>');
-            $("#country").append(row);
-            $('<td></td>').text(data[i].country).appendTo(row);
-            $('<td></td>').text(data[i].year).appendTo(row);
-            $('<td></td>').text(data[i].percentage).appendTo(row);
-            $('<td></td>').text(data[i].type).appendTo(row);
-        }
-        
-        contador++;
-        console.log("valor de contador tendria que ser 1"+contador);
-        o=parseInt($("#offset").val())+l;
-        console.log("imprime o dentro del if " +o);
-      }
-    }else if (contador<0){
-      console.log(" EEEEELLLLLSSSSEEEEE");
-      for(var i=o;i<l;i++){      
+    }else if( $("#limit").val()>=0) {
+      $("#country").find("tr:gt(0)").remove();
+      console.log("entra en else, valor de c"+c);
+      console.log("entra en else, valor de o"+o);
+      for(var i=o;i<c;i++){      
 
         var row = $('<tr/>');
-            $("#country").append(row);
-            $('<td></td>').text(data[i].country).appendTo(row);
-            $('<td></td>').text(data[i].year).appendTo(row);
-            $('<td></td>').text(data[i].percentage).appendTo(row);
-            $('<td></td>').text(data[i].type).appendTo(row);
+        $("#country").append(row);
+        $('<td></td>').text(data[i].country).appendTo(row);
+        $('<td></td>').text(data[i].year).appendTo(row);
+        $('<td></td>').text(data[i].percentage).appendTo(row);
+        $('<td></td>').text(data[i].type).appendTo(row);
       }
         
-      contador++;
-      console.log("valor de contador tendria que ser 1"+contador);
+
+
       o=o+l;
+        
       console.log("imprime o dentro del if " +o);
-    }
+      }
+   
   });
 
   request.always(function (jqXHR,status){
@@ -478,11 +551,73 @@ $("#previous").click(() => {
     }
 
   });
-});
-});
+});*/
+
+
+
+/*$('#previous').click(function(){
+
+          var apikey = $("#apikey").val();
+
+          var items = $("#limit").val();
+
+          var page = $("#page").val();
+
+          if (!items)
+            items = 9999;
+          if (!page)
+            page = 1;
+
+          var offset = items*(page-1);
+          dir=diretion_bus();
+          var request = $.ajax({
+
+              url: dir,
+              type: "GET",
+              contentType: "application/json",
+  
+          });
+
+          request.done(function(data,status,jqXHR) {
+            // Tratamiento en caso de exito
+          var trHTML = '';
+
+                  $("country").find("tr:gt(0)").remove();
+
+                  id = 1;
+
+              $.each(data, function (i) {
+            
+                trHTML += '<tr id="'+id+'"><td>' + id +'</td><td>'+ data[i].country + '</td><td>' + data[i].year + '</td><td>' + data[i].percentage + '</td><td>'
+                  + data[i].type + '</td></tr>';
+               id++;
+               });
+        
+               $('#country').append(trHTML);
+           $("#log").html("done");
+
+          });
+
+          request.always(function(jqXHR, status) {
+            // Tratamiento en cualquier caso
+           if(status == "error") {
+            console.log(jqXHR.status);
+            if (jqXHR.status == 401) {
+              $("#log").html("The apikey you entered is not valid");
+              alert('Apikey not valid');
+            }else{
+              $("#log").html("error");
+            }
+          } 
+
+          });
+        });
+
+*/
+});// final del todo
 
 
 
 
-// final del todo
+
     

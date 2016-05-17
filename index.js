@@ -1,16 +1,55 @@
 var express = require("express");
+var request=require("request");
 var bodyParser= require("body-parser");
 var fs= require("fs");
+var cors=require("cors");
+var governify=require("governify");
 
 var app= express();
-var port = (process.env.PORT || 12345);
+var pathBlanca = '/api/v1/gold-medals';
+var apiServerHostBlanca = 'http://sos-2016-05.herokuapp.com';
 
+app.use(pathBlanca, function(req,res){
+  var url = apiServerHostBlanca + req.baseUrl + req.url;
+  console.log("Piped: "+ req.baseUrl + req.url);
+  console.log("URL Accesed: "+ url);
+
+  req.pipe(request(url,function (error,response,body){
+    if(error){
+      console.error(error);
+      res.sendStatus(503);
+    }
+  })).pipe(res);
+});
+
+governify.control(app,{
+  datastore:"http://datastore.governify.io/api/v6.1/",
+  namespace: "sos-2016-08-bhl",
+  defaultPath:"/api/prueba"
+});
+var port = (process.env.PORT || 12345);
 app.use("/",express.static(__dirname+"/static"));
 app.use(bodyParser.json());
 
+app.get("/api/prueba", (req,res)=>{
+	res.send([
+		{name:"blanca"},
+		{name :"candela"}
+		]);
+
+});
+
+
+app.use(cors());
 var musicCtl = require('./controles/musicCTL.js');
 var moviesCtl= require('./controles/moviesCtl.js');
 app.use('/',express.static(__dirname + '/public'));
+
+
+
+
+
+
 
 
 
@@ -35,6 +74,15 @@ app.put("/api/v1/music/:country/:year", musicCtl.putMusicCountryandYear);// func
 
 app.delete("/api/v1/music", musicCtl.deleteMusic );//funciona
 app.delete("/api/v1/music/:country/:year", musicCtl.deleteMusicRecurso);//funciona
+
+
+
+
+
+//////////////prxy blanca////////////
+
+
+
 
 ////////////////////////////CANDELA//////////////////////////////////////
 
