@@ -23,9 +23,11 @@ module.exports.getLoad=function(req,res){
     musical= JSON.parse(file);
     //res.send(musical);
     res.sendStatus(201);
+    
   }else{
     
     res.sendStatus(401);
+    
   }
 	
 };
@@ -56,15 +58,18 @@ module.exports.getMusic=function(req,res){
     if(limit && offset){
       resultado.splice(0,offset);
       resultado.splice(limit,resultado.length-limit);
+      
     }
-  res.send(resultado);
-  res.sendStatus(200);
-  }
+      res.send(resultado);
+      res.sendStatus(200);
+      
+  
 
-else
-{
-  res.sendStatus(401);
-}
+  }else{
+  
+    res.sendStatus(401);
+    return 0;
+  }
 
 
 };
@@ -91,6 +96,7 @@ module.exports.getMusicCountryandYear=function(req,res){ //get country/year
     }
     if(bool){
       res.sendStatus(404);
+      return 0;
 
     }
     res.send(result);
@@ -100,6 +106,7 @@ module.exports.getMusicCountryandYear=function(req,res){ //get country/year
 
   }else{
     res.sendStatus(401);
+    return 0;
 
   }
 
@@ -151,12 +158,14 @@ module.exports.getMusicCountryorYear=function(req,res){ //get name or get year
     res.send(result);
     if(bool){
       res.sendStatus(404);
+      return 0;
 
 
     }
 
   }else{
     res.sendStatus(401);
+    return 0;
   }
 
     
@@ -176,18 +185,26 @@ module.exports.postMusic=function(req,res){
 	if(apikey == pass){
     for (var i=0; i< musical.length; i++){
       if(  musical[i].country== datos.country && musical[i].year == datos.year){
+        console.log(" POST : resource conflict");
         res.sendStatus(409);
+        return 0;
 
       }
     }
     if (datos.country == "" || datos.year==""|| datos.percentage==""|| datos.type==""){
+      console.log(" POST : resource Invalid");
       res.sendStatus(400);
+      return 0;
     }else{
+      console.log(" POST : adding resource ");
       musical.push(datos);
       res.sendStatus(201);
     }
   }else{
+    console.log(" POST : forbbiden ");
     res.sendStatus(401);
+    return 0;
+    console.log()
   
 		
 	}	
@@ -200,6 +217,7 @@ module.exports.postMusic2=function(req,res){
 	if(apikey==pass){
 		console.log("WARNING post");
 		res.sendStatus(405);
+
 
   }else{
   	res.sendStatus(401);

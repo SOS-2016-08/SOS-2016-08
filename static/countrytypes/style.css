@@ -1,4 +1,9 @@
 hr{
-	border: 1px solid blue;
+	border : 1px solid green;
 }
 
+#button{
+	background-color: #DDD;
+	cursor : pointer;
+	padding: 7px;
+}

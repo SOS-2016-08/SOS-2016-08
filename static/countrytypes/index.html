@@ -1,62 +1,206 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title id="Description">Table of Country music </title>
-    <link rel="stylesheet" href="jqwidgets-ver4.1.1/jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script src = "https://code.jquery.com/jquery-1.12.3.min.js"></script>
-    
-    <script type="text/javascript" src="jqwidgets-ver4.1.1/jqwidgets/jqxcore.js"></script>
-    <script type="text/javascript" src="jqwidgets-ver4.1.1/jqwidgets/jqxdata.js"></script> 
-    <script type="text/javascript" src="jqwidgets-ver4.1.1/jqwidgets/jqxbuttons.js"></script>
-    <script type="text/javascript" src="jqwidgets-ver4.1.1/jqwidgets/jqxscrollbar.js"></script>
-    <script type="text/javascript" src="jqwidgets-ver4.1.1/jqwidgets/jqxdatatable.js"></script> 
-    <script type="text/javascript" src="jqwidgets-ver4.1.1/scripts/demos.js"></script>
-    <script type="text/javascript" >
-        $(document).ready(function () {
-            // prepare the data
-            var source =
-            {
-                dataType: "json",
-                dataFields: [
-                    { name: 'country', type: 'string' },
-                    { name: 'year', type: 'number' },
-                    { name: 'percentage', type: 'float' },
-                    { name: 'type', type: 'string' }
-                ],
-                url: "/api/v1/music?apikey=123"
-                     
-            };
-            var dataAdapter = new $.jqx.dataAdapter(source, 
-                {
-                    formatData: function (data) {
-                        $.extend(data, {
-                            featureClass: "P",
-                            style: "full",
+<html>
+	<head>
+
+		<link rel="stylesheet" type="text/css" href="style.css"/>
+		<script src = "https://code.jquery.com/jquery-1.12.2.min.js"></script> 
+		
+		<script type="text/javascript" src="methods.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+  	    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  	    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+  	
+
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css" />
+ 	</head>
+
+    <body class="row light-green lighten-5">
+
+        <div class="row ">
+
+            <div class="col s12"> 
+
+                <div class="card-panel "><h5 class="center-align">RestClient of Country types</h5></div>
+
+                <div class="col s6 offset-s6"><span class="flow-text">
+                    <label for="url" class="black-text" value="/api/v1/music"></label>
+                    
+                    <button title="Search resource" id="ini" class="btn btn-primary blue lighten-4 black-text">Load Data</button>
+                    
+                    <button title="Search resource" id="search" class="btn btn-primary blue lighten-4 black-text"><i class="material-icons">search</i></button>
+
+                    <button title="Delete all items" id="delete" class="btn btn-primary blue lighten-4 black-text"><i class="material-icons">delete</i></button>
+
+
+                    <button title="Edit resource" id="edit" class="btn btn-primary blue lighten-4 black-text"><i class="material-icons">mode_edit</i></button>
+
+                    <button title="Add resource" id="add" class="btn btn-primary blue lighten-4 black-text"><i class="material-icons">add</i></button>
+
+                    <button title="Click to go to the back page" id="back" class="btn btn-primary blue lighten-4 black-text"><i class="material-icons">skip_previous</i></button>
+
+                    <button title="Click to go to the previous page" id="previous" class="btn btn-primary blue lighten-4 black-text"><i class="material-icons">skip_next</i></button>
+
+            </div>
+
+            <div class="col s4  " > 
+
+                <table id="country" border='1' class="centered" rules="all">
+                    <tr>
+                        <th class=" black-text center-align">Country</th>
+                        <th class=" black-text center-align">Year</th>
+                        <th class=" black-text center-align">Percentage</th>
+                        <th class=" black-text center-align">Type</th>
+                    </tr>
+                </table>
+
+                
+
+            </div>
+
+            <div class="col s8">
+
+                <ul class="collapsible" data-collapsible="expandable" >
+                    <li>
+                        <div class="collapsible-header center">Enter a password.</div>
+                        <div class="collapsible-body center">
+                            <p>
+                                <label for="apikey" class="black-text">Apikey</label>          
+                                <input id="apikey" type="text" class="validate "  value="123">
+                            </p>
+                    </li>
+                   <li>
+                        <div class="collapsible-header center">Search or Delete a specific element.</div>
+                        <div class="collapsible-body center">
+                            <p>
+                                <div class="row">
+
+                                    <div class="col s4 ">
+                                        <label for="payload1" class="black-text">Country</label>
+                                        <input id="payload1" type="text"   value="">
+                                    </div>
+                                    <div class="col s5  ">
+                                        <label for="payload2" class="black-text">Year</label>
+                                        <input id="payload2" type="text"   value="">
+                                  
+                                    </div>
+
+                                    
+
+                                </div>
                             
-                            maxRows:10
-                        });
-                        return data;
-                    }
-                }
-            );
-            $("#dataTable").jqxDataTable(
-            {
-                width: 850,
-                pageable: true,
-                pagerButtonsCount: 10,
-                source: dataAdapter,
-                columnsResize: true,
-                columns: [
-                    { text: 'Country ', dataField: 'country', width: 200 },
-                    { text: 'Year', dataField: 'year', width: 250 },
-                    { text: 'Percentage', dataField: 'percentage', cellsFormat: 'f', width: 250 },
-                    { text: 'Type', dataField: 'type' }
-                ]
-            });
-        });
-    </script>
-</head>
-<body class='default'>
-    <div id="dataTable"></div>
-</body>
-</html>
+                            </p></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header center">Add or edit a particular item</div>
+                        <div class="collapsible-body">
+                            <p>
+                                <div class="row">
+                                    <div class="col s5 ">
+                                        
+                                        
+
+                                        <label for="payload3" class="black-text">Percentage</label>
+                                        <input id="payload3" type="text"  value="">
+                                        
+                                        
+                
+                                    </div>
+                                    <div class="col s4 ">
+                                        
+                                        <label for="payload4" class="black-text">Type</label>
+                                        <input id="payload4" type="text"  value="">
+                                        
+                                        
+
+                                        
+                                    </div>
+
+                                    
+
+                                    
+
+                                    
+
+
+                                </div>
+
+                                
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header center">Search for items by the range of years .</div>
+                        <div class="collapsible-body">
+                            <p>
+                                <div class="row">
+                                    <div class="col s4 "><span class="flow-text">
+                                        <label for="from" class="black-text">From year</label>
+                                        <input  id="from" type="text" class="validate"  value=" ">
+                                        </span>
+                                  
+                                    </div>
+                                    
+                                    <div class="col s5 "><span class="flow-text">
+                                        <label for="to" class="black-text">To year</label>
+                                        <input  id="to" type="text" class="validate"  value="">
+                                        </span>
+                                       
+                                    </div>
+
+                                    
+                                </div>
+
+                                
+                            </p>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="collapsible-header center">Pagination</div>
+                        <div class="collapsible-body">
+                            <p>
+                                <div class="row">
+                                    <div class="col s4 "><span class="flow-text">
+                                        <label for="limit" class="black-text">Number of items</label>
+                                        <input  id="limit" type="text" class="validate"  value=" ">
+                                        </span>
+                                  
+                                    </div>
+                                    
+                                    <div class="col s5 "><span class="flow-text">
+                                        <label for="page" class="black-text">page</label>
+                                        <input  id="page" type="text" class="validate"  value="">
+                                        </span>
+                                       
+                                    </div>
+
+                                    
+                                </div>
+
+                                
+                            </p>
+                        </div>
+                    </li>
+
+                </ul>
+
+            </div>
+            
+
+
+            
+        </div>
+        <span id="log"  class="btn btn-primary blue lighten-4 black-text"> All right? </span>
+        <span id="msg" class="btn btn-primary blue lighten-4 black-text"></span></span></div>
+        
+
+
+
+
+
+    </body>
+
+
+	
