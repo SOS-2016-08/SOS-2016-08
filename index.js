@@ -1,16 +1,50 @@
 var express = require("express");
+var request = require('request');
 var bodyParser= require("body-parser");
 var fs= require("fs");
+var cors = require('cors');
 
 var app= express();
+
+//proxy candela
+
+//donde voy a tener mi proxy, debe llamarse igual que la api que vamos a 
+//repliar
+var pathsCandela='/api/v1/participants-number';
+//proxy hacia el exterior
+var apiServerHostCandela = 'http://sos-2016-05.herokuapp.com';
+ 
+app.use(pathsCandela, function(req, res) {
+  var url = apiServerHostCandela + req.baseUrl + req.url;
+  console.log('piped: '+req.baseUrl + req.url);
+  console.log('url: '+url);
+
+
+  //el req hace una tuberia hacia el objeto response
+  req.pipe(request(url,(error,response,body)=>{
+  	if(error){
+  		console.log(error);
+  		res.sendStatus(503);
+
+  	}
+
+  })).pipe(res);
+});
+
+
+
+
 var port = (process.env.PORT || 12345);
 
 app.use("/",express.static(__dirname+"/static"));
 app.use(bodyParser.json());
+app.use(cors());
 
 var musicCtl = require('./controles/musicCTL.js');
 var moviesCtl= require('./controles/moviesCtl.js');
 app.use('/',express.static(__dirname + '/public'));
+
+
 
 
 
