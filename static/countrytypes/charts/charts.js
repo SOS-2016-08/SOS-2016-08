@@ -31,10 +31,10 @@ $(document).ready(() => {
       });
 
 
-  var request=$.ajax({
+  var request2=$.ajax({
 
     type: "GET",
-        url: '/api/v1/social-situation?apikey=123',
+        url: '/api/v1/social_situation?apikey=123',
         data: "{}",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -63,6 +63,8 @@ $(document).ready(() => {
 
       
       };
+
+  
 
       var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
 

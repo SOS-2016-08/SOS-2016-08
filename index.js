@@ -1,11 +1,44 @@
 var express = require("express");
-var request=require("request");
+
+var request = require('request');
 var bodyParser= require("body-parser");
 var fs= require("fs");
-var cors=require("cors");
-var governify=require("governify");
-
+var cors = require('cors');
+var governify=require('governify');
 var app= express();
+
+//proxy candela
+
+//donde voy a tener mi proxy, debe llamarse igual que la api que vamos a 
+//repliar
+var pathsCandela='/api/v1/participants-number';
+//proxy hacia el exterior
+var apiServerHostCandela = 'http://sos-2016-05.herokuapp.com';
+ 
+app.use(pathsCandela, function(req, res) {
+  var url = apiServerHostCandela + req.baseUrl + req.url;
+  console.log('piped: '+req.baseUrl + req.url);
+  console.log('url: '+url);
+
+
+  //el req hace una tuberia hacia el objeto response
+  req.pipe(request(url,(error,response,body)=>{
+  	if(error){
+  		console.log(error);
+  		res.sendStatus(503);
+
+  	}
+
+  })).pipe(res);
+});
+
+
+
+
+
+
+
+
 var pathBlanca = '/api/v1/gold-medals';
 var apiServerHostBlanca = 'http://sos-2016-05.herokuapp.com';
 
@@ -21,12 +54,21 @@ app.use(pathBlanca, function(req,res){
     }
   })).pipe(res);
 });
+
 //multiPlan_C5_sos-2016-08-bhl_ag
+
+
+
 governify.control(app,{
   datastore:"http://datastore.governify.io/api/v6.1/",
   namespace: "sos-2016-08-bhl",
   defaultPath:"/api/prueba"
 });
+
+var port = (process.env.PORT || 12345);
+app.use("/",express.static(__dirname+"/static"));
+app.use(bodyParser.json());
+app.use(cors());
 
 
 app.get("/api/prueba", (req,res)=>{
@@ -54,9 +96,6 @@ app.use(cors());
 var musicCtl = require('./controles/musicCTL.js');
 var moviesCtl= require('./controles/moviesCtl.js');
 app.use('/',express.static(__dirname + '/public'));
-
-
-
 
 
 
