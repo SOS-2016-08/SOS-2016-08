@@ -1,19 +1,245 @@
 
-var o =0;
-var c =0;
+var contador=0;
+var s=0;
+var suma=0;
 $(document).ready(() => {
   console.log("Jquery ready!");
   var dir;
-  var urll="/api/v1/music/?apikey=";
 
-  
 
-  
+  function diretion_bus(){
+
+    if($("#payload1").val()==0 && $("#payload2").val()==0 && $("#payload3").val()==0 && $("#payload4").val()==0  ){
+
+      dir="/api/v1/music/?apikey="+$("#apikey").val()          
+          +"&offset="+$("#offset").val()
+          +"&limit="+$("#limit").val()
+          +"&from="+$("#from").val()
+          +"&to="+$("#to").val(); 
+
+
+    }else if($("#payload1").val()==0 && $("#payload2").val()==0 && $("#payload3").val()==0 && $("#payload4").val()!=0){
+
+      dir="/api/v1/music"
+          +"/"
+          +$("#payload4").val()
+          +"/?apikey="+$("#apikey").val()          
+          +"&offset="+$("#offset").val()
+          +"&limit="+$("#limit").val()
+          +"&from="+$("#from").val()
+          +"&to="+$("#to").val();
+
+    }else if($("#payload1").val()==0 && $("#payload2").val()==0 && $("#payload3").val()!=0 && $("#payload4").val()==0){
+
+      dir="/api/v1/music"
+          +"/"
+          +$("#payload3").val()
+          +"/?apikey="+$("#apikey").val()          
+          +"&offset="+$("#offset").val()
+          +"&limit="+$("#limit").val()
+          +"&from="+$("#from").val()
+          +"&to="+$("#to").val();
+
+
+    }else if($("#payload1").val()==0 && $("#payload2").val()==0 && $("#payload3").val()!=0 && $("#payload4").val()!=0){
+
+      dir="/api/v1/music"
+          +"/"
+          +$("#payload3").val()
+          +"/"
+          +$("#payload4").val()
+          +"/?apikey="+$("#apikey").val()          
+          +"&offset="+$("#offset").val()
+          +"&limit="+$("#limit").val()
+          +"&from="+$("#from").val()
+          +"&to="+$("#to").val();
+
+
+    }else if($("#payload1").val()==0 && $("#payload2").val()!=0 && $("#payload3").val()==0 && $("#payload4").val()==0){
+
+      dir="/api/v1/music"
+          +"/"
+          +$("#payload2").val()
+          +"/?apikey="+$("#apikey").val()          
+          +"&offset="+$("#offset").val()
+          +"&limit="+$("#limit").val()
+          +"&from="+$("#from").val()
+          +"&to="+$("#to").val();
+
+
+    }else if($("#payload1").val()==0 && $("#payload2").val()!=0 && $("#payload3").val()==0 && $("#payload4").val()!=0){
+
+      dir="/api/v1/music"
+          +"/"
+          +$("#payload2").val()
+          +"/"
+          +$("#payload4").val()
+          +"/?apikey="+$("#apikey").val()          
+          +"&offset="+$("#offset").val()
+          +"&limit="+$("#limit").val()
+          +"&from="+$("#from").val()
+          +"&to="+$("#to").val();
+
+
+    }else if($("#payload1").val()==0 && $("#payload2").val()!=0 && $("#payload3").val()!=0 && $("#payload4").val()==0){
+
+      dir="/api/v1/music"
+          +"/"
+          +$("#payload2").val()
+          +"/"
+          +$("#payload3").val()
+          +"/?apikey="+$("#apikey").val()          
+          +"&offset="+$("#offset").val()
+          +"&limit="+$("#limit").val()
+          +"&from="+$("#from").val()
+          +"&to="+$("#to").val();
+
+
+    }else if($("#payload1").val()==0 && $("#payload2").val()!=0 && $("#payload3").val()!=0 && $("#payload4").val()!=0){
+
+      dir="/api/v1/music"
+          +"/"
+          +$("#payload2").val()
+          +"/"
+          +$("#payload3").val()
+          +"/"
+          +$("#payload4").val()
+          +"/?apikey="+$("#apikey").val()          
+          +"&offset="+$("#offset").val()
+          +"&limit="+$("#limit").val()
+          +"&from="+$("#from").val()
+          +"&to="+$("#to").val();
+
+
+    }else if($("#payload1").val()!=0 && $("#payload2").val()==0 && $("#payload3").val()==0 && $("#payload4").val()==0){
+
+      dir="/api/v1/music"
+          +"/"
+          +$("#payload1").val()
+          +"/?apikey="+$("#apikey").val()          
+          +"&offset="+$("#offset").val()
+          +"&limit="+$("#limit").val()
+          +"&from="+$("#from").val()
+          +"&to="+$("#to").val();
+
+
+    }else if($("#payload1").val()!=0 && $("#payload2").val()==0 && $("#payload3").val()==0 && $("#payload4").val()!=0){
+
+      dir="/api/v1/music"
+          +"/"
+          +$("#payload1").val()
+          +"/"
+          +$("#payload4").val()
+          +"/?apikey="+$("#apikey").val()          
+          +"&offset="+$("#offset").val()
+          +"&limit="+$("#limit").val()
+          +"&from="+$("#from").val()
+          +"&to="+$("#to").val();
+
+
+    }else if($("#payload1").val()!=0 && $("#payload2").val()==0 && $("#payload3").val()!=0 && $("#payload4").val()==0){
+
+      dir="/api/v1/music"
+          +"/"
+          +$("#payload1").val()
+          +"/"
+          +$("#payload3").val()
+          +"/?apikey="+$("#apikey").val()          
+          +"&offset="+$("#offset").val()
+          +"&limit="+$("#limit").val()
+          +"&from="+$("#from").val()
+          +"&to="+$("#to").val();
+
+
+    }else if($("#payload1").val()!=0 && $("#payload2").val()==0 && $("#payload3").val()!=0 && $("#payload4").val()!=0){
+
+      dir="/api/v1/music"
+          +"/"
+          +$("#payload1").val()
+          +"/"
+          +$("#payload3").val()
+          +"/"
+          +$("#payload4").val()
+          +"/?apikey="+$("#apikey").val()          
+          +"&offset="+$("#offset").val()
+          +"&limit="+$("#limit").val()
+          +"&from="+$("#from").val()
+          +"&to="+$("#to").val();
+
+
+    }else if($("#payload1").val()!=0 && $("#payload2").val()!=0 && $("#payload3").val()==0 && $("#payload4").val()==0){
+
+      dir="/api/v1/music"
+          +"/"
+          +$("#payload1").val()
+          +"/"
+          +$("#payload2").val()
+          +"/?apikey="+$("#apikey").val()          
+          +"&offset="+$("#offset").val()
+          +"&limit="+$("#limit").val()
+          +"&from="+$("#from").val()
+          +"&to="+$("#to").val();
+
+
+    }else if($("#payload1").val()!=0 && $("#payload2").val()!=0 && $("#payload3").val()==0 && $("#payload4").val()!=0){
+
+      dir="/api/v1/music"
+          +"/"
+          +$("#payload1").val()
+          +"/"
+          +$("#payload2").val()
+          +"/"
+          +$("#payload4").val()
+          +"/?apikey="+$("#apikey").val()          
+          +"&offset="+$("#offset").val()
+          +"&limit="+$("#limit").val()
+          +"&from="+$("#from").val()
+          +"&to="+$("#to").val();
+
+
+    }else if($("#payload1").val()!=0 && $("#payload2").val()!=0 && $("#payload3").val()!=0 && $("#payload4").val()==0){
+
+      dir="/api/v1/music"
+          +"/"
+          +$("#payload1").val()
+          +"/"
+          +$("#payload2").val()
+          +"/"
+          +$("#payload3").val()
+          +"/?apikey="+$("#apikey").val()          
+          +"&offset="+$("#offset").val()
+          +"&limit="+$("#limit").val()
+          +"&from="+$("#from").val()
+          +"&to="+$("#to").val();
+
+    }else {
+
+      dir="/api/v1/music"
+          +"/"
+          +$("#payload1").val()
+          +"/"
+
+          +$("#payload2").val()
+          +"/"
+          +$("#payload3").val()
+          +"/"
+          +$("#payload4").val()
+          +"/?apikey="+$("#apikey").val()          
+          +"&offset="+$("#offset").val()
+          +"&limit="+$("#limit").val()
+          +"&from="+$("#from").val()
+          +"&to="+$("#to").val();
+
+    }
+
+    return dir;
+  };
+   
  
 
-  function diretion_bus(){    
+ /* function diretion_bus(){    
     if($("#payload1").val()==0 && $("#payload2").val()==0){ //todos los
-
+      console.log("ni country ni year");
       dir="/api/v1/music/?apikey="+$("#apikey").val()          
           +"&offset="+$("#offset").val()
           +"&limit="+$("#limit").val()
@@ -23,7 +249,7 @@ $(document).ready(() => {
 
 
     }else if($("#payload1").val()!=0 && $("#payload2").val()==0){ //con country sin year
-
+      console.log("country si year no");
       dir="/api/v1/music"
           +"/"
           +$("#payload1").val()
@@ -36,6 +262,7 @@ $(document).ready(() => {
 
 
     }else if($("#payload1").val()==0 && $("#payload2").val()!=0){ //sin country con year
+      console.log("country no year si");
       dir="/api/v1/music"
           +"/"+$("#payload2").val()
           +"/?apikey="+$("#apikey").val()          
@@ -44,6 +271,7 @@ $(document).ready(() => {
           +"&from="+$("#from").val()
           +"&to="+$("#to").val();
     }else{
+      console.log("el resto");
       dir="/api/v1/music"
           +"/"
           +$("#payload1").val()
@@ -56,13 +284,13 @@ $(document).ready(() => {
           +"&to="+$("#to").val();
     }
 
-    console.log("AÑO : "+$("#payload2").val());
+    
 
     return diretion_post();
   };//fin function diretion
+*/
 
-
-  function diretion_put(){
+  /*function diretion_put(){
 
     if($("#payload1").val()==0 || $("#payload2").val()==0){
       dir="/api/v1/music/?apikey="+$("#apikey").val();
@@ -77,8 +305,8 @@ $(document).ready(() => {
     }
     return dir;
   }; //fin function diretion_put 
-
-  function diretion_post(){
+*/
+  /*function diretion_post(){
     
     if($("#payload3").val()==0 && $("#payload4").val()!=0){
       dir=dir
@@ -97,51 +325,16 @@ $(document).ready(() => {
   }
   return dir;
 }; // fin funtion dirertion_post
-
+*/
 
 $("#ini").click(() => {
-    dir=diretion_bus();
-    var request = $.ajax({
-
-      url:dir,
-      type: "GET",
-      data:"{"+ ' "country": ' + '"' + $("#payload1").val() + '"'  
-              + "," +'"year": ' + '"' + $("#payload2").val() + '"' 
-              + "," + ' "percentage": ' + '"' + $("#payload3").val()+'"'+ "," 
-              + ' "type": ' + '"' + $("#payload4").val() + '"' + "}",
-      contentType: "application/json; charset=utf-8"
-
-    });
     var request2=$.ajax({
-      url: "/api/v1/music/loadInitialdata?apikey=123",
+      url: "/api/v1/music/loadInitialdata?apikey=multiPlan_C5_sos-2016-08-bhl_ag",
       type: "GET",
       contentType: "application/json"
     });
 
-    request2.done(function(data,status,jqXHR) {
-      console.log("Handling request (OK)");
-      console.log("Data received:");
-
-      $("#country").find("tr:gt(0)").remove();    //delete all rows
-      for (i=0;i<data.length;i++){
-        var row = $('<tr/>');
-        $("#country").append(row);
-        $('<td></td>').text(data[i].country).appendTo(row);
-        $('<td></td>').text(data[i].year).appendTo(row);
-        $('<td></td>').text(data[i].percentage).appendTo(row);
-        $('<td></td>').text(data[i].type).appendTo(row);
-      }
-      
-      
-      $("#status").html(jqXHR.status);
-      $("#log").html(status);
-      //$("#msg").html("Everything is correct.");
-
-      
-
-    });
-
-    request.always(function (jqXHR,status){
+    request2.always(function (jqXHR,status){
         if(status=="error"){
           console.log("Status: "+jqXHR.status);
           if($("#apikey").val()==0){
@@ -151,107 +344,109 @@ $("#ini").click(() => {
             $("#msg").html("Introduce the password. (apikey)");
             
             
-        }else if($("#apikey").val()!="123" && $("apikey").val()!=0){
+          }else if($("#apikey").val()!="multiPlan_C5_sos-2016-08-bhl_ag" && $("apikey").val()!=0){
 
-          $("#status").html(jqXHR.status);
-          $("#log").html(status);
-          $("#msg").html("The password is incorrect, try again");
+            $("#status").html(jqXHR.status);
+            $("#log").html(status);
+            $("#msg").html("The password is incorrect, try again");
           
           
-        }
+          }else if (jqXHR.status==429){
+            $("#status").html(jqXHR.status);
+            $("#log").html(status);
+            $("#msg").html("Too many request, buy a plan");
+
+
+          }
         
-      }else{
-      $("#status").html(jqXHR.status);
-      $("#log").html(status);
-      $("#msg").html("Everything is correct.");
-      }
+        }else{
+        $("#status").html(jqXHR.status);
+        $("#log").html(status);
+        $("#msg").html("The data has been load.");
+        }
 
     });
 });
 
 
-      
-
-
-
 
 $("#search").click(() => {
-    dir=diretion_bus();
-    var request = $.ajax({
+  console.log("Entra en search");
+  dir=diretion_bus();
+  console.log("direccion "+dir);
+  var request = $.ajax({
 
-      url:dir,
-      type: "GET",
-      data:"{"+ ' "country": ' + '"' + $("#payload1").val() + '"'  
+    url:dir,
+    type: "GET",
+    data:"{"+ ' "country": ' + '"' + $("#payload1").val() + '"'  
               + "," +'"year": ' + '"' + $("#payload2").val() + '"' 
               + "," + ' "percentage": ' + '"' + $("#payload3").val()+'"'+ "," 
               + ' "type": ' + '"' + $("#payload4").val() + '"' + "}",
-      contentType: "application/json; charset=utf-8"
+    contentType: "application/json"
 
-    });
-    var request2=$.ajax({
-      url: "/api/v1/music/?apikey=123",
-      type: "GET",
-      contentType: "application/json"
-    });
+  });
+  
 
-    request2.done(function(data,status,jqXHR) {
-      console.log("Handling request (OK)");
-      console.log("Data received:");
+  request.done(function(data,status,jqXHR) {
+    console.log("reques que se supone que pinta la tabla "+data);
+    $("#country").find("tr:gt(0)").remove();    
+    for (i=0;i<data.length;i++){ 
+      var row = $('<tr/>');
+      $("#country").append(row);
+      $('<td></td>').text(data[i].country).appendTo(row);
+      $('<td></td>').text(data[i].year).appendTo(row);
+      $('<td></td>').text(data[i].percentage).appendTo(row);
+      $('<td></td>').text(data[i].type).appendTo(row);
+    }
+    $("#status").html(jqXHR.status);
+    $("#log").html(status);
+    $("#msg").html("Everything is correct.");
+  });
 
-      $("#country").find("tr:gt(0)").remove();    //delete all rows
-      for (i=0;i<data.length;i++){
-        var row = $('<tr/>');
-        $("#country").append(row);
-        $('<td></td>').text(data[i].country).appendTo(row);
-        $('<td></td>').text(data[i].year).appendTo(row);
-        $('<td></td>').text(data[i].percentage).appendTo(row);
-        $('<td></td>').text(data[i].type).appendTo(row);
-      }
-      
-      
-      $("#status").html(jqXHR.status);
-      $("#log").html(status);
-      //$("#msg").html("Everything is correct.");
 
-      
+  request.always(function (jqXHR,status){
+    if(status=="error"){
+      console.log("Status: "+jqXHR.status);
+      if($("#apikey").val()==0){
+        console.log("ENTRA EN APIKEY");
+        $("#status").html(jqXHR.status);
+        $("#log").html(status);
+        $("#msg").html("Introduce the password. (apikey)");
+          
+            
+      }else if($("#apikey").val()!="multiPlan_C5_sos-2016-08-bhl_ag" && $("apikey").val()!=0){
 
-    });
-
-    request.always(function (jqXHR,status){
-        if(status=="error"){
-          console.log("Status: "+jqXHR.status);
-          if($("#apikey").val()==0){
-            console.log("ENTRA EN APIKEY");
+        $("#status").html(jqXHR.status);
+        $("#log").html(status);
+        $("#msg").html("The password is incorrect, try again");
+          
+          
+      }else if(jqXHR.status==429){
             $("#status").html(jqXHR.status);
             $("#log").html(status);
-            $("#msg").html("Introduce the password. (apikey)");
-            
-            
-        }else if($("#apikey").val()!="123" && $("apikey").val()!=0){
+            $("#msg").html("Too many request, buy a plan");
 
-          $("#status").html(jqXHR.status);
-          $("#log").html(status);
-          $("#msg").html("The password is incorrect, try again");
-          
-          
-        }
+
+      }
         
-      }else{
+    }else{
       $("#status").html(jqXHR.status);
       $("#log").html(status);
       $("#msg").html("Everything is correct.");
-      }
+    }
 
-    });
+  });
 }); // fin de ver
-
-
 
 
 
 $("#edit").click(() => {
   console.log("Data updated");
-  dir=diretion_put();
+  dir="/api/v1/music/"
+          +$("#payload1").val()
+          +"/"
+          +$("#payload2").val()
+          +"/?apikey="+$("#apikey").val();
   var request=$.ajax({
     url: dir,
     type: "PUT",
@@ -263,7 +458,7 @@ $("#edit").click(() => {
   });
 
   var request2=$.ajax({
-    url: "/api/v1/music/?apikey=123",
+    url: "/api/v1/music/?apikey=multiPlan_C5_sos-2016-08-bhl_ag",
     type: "GET",
     contentType: "application/json"
   });
@@ -302,17 +497,24 @@ $("#edit").click(() => {
         $("#status").html(jqXHR.status);
         $("#log").html(status);
         $("#msg").html("Introduce the password. (apikey)");
-    }else if($("#apikey").val()!="123" && $("apikey").val()!=0){
+      }else if($("#apikey").val()!="multiPlan_C5_sos-2016-08-bhl_ag" && $("apikey").val()!=0){
 
-      $("#status").html(jqXHR.status);
-      $("#log").html(status);
-      $("#msg").html("The password is incorrect, try again");
+        $("#status").html(jqXHR.status);
+        $("#log").html(status);
+        $("#msg").html("The password is incorrect, try again");
+      }else if(jqXHR.status==429){
+            $("#status").html(jqXHR.status);
+            $("#log").html(status);
+            $("#msg").html("Too many request, buy a plan");
+
+
+      }
     }else{
     $("#status").html(jqXHR.status);
     $("#log").html(status);
     $("#msg").html("The password is correct.");
     }
-    }
+    
 
   });
 });// fin add
@@ -331,7 +533,7 @@ $("#delete").click(() => {
   });
 
   var request2=$.ajax({
-    url: "/api/v1/music/?apikey=123",
+    url: "/api/v1/music/?apikey=multiPlan_C5_sos-2016-08-bhl_ag",
     type: "GET",
     contentType: "application/json"
   });
@@ -363,30 +565,38 @@ $("#delete").click(() => {
     if(status=="error"){
       console.log("Status: "+jqXHR.status);
       $("#status").html(jqXHR.status);
-    if($("#apikey").val()==0){
-      console.log("ENTRA EN APIKEY");
-      $("#status").html(jqXHR.status);
-      $("#log").html(status);
-      $("#msg").html("Introduce the password. (apikey)");
-    }else if($("#apikey").val()!="123" && $("apikey").val()!=0){
-      $("#status").html(jqXHR.status);
-      $("#log").html(status);
-      $("#msg").html("The password is incorrect, try again");
+      if($("#apikey").val()==0){
+        console.log("ENTRA EN APIKEY");
+        $("#status").html(jqXHR.status);
+        $("#log").html(status);
+       $("#msg").html("Introduce the password. (apikey)");
+      }else if($("#apikey").val()!="multiPlan_C5_sos-2016-08-bhl_ag" && $("apikey").val()!=0){
+        $("#status").html(jqXHR.status);
+        $("#log").html(status);
+        $("#msg").html("The password is incorrect, try again");
+      }else if(jqXHR.status==429){
+            $("#status").html(jqXHR.status);
+            $("#log").html(status);
+            $("#msg").html("Too many request, buy a plan");
+
+
+      }
     }else{
     $("#status").html(jqXHR.status);
     $("#log").html(status);
     $("#msg").html("Everything is correct.");
     }
-    }
+
 
   });
-});
+});// fin delete
 
 $("#add").click(() => {
 
   console.log("Data added");
   var request = $.ajax({
-    url:urll+$("#apikey").val(),
+
+    url:"/api/v1/music/?apikey="+$("#apikey").val(),
     type: "POST",
     data:"{"+ ' "country": ' + '"' + $("#payload1").val() + '"'  
             + "," +'"year": ' + '"' + $("#payload2").val() + '"' 
@@ -396,7 +606,7 @@ $("#add").click(() => {
   });
 
   var request2=$.ajax({
-    url: "/api/v1/music/?apikey=123",
+    url: "/api/v1/music/?apikey=multiPlan_C5_sos-2016-08-bhl_ag",
     type: "GET",
     contentType: "application/json"
   });
@@ -447,12 +657,18 @@ $("#add").click(() => {
           $("#status").html(jqXHR.status);
           $("#log").html(status);
           $("#msg").html("Introduce the password. (apikey)");
-        }else if($("#apikey").val()!="123" && $("apikey").val()!=0){
+        }else if($("#apikey").val()!="multiPlan_C5_sos-2016-08-bhl_ag" && $("apikey").val()!=0){
           $("#status").html(jqXHR.status);
           $("#log").html(status);
           $("#msg").html("The password is incorrect, try again");
-        }
-      if(status=409 && $("#apikey").val()=="123"){
+        }else if(jqXHR.status==429){
+            $("#status").html(jqXHR.status);
+            $("#log").html(status);
+            $("#msg").html("Too many request, buy a plan");
+
+
+      }
+      if(status=409 && $("#apikey").val()=="multiPlan_C5_sos-2016-08-bhl_ag"){
         $("#status").html(jqXHR.status);
         $("#log").html("ERROR");
         $("#msg").html("You can´t push a resource with the same country and year.");
@@ -464,14 +680,23 @@ $("#add").click(() => {
       }
 
     });
-  });
+});// fin add
 
 
 
+$("#previous").click(() => {  
 
-/*$("#previous").click(() => {
-  
-  dir=diretion_bus();
+  if( contador < 0){
+
+    contador=0;
+
+  }else if (contador == 0){
+    dir="/api/v1/music/?apikey="+$("#apikey").val()          
+          +"&offset="+$("offset").val()
+          +"&limit="+$("#limit").val()
+          +"&from="+$("#from").val()
+          +"&to="+$("#to").val();
+    
     var request = $.ajax({
 
       url:dir,
@@ -480,38 +705,13 @@ $("#add").click(() => {
               + "," +'"year": ' + '"' + $("#payload2").val() + '"' 
               + "," + ' "percentage": ' + '"' + $("#payload3").val()+'"'+ "," 
               + ' "type": ' + '"' + $("#payload4").val() + '"' + "}",
-      contentType: "application/json; charset=utf-8"
+      contentType: "application/json"
 
     });
-
-  var request2=$.ajax({
-    url: "/api/v1/music/?apikey=123",
-    type: "GET",
-    contentType: "application/json"
-  });
-
-
-  request.done(function(data,status,jqXHR) {
-    
-    $("#status").html(jqXHR.status);
-    $("#log").html(status);
-    $("#msg").html("Everything is correct.");
-   
-  });
-
-  request.done(function(data,status,jqXHR){
-    var l=parseInt($("#limit").val());
-    console.log(" valor de c  "+c);
-    c=c+l;
-    if( $("#limit").val()==""){
-        $("#log").html("WARNING");
-        $("#msg").html("Fill in the fields of offset and limit");
-    }else if( $("#limit").val()>=0) {
-      $("#country").find("tr:gt(0)").remove();
-      console.log("entra en else, valor de c"+c);
-      console.log("entra en else, valor de o"+o);
-      for(var i=o;i<c;i++){      
-
+    request.done(function(data,status,jqXHR) {
+      
+      $("#country").find("tr:gt(0)").remove();    
+      for (i=0;i<data.length;i++){ 
         var row = $('<tr/>');
         $("#country").append(row);
         $('<td></td>').text(data[i].country).appendTo(row);
@@ -519,101 +719,275 @@ $("#add").click(() => {
         $('<td></td>').text(data[i].percentage).appendTo(row);
         $('<td></td>').text(data[i].type).appendTo(row);
       }
-        
-
-
-      o=o+l;
-        
-      console.log("imprime o dentro del if " +o);
-      }
-   
-  });
-
-  request.always(function (jqXHR,status){
-
-    if(status=="error"){
-      console.log("Status: "+jqXHR.status);
-      if($("#apikey").val()==0){
-        console.log("ENTRA EN APIKEY");
-        $("#status").html(jqXHR.status);
-        $("#log").html(status);
-        $("#msg").html("Introduce the password. (apikey)");
-    }else if($("#apikey").val()!="123" && $("apikey").val()!=0){
-
       $("#status").html(jqXHR.status);
       $("#log").html(status);
-      $("#msg").html("The password is incorrect, try again");
-    }else{
-    $("#status").html(jqXHR.status);
-    $("#log").html(status);
-    $("#msg").html("The password is correct.");
-    }
-    }
-
-  });
-});*/
+      $("#msg").html("Everything is correct.");
+    });
 
 
-
-/*$('#previous').click(function(){
-
-          var apikey = $("#apikey").val();
-
-          var items = $("#limit").val();
-
-          var page = $("#page").val();
-
-          if (!items)
-            items = 9999;
-          if (!page)
-            page = 1;
-
-          var offset = items*(page-1);
-          dir=diretion_bus();
-          var request = $.ajax({
-
-              url: dir,
-              type: "GET",
-              contentType: "application/json",
-  
-          });
-
-          request.done(function(data,status,jqXHR) {
-            // Tratamiento en caso de exito
-          var trHTML = '';
-
-                  $("country").find("tr:gt(0)").remove();
-
-                  id = 1;
-
-              $.each(data, function (i) {
+    request.always(function (jqXHR,status){
+      if(status=="error"){
+        console.log("Status: "+jqXHR.status);
+        if($("#apikey").val()==0){
+          console.log("ENTRA EN APIKEY");
+          $("#status").html(jqXHR.status);
+          $("#log").html(status);
+          $("#msg").html("Introduce the password. (apikey)");
+          
             
-                trHTML += '<tr id="'+id+'"><td>' + id +'</td><td>'+ data[i].country + '</td><td>' + data[i].year + '</td><td>' + data[i].percentage + '</td><td>'
-                  + data[i].type + '</td></tr>';
-               id++;
-               });
+        }else if($("#apikey").val()!="multiPlan_C5_sos-2016-08-bhl_ag" && $("apikey").val()!=0){
+
+          $("#status").html(jqXHR.status);
+          $("#log").html(status);
+          ("#msg").html("The password is incorrect, try again");
+          
+          
+        }else if(jqXHR.status==429){
+            $("#status").html(jqXHR.status);
+            $("#log").html(status);
+            $("#msg").html("Too many request, buy a plan");
+
+
+        }
         
-               $('#country').append(trHTML);
-           $("#log").html("done");
+      }else{
+        $("#status").html(jqXHR.status);
+        $("#log").html(status);
+        $("#msg").html("Everything is correct.");
+      }
 
-          });
+    });
+  contador++;
+  }else{
+    console.log("Valor de contador dentro de previous "+contador);
+    s=parseInt($("#limit").val());
+    
+    suma=suma+s;
+    
+    dir="/api/v1/music/?apikey="+$("#apikey").val()          
+          +"&offset="+suma
+          +"&limit="+$("#limit").val()
+          +"&from="+$("#from").val()
+          +"&to="+$("#to").val();
+    console.log("direccion del else "+dir);
+    var request = $.ajax({
 
-          request.always(function(jqXHR, status) {
-            // Tratamiento en cualquier caso
-           if(status == "error") {
-            console.log(jqXHR.status);
-            if (jqXHR.status == 401) {
-              $("#log").html("The apikey you entered is not valid");
-              alert('Apikey not valid');
-            }else{
-              $("#log").html("error");
-            }
-          } 
+      url:dir,
+      type: "GET",
+      data:"{"+ ' "country": ' + '"' + $("#payload1").val() + '"'  
+              + "," +'"year": ' + '"' + $("#payload2").val() + '"' 
+              + "," + ' "percentage": ' + '"' + $("#payload3").val()+'"'+ "," 
+              + ' "type": ' + '"' + $("#payload4").val() + '"' + "}",
+      contentType: "application/json"
 
-          });
-        });
+    });
+    request.done(function(data,status,jqXHR) {
+      
+      $("#country").find("tr:gt(0)").remove();    
+      for (i=0;i<data.length;i++){ 
+        var row = $('<tr/>');
+        $("#country").append(row);
+        $('<td></td>').text(data[i].country).appendTo(row);
+        $('<td></td>').text(data[i].year).appendTo(row);
+        $('<td></td>').text(data[i].percentage).appendTo(row);
+        $('<td></td>').text(data[i].type).appendTo(row);
+      }
+      $("#status").html(jqXHR.status);
+      $("#log").html(status);
+      $("#msg").html("Everything is correct.");
+    });
 
-*/
+
+    request.always(function (jqXHR,status){
+      if(status=="error"){
+        console.log("Status: "+jqXHR.status);
+        if($("#apikey").val()==0){
+          console.log("ENTRA EN APIKEY");
+          $("#status").html(jqXHR.status);
+          $("#log").html(status);
+          $("#msg").html("Introduce the password. (apikey)");
+          
+            
+        }else if($("#apikey").val()!="multiPlan_C5_sos-2016-08-bhl_ag" && $("apikey").val()!=0){
+
+          $("#status").html(jqXHR.status);
+          $("#log").html(status);
+          ("#msg").html("The password is incorrect, try again");
+          
+          
+        }else if(jqXHR.status==429){
+            $("#status").html(jqXHR.status);
+            $("#log").html(status);
+            $("#msg").html("Too many request, buy a plan");
+
+
+        }
+        
+      }else{
+        $("#status").html(jqXHR.status);
+        $("#log").html(status);
+        $("#msg").html("Everything is correct.");
+      }
+
+    });
+
+  contador++;  
+  }
+ 
+});// fin previous
+
+$("#back").click(() => {  
+  console.log("Valor de contador dentro de back  "+contador);
+  if( contador < 0){
+    contador=0;
+
+  }else if (contador = 0){
+    dir="/api/v1/music/?apikey="+$("#apikey").val()          
+          +"&offset="+$("offset").val()
+          +"&limit="+$("#limit").val()
+          +"&from="+$("#from").val()
+          +"&to="+$("#to").val();
+    
+    var request = $.ajax({
+
+      url:dir,
+      type: "GET",
+      data:"{"+ ' "country": ' + '"' + $("#payload1").val() + '"'  
+              + "," +'"year": ' + '"' + $("#payload2").val() + '"' 
+              + "," + ' "percentage": ' + '"' + $("#payload3").val()+'"'+ "," 
+              + ' "type": ' + '"' + $("#payload4").val() + '"' + "}",
+      contentType: "application/json"
+
+    });
+    request.done(function(data,status,jqXHR) {
+      
+      $("#country").find("tr:gt(0)").remove();    
+      for (i=0;i<data.length;i++){ 
+        var row = $('<tr/>');
+        $("#country").append(row);
+        $('<td></td>').text(data[i].country).appendTo(row);
+        $('<td></td>').text(data[i].year).appendTo(row);
+        $('<td></td>').text(data[i].percentage).appendTo(row);
+        $('<td></td>').text(data[i].type).appendTo(row);
+      }
+      $("#status").html(jqXHR.status);
+      $("#log").html(status);
+      $("#msg").html("Everything is correct.");
+    });
+
+
+    request.always(function (jqXHR,status){
+      if(status=="error"){
+        console.log("Status: "+jqXHR.status);
+        if($("#apikey").val()==0){
+          console.log("ENTRA EN APIKEY");
+          $("#status").html(jqXHR.status);
+          $("#log").html(status);
+          $("#msg").html("Introduce the password. (apikey)");
+          
+            
+        }else if($("#apikey").val()!="multiPlan_C5_sos-2016-08-bhl_ag" && $("apikey").val()!=0){
+
+          $("#status").html(jqXHR.status);
+          $("#log").html(status);
+          ("#msg").html("The password is incorrect, try again");
+          
+          
+        }else if(jqXHR.status==429){
+            $("#status").html(jqXHR.status);
+            $("#log").html(status);
+            $("#msg").html("Too many request, buy a plan");
+
+
+        }
+        
+      }else{
+        $("#status").html(jqXHR.status);
+        $("#log").html(status);
+        $("#msg").html("Everything is correct.");
+      }
+
+    });
+  
+  }else{
+    s=parseInt($("#limit").val());
+    
+    suma=suma-s;
+    
+    dir="/api/v1/music/?apikey="+$("#apikey").val()          
+          +"&offset="+suma
+          +"&limit="+$("#limit").val()
+          +"&from="+$("#from").val()
+          +"&to="+$("#to").val();
+    
+    var request = $.ajax({
+
+      url:dir,
+      type: "GET",
+      data:"{"+ ' "country": ' + '"' + $("#payload1").val() + '"'  
+              + "," +'"year": ' + '"' + $("#payload2").val() + '"' 
+              + "," + ' "percentage": ' + '"' + $("#payload3").val()+'"'+ "," 
+              + ' "type": ' + '"' + $("#payload4").val() + '"' + "}",
+      contentType: "application/json"
+
+    });
+    request.done(function(data,status,jqXHR) {
+      
+      $("#country").find("tr:gt(0)").remove();    
+      for (i=0;i<data.length;i++){ 
+        var row = $('<tr/>');
+        $("#country").append(row);
+        $('<td></td>').text(data[i].country).appendTo(row);
+        $('<td></td>').text(data[i].year).appendTo(row);
+        $('<td></td>').text(data[i].percentage).appendTo(row);
+        $('<td></td>').text(data[i].type).appendTo(row);
+      }
+      $("#status").html(jqXHR.status);
+      $("#log").html(status);
+      $("#msg").html("Everything is correct.");
+    });
+
+
+    request.always(function (jqXHR,status){
+      if(status=="error"){
+        
+        if($("#apikey").val()==0){
+          
+          $("#status").html(jqXHR.status);
+          $("#log").html(status);
+          $("#msg").html("Introduce the password. (apikey)");
+          
+            
+        }else if($("#apikey").val()!="multiPlan_C5_sos-2016-08-bhl_ag" && $("apikey").val()!=0){
+
+          $("#status").html(jqXHR.status);
+          $("#log").html(status);
+          ("#msg").html("The password is incorrect, try again");
+          
+          
+        }else if(jqXHR.status==429){
+            $("#status").html(jqXHR.status);
+            $("#log").html(status);
+            $("#msg").html("Too many request, buy a plan");
+
+
+        }
+        
+      }else{
+        $("#status").html(jqXHR.status);
+        $("#log").html(status);
+        $("#msg").html("Everything is correct.");
+      }
+
+    });
+
+  contador--;
+  }
+
+});// fin back
+
+
+
 });// final del todo
 
 

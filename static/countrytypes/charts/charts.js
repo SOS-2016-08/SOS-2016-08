@@ -24,18 +24,26 @@ google.charts.load('current', {'packages':['geochart']});
 $(document).ready(() => {
   var request=$.ajax({
         type: "GET",
-        url: '/api/v1/music?apikey=123',
+        url: '/api/v1/music?apikey=multiPlan_C5_sos-2016-08-bhl_ag',
         data: "{}",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
       });
+
+
+  var request=$.ajax({
+
+    type: "GET",
+        url: '/api/v1/social-situation?apikey=123',
+        data: "{}",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+
+  });
+
   request.done(function(data,status) {
     google.charts.setOnLoadCallback(drawRegionsMap);
     console.log("dentro del done ..data.."+data);
-
-
-  
-  
 
     function drawRegionsMap() {
     

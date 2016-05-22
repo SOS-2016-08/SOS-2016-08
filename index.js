@@ -21,15 +21,13 @@ app.use(pathBlanca, function(req,res){
     }
   })).pipe(res);
 });
-
+//multiPlan_C5_sos-2016-08-bhl_ag
 governify.control(app,{
   datastore:"http://datastore.governify.io/api/v6.1/",
   namespace: "sos-2016-08-bhl",
   defaultPath:"/api/prueba"
 });
-var port = (process.env.PORT || 12345);
-app.use("/",express.static(__dirname+"/static"));
-app.use(bodyParser.json());
+
 
 app.get("/api/prueba", (req,res)=>{
 	res.send([
@@ -38,6 +36,18 @@ app.get("/api/prueba", (req,res)=>{
 		]);
 
 });
+
+
+governify.control(app,{
+  datastore:"http://datastore.governify.io/api/v6.1/",
+  namespace: "sos-2016-08-bhl",
+  defaultPath:"/api/v1/music"
+
+});
+
+var port = (process.env.PORT || 12345);
+app.use("/",express.static(__dirname+"/static"));
+app.use(bodyParser.json());
 
 
 app.use(cors());
