@@ -1,24 +1,3 @@
-/*google.charts.load('current', {'packages':['geochart']});
-      google.charts.setOnLoadCallback(drawRegionsMap);
-
-      function drawRegionsMap() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Country', 'Popularity'],
-          ['Germany', 200],
-          ['United States', 300],
-          ['Brazil', 400],
-          ['Canada', 500],
-          ['France', 600],
-          ['RU', 700]
-        ]);
-
-        var options = {};
-
-        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
-
-        chart.draw(data, options);
-      }*/
 google.charts.load('current', {'packages':['geochart']});
 
 $(document).ready(() => {
@@ -29,7 +8,24 @@ $(document).ready(() => {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
       });
+//multiPlan_C2_sos-2016-08-cmg_ag
+  var request2=$.ajax({
+        type: "GET",
+        url: '/api/v1/social_situation?apikey=123',
+        data: "{}",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+      });
 
+
+  var dataArray=[];
+  request2.done(function(data,status){
+    for (i=0;i<data.length;i++){
+    var item=data[i];
+    var itemF =[item.country,parseInt(item.sales)];
+    dataArray.push(itemF);
+    }
+  });
 
 
   request.done(function(data,status) {
@@ -64,5 +60,3 @@ $(document).ready(() => {
   })
 
 });
-
-      
