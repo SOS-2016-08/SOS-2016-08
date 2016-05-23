@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var situation=[ {country:"Spain"   ,year:"2010",sales:"160,54",  digital:"48%",  nodigital:"55%" },
 {"country":"Italy"    ,"year":"2010","sales":"101,66",  "digital":"39%",  "nodigital":"36%" },
 {"country":"Germany"   ,"year":"2012","sales":"79,44",  "digital":"45%",  "nodigital":"49%" },
@@ -11,7 +12,22 @@ var situation=[ {country:"Spain"   ,year:"2010",sales:"160,54",  digital:"48%", 
 {"country":"Spain"   ,"year":"2011","sales":"155,66",  "digital":"57%",  "nodigital":"76%" },
 {"country":"Italy"   ,"year":"2012","sales":"155,66",  "digital":"57%",  "nodigital":"76%" },
 {"country":"Spain"   ,"year":"2013","sales":"155,66",  "digital":"57%",  "nodigital":"76%" }
+=======
+var situation=[ {country:"spain"   ,year:"2010",sales:"160,54",  digital:"48%",  nodigital:"55%" },
+{"country":"italy"    ,"year":"2010","sales":"101,66",  "digital":"39%",  "nodigital":"36%" },
+{"country":"france"   ,"year":"2012","sales":"79,44",  "digital":"45%",  "nodigital":"49%" },
+{"country":"rumania"  ,"year":"2012","sales":"130,36",  "digital":"36%",  "nodigital":"67%" },
+{"country":"noruega"  ,"year":"2013","sales":"155,66",  "digital":"57%",  "nodigital":"76%" },
+{"country":"usa"     ,"year":"2010","sales":"79,44",  "digital":"45%",  "nodigital":"49%" },
+{"country":"indonesia","year":"2012","sales":"130,36",  "digital":"36%",  "nodigital":"67%" },
+{"country":"spain"   ,"year":"2008","sales":"155,66",  "digital":"57%",  "nodigital":"76%" },
+{"country":"spain"   ,"year":"2009","sales":"155,66",  "digital":"57%",  "nodigital":"76%" },
+{"country":"spain"   ,"year":"2011","sales":"155,66",  "digital":"57%",  "nodigital":"76%" },
+{"country":"spain"   ,"year":"2012","sales":"155,66",  "digital":"57%",  "nodigital":"76%" },
+{"country":"spain"   ,"year":"2013","sales":"155,66",  "digital":"57%",  "nodigital":"76%" }
+>>>>>>> 588777a58a7ed320b563bae2a87e8b18f43718ee
 ];
+
 var fs= require("fs");
 
 
