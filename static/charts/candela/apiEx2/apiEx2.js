@@ -1,30 +1,34 @@
 
 google.charts.load('current', {'packages':['geochart']});
 
-$(document).ready(() => {
+google.charts.load('current', {'packages':['map']});
+
+$(document).ready(() =>{
   var request=$.ajax({
         type: "GET",
-        url: '/api/v1/music?apikey=multiPlan_C5_sos-2016-08-bhl_ag',
+        url: '/api/v1/social_situation?apikey=multiPlan_C2_sos-2016-08-cmg_ag',
         data: "{}",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
       });
 
-
-
   request.done(function(data,status) {
-    google.charts.setOnLoadCallback(drawRegionsMap);
-    console.log("dentro del done ..data.."+data);
-
-    function drawRegionsMap() {
+    google.charts.setOnLoadCallback(drawMap);
     
 
-      var data_resource = [ ['country', 'percentage']];
+
+  
+  
+
+    function drawMap() {
+    
+
+      var data_resource = [ ['country', 'year']];
       console.log("dentro de la fuinciona pinta mapa"+data_resource);
       for(i=0;i<data.length;i++){
           //resource=data[i];
           
-            var resource_for_widjet=[data[i].country,data[i].percentage];
+            var resource_for_widjet=[data[i].country,data[i].year];
             data_resource.push(resource_for_widjet);
             console.log("dentro del done ..resource_for_widjet.."+resource_for_widjet);
       }
@@ -35,11 +39,9 @@ $(document).ready(() => {
       
       };
 
-  
+      var map = new google.visualization.Map(document.getElementById('chart_div'));
 
-      var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
-
-      chart.draw(data_map, options);
+      map.draw(data_map, options);
     }
   })
 
