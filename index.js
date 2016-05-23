@@ -55,16 +55,21 @@ app.use(pathBlanca, function(req,res){
   })).pipe(res);
 });
 
+//multiPlan_C5_sos-2016-08-bhl_ag
+
+
 
 governify.control(app,{
   datastore:"http://datastore.governify.io/api/v6.1/",
   namespace: "sos-2016-08-bhl",
   defaultPath:"/api/prueba"
 });
+
 var port = (process.env.PORT || 12345);
 app.use("/",express.static(__dirname+"/static"));
 app.use(bodyParser.json());
 app.use(cors());
+
 
 app.get("/api/prueba", (req,res)=>{
 	res.send([
@@ -75,6 +80,7 @@ app.get("/api/prueba", (req,res)=>{
 });
 
 
+<<<<<<< HEAD
 
 //multiPlan_C2_sos-2016-08-cmg_ag
 
@@ -84,6 +90,19 @@ governify.control(app,{
   defaultPath :"/api/v1/social_situation"
 });
 
+=======
+governify.control(app,{
+  datastore:"http://datastore.governify.io/api/v6.1/",
+  namespace: "sos-2016-08-bhl",
+  defaultPath:"/api/v1/music"
+
+});
+
+var port = (process.env.PORT || 12345);
+app.use("/",express.static(__dirname+"/static"));
+app.use(bodyParser.json());
+
+>>>>>>> 6d1900847fa4754e18a785db3a582e61629d61d1
 
 app.use(cors());
 var musicCtl = require('./controles/musicCTL.js');
