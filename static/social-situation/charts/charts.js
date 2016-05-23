@@ -7,7 +7,7 @@ google.charts.load('current', {'packages':['map']});
 $(document).ready(() =>{
   var request=$.ajax({
         type: "GET",
-        url: '/api/v1/social_situation?apikey=123',
+        url: '/api/v1/social_situation?apikey=multiPlan_C2_sos-2016-08-cmg_ag',
         data: "{}",
         contentType: "application/json; charset=utf-8",
         dataType: "json",

@@ -75,6 +75,16 @@ app.get("/api/prueba", (req,res)=>{
 });
 
 
+
+//multiPlan_C2_sos-2016-08-cmg_ag
+
+governify.control(app,{
+  datastore: "http://datastore.governify.io/api/v6.1/",
+  namespace:"sos-2016-08-cmg",
+  defaultPath :"/api/v1/social_situation"
+});
+
+
 app.use(cors());
 var musicCtl = require('./controles/musicCTL.js');
 var moviesCtl= require('./controles/moviesCtl.js');

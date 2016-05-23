@@ -13,7 +13,7 @@ var situation=[ {country:"spain"   ,year:"2010",sales:"160,54",  digital:"48%", 
 ];
 var fs= require("fs");
 
-
+var pass = 123;
 
 function CheckBody(body){
     return body.country && body.year && body.sales && body.digital && body.nodigital;
@@ -35,15 +35,19 @@ function validar(str1,str2,elements){
 module.exports.getLoad=function(req,res){
   //lee datos
 
-
+  var apikey=req.query.apikey;
   
-  
+  if (apikey==pass){
   	situation=[];
     var file= fs.readFileSync('social.json','utf8');
     situation= JSON.parse(file);
     res.send(situation);
     res.sendStatus(200);
- 
+  }else{
+    
+    res.sendStatus(401);
+  }
+	
 };
 
 module.exports.getMovie=function(req,res){
@@ -54,11 +58,12 @@ module.exports.getMovie=function(req,res){
   to = req.query.to;
   limit = req.query.limit;
   offset = req.query.offset;
-
+  apikey = req.query.apikey;
   var resultado = [];
 
 
-
+if (apikey==pass)
+{
 
 for(var i=0;i<situation.length;i++)
 {
@@ -88,7 +93,12 @@ resultado.splice(limit,resultado.length-limit);
 
 res.send(resultado);
 res.sendStatus(200);
+}
 
+else
+{
+  res.sendStatus(401);
+}
 
 
 };
@@ -101,7 +111,7 @@ res.sendStatus(200);
 module.exports.getMovie2=function(req,res){ //get name or get year
      var name = req.params.country;
      var year = req.params.year;
-
+     var apikey=req.query.apikey;
      var bool=true;
       from = req.query.from;
       to = req.query.to;
@@ -109,7 +119,7 @@ module.exports.getMovie2=function(req,res){ //get name or get year
       offset = req.query.offset;
    
      resultado=[];
-
+     if(apikey==pass){
       for (i=0;i<situation.length;i++){
         if(situation[i].country==name || situation[i].year==name){
           console.log("new get 222 "+name+year);
@@ -154,7 +164,12 @@ module.exports.getMovie2=function(req,res){ //get name or get year
 
 
 
-    
+     }else{
+
+      res.sendStatus(401);
+
+
+     }
     res.send(resultado); 
     
   };
@@ -169,11 +184,14 @@ module.exports.getMovie3=function(req,res){ //get country/year
       to = req.query.to;
       limit = req.query.limit;
       offset = req.query.offset;
-
+     var apikey =req.query.apikey;
       bool=false;
+     if(apikey==pass){
+      console.log("apikey1 y pass1-->"+apikey+pass);
       result=[];
       for (i=0;i<situation.length;i++){
         if(situation[i].country==name && situation[i].year==ye){
+
           console.log("new get 333"+name);
           result.push(situation[i]);
           res.send(result);
@@ -195,6 +213,10 @@ module.exports.getMovie3=function(req,res){ //get country/year
       
 
 
+     }else{
+        res.sendStatus(401);
+
+     }
 
 };
      
@@ -205,12 +227,12 @@ module.exports.getMovie3=function(req,res){ //get country/year
 
 module.exports.postMovie=function(req,res){
 
-
+  var apikey = req.query.apikey;
   var country = req.params.country;
   var year = req.params.year;
   var datos= req.body;
   console.log("los dato de postMovie",datos);
-
+  if(apikey == pass){
     for (var i=0; i< situation.length; i++){
       if(  situation[i].country== datos.country && situation[i].year == datos.year){
         res.sendStatus(409);
@@ -224,16 +246,22 @@ module.exports.postMovie=function(req,res){
       res.send(situation);
       res.sendStatus(201);
     }
+  }else{
+    res.sendStatus(401);
   
+    
+  }
 
 };
 
 module.exports.postMovie2=function(req,res){
-
-
+  var apikey=req.query.apikey;
+  if(apikey==pass){
 	 console.log("WARNING post");
 	 res.sendStatus(405);
-  
+  }else{
+    res.sendStatus(401);
+  }
 
 };
 
@@ -251,10 +279,17 @@ function PosArray(str,elements){
 
 module.exports.putMovie=function(req,res){
 
+  var apikey=req.query.apikey;
+  if(apikey==pass){
+
     console.log("WARNING put");
     res.sendStatus(405);
 
- 
+  }else{
+    res.sendStatus(401);
+
+  }
+	
 };
 
 
@@ -266,9 +301,9 @@ module.exports.putMovie2=function (req,res){
   var assist = req.body;
   var find = true;
   var good = true;
-
+  var key = req.query.apikey;
   console.log("New putMovie2", assist);
-
+  if(key==123){
     if(assist.country==""||assist.year==""||assist.sales==""||assist.digital==""||assist.nodigital==""){
       res.sendStatus(400);
       console.console.log(("1.Put Bad request"));
@@ -303,18 +338,21 @@ module.exports.putMovie2=function (req,res){
     }
     //res.send(situation);
     res.send(situation[i]);
-  
+  }else{
+    res.sendStatus(401);
+    console.log("5.Invalid Key");
+  }
     
 };
 
 
 
 module.exports.deleteMovie=function(req,res){
-
+  var apikey=req.query.apikey;
   var name=req.params.country;
   console.log("New DELETE of resource "+name);
 	var mov = PosArray(name,situation);
-
+  if(apikey==pass){
     if(mov!=-1){
       situation.splice(mov,1);
       res.send(situation);
@@ -322,19 +360,23 @@ module.exports.deleteMovie=function(req,res){
     }else{
       res.sendStatus(404);
     }
-
+  }else{
+    res.sendStatus(401);
+}
 };
 
   
 
   module.exports.deleteMovie2=function(req,res){
-
-
+    var apikey=req.query.apikey;
+    if(apikey==pass){
       console.log("New DELETE of all resources");
       situation.splice(0,situation.length);
       res.sendStatus(200);
 
-   
+    }else{
+      res.sendStatus(404);
+    }
 	
   };
 
