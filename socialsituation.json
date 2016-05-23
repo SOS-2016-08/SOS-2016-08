@@ -1,7 +1,6 @@
 [
 {"country":"spain"   ,"year":"2010","sales":"160,54",  "digital":"48%",  "nodigital":"55%" },
 {"country":"italy"   ,"year":"2010","sales":"101,66",  "digital":"39%",  "nodigital":"36%" },
-{"country":"egipto"  ,"year":"2010","sales":"79,44",  "digital":"45%",  "nodigital":"49%" },
 {"country":"canada"   ,"year":"2010","sales":"160,54",  "digital":"48%",  "nodigital":"55%" },
 {"country":"rusia"   ,"year":"2010","sales":"101,66",  "digital":"39%",  "nodigital":"36%" },
 {"country":"francia"  ,"year":"2010","sales":"79,44",  "digital":"45%",  "nodigital":"49%" },
@@ -10,11 +9,9 @@
 {"country":"spain"  ,"year":"2010","sales":"79,44",  "digital":"45%",  "nodigital":"49%" },
 {"country":"spain"   ,"year":"2010","sales":"160,54",  "digital":"48%",  "nodigital":"55%" },
 {"country":"italy"   ,"year":"2010","sales":"101,66",  "digital":"39%",  "nodigital":"36%" },
-{"country":"egipto"  ,"year":"2010","sales":"79,44",  "digital":"45%",  "nodigital":"49%" },
 {"country":"spain"   ,"year":"2010","sales":"160,54",  "digital":"48%",  "nodigital":"55%" },
 {"country":"italy"   ,"year":"2010","sales":"101,66",  "digital":"39%",  "nodigital":"36%" },
-{"country":"egipto"  ,"year":"2010","sales":"79,44",  "digital":"45%",  "nodigital":"49%" },
 {"country":"spain"   ,"year":"2010","sales":"160,54",  "digital":"48%",  "nodigital":"55%" },
-{"country":"italy"   ,"year":"2010","sales":"101,66",  "digital":"39%",  "nodigital":"36%" },
-{"country":"egipto"  ,"year":"2010","sales":"79,44",  "digital":"45%",  "nodigital":"49%" }
+{"country":"italy"   ,"year":"2010","sales":"101,66",  "digital":"39%",  "nodigital":"36%" }
+
 ]

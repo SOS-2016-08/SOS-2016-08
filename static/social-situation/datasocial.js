@@ -124,6 +124,8 @@
         }
 
         function recargar(){
+
+
             
 
             var key=$('#apikey').val();
@@ -143,8 +145,11 @@
                                         alert("Wrong API Key")
                                     }else{
                                       if(jqXHR.status==409)
-                                        alert("ERROR ")
-                                    }
+                                        alert("ERROR")
+                                    } if(jqXHR.status==429){
+                                      alert("YOU MUST BUY A PLAN. THANKS YOU");
+
+                                     }
                                     //$('#dg').datagrid('reload');
                                 }
                         

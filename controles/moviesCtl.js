@@ -1,17 +1,19 @@
 
 var situation=[ {country:"Spain"   ,year:"2010",sales:"160,54",  digital:"48%",  nodigital:"55%" },
-{"country":"Italy"    ,"year":"2010","sales":"101,66",  "digital":"39%",  "nodigital":"36%" },
-{"country":"Germany"   ,"year":"2012","sales":"79,44",  "digital":"45%",  "nodigital":"49%" },
-{"country":"Canada"   ,"year":"2012","sales":"155,66",  "digital":"57%",  "nodigital":"76%" },
-{"country":"Japan"  ,"year":"2008","sales":"130,36",  "digital":"36%",  "nodigital":"67%" },
-{"country":"Mexico"  ,"year":"2004","sales":"155,66",  "digital":"57%",  "nodigital":"76%" },
-{"country":"Usa"     ,"year":"2011","sales":"79,44",  "digital":"45%",  "nodigital":"49%" },
-{"country":"Greece","year":"2004","sales":"130,36",  "digital":"36%",  "nodigital":"67%" },
-{"country":"Spain"   ,"year":"2008","sales":"155,66",  "digital":"57%",  "nodigital":"76%" },
-{"country":"Spain"   ,"year":"2009","sales":"155,66",  "digital":"57%",  "nodigital":"76%" },
-{"country":"Spain"   ,"year":"2011","sales":"155,66",  "digital":"57%",  "nodigital":"76%" },
-{"country":"Italy"   ,"year":"2012","sales":"155,66",  "digital":"57%",  "nodigital":"76%" },
-{"country":"Spain"   ,"year":"2013","sales":"155,66",  "digital":"57%",  "nodigital":"76%" }
+{country:"Italy"    ,year:"2010",sales:"101,66",  digital:"39%",  nodigital:"36%" },
+{country:"Germany"   ,year:"2012",sales:"79,44",  digital:"45%",  nodigital:"49%" },
+{country:"Canada"   ,year:"2012",sales:"155,66",  digital:"57%",  nodigital:"76%" },
+{country:"Japan"  ,year:"2008",sales:"130,36",  digital:"36%",  nodigital:"67%" },
+{country:"Mexico"  ,year:"2004",sales:"155,66",  digital:"57%",  nodigital:"76%" },
+{country:"Usa"     ,year:"2011",sales:"79,44",  digital:"45%",  nodigital:"49%" },
+{country:"Greece",year:"2004",sales:"130,36", digital:"36%",  nodigital:"67%" },
+{country:"Spain"   ,year:"2008",sales:"155,66",  digital:"57%",  nodigital:"76%" },
+{country:"Spain"   ,year:"2009",sales:"155,66",  digital:"57%",  nodigital:"76%" },
+{country:"Spain"   ,year:"2011",sales:"155,66",  digital:"57%",  nodigital:"76%" },
+{country:"Italy"   ,year:"2012",sales:"155,66",  digital:"57%",  nodigital:"76%" },
+{country:"Africa"   ,year:"2013",sales:"155,66",  digital:"57%",  nodigital:"76%" },
+{country:"Egipto"   ,year:"2016",sales:"155,66",  digital:"57%",  nodigital:"76%" }
+
 ];
 
 var fs= require("fs");
