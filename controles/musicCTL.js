@@ -3,7 +3,7 @@ var fs= require("fs");
 var musical=[ 
 {country:"spain"    ,year:"2010",  percentage:"12%",  type:"reggaeton" },
 {country:"spain"    ,year:"2011",  percentage:"53%",  type:"folk" },
-{country:"usa"    ,year:"2011",  percentage:"50%",  type:"pop" },
+{country:"usa"    ,year:"2010",  percentage:"50%",  type:"pop" },
 {country:"italy"    ,year:"2012",  percentage:"80%",  type:"classic" },
 {country:"germany"    ,year:"2012",  percentage:"88%",  type:"reggaeton" },
 {country:"usa"    ,year:"2012",  percentage:"90%",  type:"folk" }];
