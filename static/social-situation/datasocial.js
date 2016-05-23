@@ -200,7 +200,7 @@ function paginacion(value){
             var country=$('#buscador').val();
             console.log(country);
             //var country=value;
-            url="/api/v1/social_situation/"+country+"?apikey=123&offset="+offset+"&limit="+limit+"&from="+from+"&to="+to;
+            url="/api/v1/social_situation/"+country+"?apikey=multiPlan_C2_sos-2016-08-cmg_ag&offset="+offset+"&limit="+limit+"&from="+from+"&to="+to;
             var request =$.ajax({
                         type: method,
                         url: url,
@@ -251,7 +251,7 @@ function paginacion(value){
             var request =$.ajax({
 
                         type: method,
-                        url: "/api/v1/social_situation/"+country+"?apikey=123&offset="+contador+"&limit="+limite+"&from="+from+"&to="+to,
+                        url: "/api/v1/social_situation/"+country+"?apikey=multiPlan_C2_sos-2016-08-cmg_ag&offset="+contador+"&limit="+limite+"&from="+from+"&to="+to,
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
                         success: function(data)
@@ -326,7 +326,7 @@ function paginacion(value){
             var request =$.ajax({
 
                         type: method,
-                        url: "/api/v1/social_situation/"+country+"?apikey=123&offset="+contador+"&limit="+limite+"&from="+from+"&to="+to,
+                        url: "/api/v1/social_situation/"+country+"?apikey=multiPlan_C2_sos-2016-08-cmg_ag&offset="+contador+"&limit="+limite+"&from="+from+"&to="+to,
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
                         success: function(data)
