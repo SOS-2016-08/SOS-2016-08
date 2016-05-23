@@ -1,6 +1,7 @@
 google.charts.load('current', {'packages':['geochart']});
 
 $(document).ready(() => {
+  
   var request=$.ajax({
         type: "GET",
         url: '/api/v1/music?apikey=multiPlan_C5_sos-2016-08-bhl_ag',
