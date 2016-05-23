@@ -1,8 +1,6 @@
 
 
-
-
-google.charts.load('current', {'packages':['map']});
+      google.charts.load('current', {'packages':['map']});
 
 $(document).ready(() =>{
   var request=$.ajax({
