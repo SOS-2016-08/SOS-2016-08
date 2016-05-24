@@ -53,7 +53,7 @@ $(document).ready(() => {
     for(i=0;i<data_country.length;i++){
       console.log("entra en el for");
       
-      console.log(data_sale);
+      console.log("dentro del for"+data_sales);
       
       for(j=0; j<data_sales.length;j++){
         console.log("entra en el segundo for");
