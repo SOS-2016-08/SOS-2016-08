@@ -14,7 +14,7 @@ $(document).ready(() =>{
         dataType: "json",
       });
 
-  var request2=$.ajax({   //Integration with antonio.
+  var request2=$.ajax({   
           type: "GET",
           url: "/api/v1/music/?apikey=multiPlan_C5_sos-2016-08-bhl_ag",
           contentType: "application/json; charset=utf-8",
