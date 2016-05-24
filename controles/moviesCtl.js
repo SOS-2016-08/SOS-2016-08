@@ -1,5 +1,7 @@
 
-var situation=[ {country:"Spain"   ,year:"2010",sales:"160,54",  digital:"48%",  nodigital:"55%" },
+
+var situation=[ 
+{country:"Spain"   ,year:"2010",sales:"160,54",  digital:"48%",  nodigital:"55%" },
 {country:"Italy"    ,year:"2010",sales:"101,66",  digital:"39%",  nodigital:"36%" },
 {country:"Germany"   ,year:"2012",sales:"79,44",  digital:"45%",  nodigital:"49%" },
 {country:"Canada"   ,year:"2012",sales:"155,66",  digital:"57%",  nodigital:"76%" },

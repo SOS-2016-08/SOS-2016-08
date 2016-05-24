@@ -1,21 +1,11 @@
 [
-<<<<<<< HEAD
-{"country":"spain"    ,"year":"2010",  "percentage":"88%",  "type":"reggaeton" },
-{"country":"usa"      ,"year":"2010",  "percentage":"95%",  "type":"pop" },
-{"country":"Belgium"  ,"year":"2011",  "percentage":"45%",  "type":"rock" },
-{"country":"Denmark"  ,"year":"2011",  "percentage":"90%",  "type":"classic"},
-{"country":"USA"  	  ,"year":"2012",  "percentage":"98%",  "type":"folk"},
-{"country":"Spain"    ,"year":"2012",  "percentage":"53%",  "type":"folk" },
-{"country":"Spain"    ,"year":"2013",  "percentage":"3%",  "type":"other" }
-]
-=======
-{"country":"spain"    ,"year":"2010",  "percentage":"12%",  "type":"reggaeton" },
-{"country":"spain"    ,"year":"2011",  "percentage":"53%",  "type":"folk" },
-{"country":"usa"    ,"year":"2010", "percentage" :"50%",  "type":"pop" },
-{"country":"italy"    ,"year":"2010",  "percentage":"80%", " type":"classic" },
-{"country":"germany"    ,"year":"2012", " percentage":"88%",  "type":"reggaeton" },
-{"country":"usa"    ,"year":"2012",  "percentage":"90%",  "type":"folk" }];
-]
+
+{"country":"Spain"    ,"year":"2010",  "percentage":"12%",  "type":"reggaeton" },
+{"country":"Mexico"    ,"year":"2004",  "percentage":"53%",  "type":"folk" },
+{"country":"Usa"    ,"year":"2010", "percentage" :"50%",  "type":"pop" },
+{"country":"Italy"    ,"year":"2010",  "percentage":"80%", " type":"classic" },
+{"country":"Germany"    ,"year":"2012", " percentage":"88%",  "type":"reggaeton" },
+{"country":"Usa"    ,"year":"2012",  "percentage":"90%",  "type":"folk" }]
 
 
->>>>>>> 588777a58a7ed320b563bae2a87e8b18f43718ee
+
