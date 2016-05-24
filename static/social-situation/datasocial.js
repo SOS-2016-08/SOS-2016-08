@@ -146,8 +146,8 @@
                                     }else{
                                       if(jqXHR.status==409)
                                         alert("ERROR")
-                                    } if(jqXHR.status==429){
-                                      alert("YOU MUST BUY A PLAN. THANKS YOU");
+                                    } if(jqXHR.status==402){
+                                      alert("Payment Required,you must buy a play");
 
                                      }
                                     //$('#dg').datagrid('reload');
