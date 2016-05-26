@@ -7,7 +7,7 @@ $(document).ready(() =>{
         url: 'http://gsx2json.com/api?id=1WaM-dfRGgzXCJ_ladBtIuKQn1rtxKS2nMF_33tqBjiE',
         data: "{}",
         contentType: "application/json; charset=utf-8",
-        dataType: "json",
+        async: false
       });
 
 
@@ -16,7 +16,7 @@ $(document).ready(() =>{
         url: '/api/v1/social_situation?apikey=multiPlan_C2_sos-2016-08-cmg_ag',
         data: "{}",
         contentType: "application/json; charset=utf-8",
-        dataType: "json",
+        dataType: "json"
       });
 
 
