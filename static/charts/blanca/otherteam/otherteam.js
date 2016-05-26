@@ -1,6 +1,7 @@
 google.charts.load('current', {'packages':['geochart']});
 
 $(document).ready(() => {
+  
   var request=$.ajax({
         type: "GET",
         url: '/api/v1/music?apikey=multiPlan_C5_sos-2016-08-bhl_ag',
@@ -8,38 +9,103 @@ $(document).ready(() => {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
       });
+//multiPlan_C2_sos-2016-08-cmg_ag
+  var request2=$.ajax({
+        type: "GET",
+        url: '/api/v1/locations?apikey=multiPlan_C2_sos-2016-05-ajv_ag',
+        data: "{}",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+      });
 
-
-
-  request.done(function(data,status) {
-    google.charts.setOnLoadCallback(drawRegionsMap);
-    console.log("dentro del done ..data.."+data);
-
-    function drawRegionsMap() {
-    
-
-      var data_resource = [ ['country', 'percentage']];
-      console.log("dentro de la fuinciona pinta mapa"+data_resource);
-      for(i=0;i<data.length;i++){
-          //resource=data[i];
-          
-            var resource_for_widjet=[data[i].country,data[i].percentage];
-            data_resource.push(resource_for_widjet);
-            console.log("dentro del done ..resource_for_widjet.."+resource_for_widjet);
-      }
-      var data_map = google.visualization.arrayToDataTable(data_resource);
-
-      var options = {
-
+  var data_country=[];
+  request.done(function(data,status){
+    for (i=0;i<data.length;i++){
+      var item=data[i];
+      var itemF=[item.country,item.year];
+      data_country.push(itemF);
+      console.log("data_country[i][0]"+data_country[i][0]);
       
-      };
-
-  
-
-      var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
-
-      chart.draw(data_map, options);
     }
-  })
+    console.log("datos mios "+data_country);
+  });
 
+  var data_sales=[];
+  request2.done(function(data,status){
+    for (i=0;i<data.length;i++){
+    var item=data[i];
+
+    
+    var itemF =[item.country,item.year,parseInt(item.sales)];
+    console.log("itemF"+itemF);
+    
+    data_sales.push(itemF);
+    console.log("data_sales[i][0]"+data_sales[i][0]);
+    }
+    console.log("datos candela "+data_sales);
+  });
+
+  google.charts.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var dataForWidget=[["country","sales"]];
+    console.log("entra en la funcion");
+    
+    for(i=0;i<data_country.length;i++){
+      console.log("entra en el for");
+      
+      console.log("dentro del for"+data_sales);
+      
+      for(j=0; j<data_sales.length;j++){
+        console.log("entra en el segundo for");
+        
+        if(data_country[i][0] == data_sales[j][0] && data_country[i][1] == data_sales[j][1]){
+          var c=data_country[i][0];
+          var s=data_sales[j][2];
+                  
+          var itemForWidget=[c,s];
+
+          dataForWidget.push(itemForWidget);
+          console.log("dataForWidget "+dataForWidget);
+        }
+      }
+              
+              
+    }
+
+    /*
+
+     var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Work',     11],
+          ['Eat',      2],
+          ['Commute',  2],
+          ['Watch TV', 2],
+          ['Sleep',    7]
+        ]);
+
+        var options = {
+          title: 'My Daily Activities'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+
+    */
+            
+            
+              //console.log("dataForWidget dentro del if sales menor que cero :"+dataForWidget);
+             
+              
+
+              
+
+            
+    var data_map = google.visualization.arrayToDataTable(dataForWidget);
+    var options = {
+             
+    };
+    var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+    chart.draw(data_map, options);
+  }
 });

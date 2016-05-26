@@ -39,8 +39,8 @@ app.use(pathsCandela, function(req, res) {
 
 
 
-var pathBlanca = '/api/v1/gold-medals';
-var apiServerHostBlanca = 'http://sos-2016-05.herokuapp.com';
+var pathBlanca = '/api/rest/datasets/poblacion_pais.json';
+var apiServerHostBlanca = 'http://datos.santander.es';
 
 app.use(pathBlanca, function(req,res){
   var url = apiServerHostBlanca + req.baseUrl + req.url;
