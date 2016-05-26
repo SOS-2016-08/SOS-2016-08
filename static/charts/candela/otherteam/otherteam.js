@@ -1,5 +1,5 @@
 
-google.charts.load('current', {'packages':['map']});
+google.charts.load('current', {'packages':['corechart']});
 
 $(document).ready(() =>{
   var request=$.ajax({
@@ -10,7 +10,10 @@ $(document).ready(() =>{
         dataType: "json",
       });
 
-  var request2=$.ajax({   //Integration with antonio.
+
+  
+
+  var request2=$.ajax({   
           type: "GET",
           url: "/api/v1/participants-number?apikey=multiPlan_C2_sos-2016-05-egf_ag",
           contentType: "application/json; charset=utf-8",
@@ -23,7 +26,7 @@ var dataArray=[];
         request.done(function(data,status){
           for (i=0;i<data.length;i++){
             var item=data[i];
-            var itemF =[item.country,parseInt(item.year)];
+            var itemF =[item.country,item.year,parseInt(item.sales)];
             dataArray.push(itemF);
             console.log("mios",dataArray);
            
@@ -40,7 +43,7 @@ var dataArray=[];
             var item=data[i];
             var itemF =[item.country,parseInt(item.year)];
             dataArray2.push(itemF);
-            console.log("blnca",dataArray2);
+            console.log("enrique",dataArray2);
            
           }
         });
@@ -52,15 +55,15 @@ var dataArray=[];
     
 
     function drawMap() {
-      var dataForWidget=[["country","sales"]];
+      var dataForWidget=[["country","sales",{ role: 'style' }]];
     
       for(i=0;i<dataArray.length;i++){
               for(j=0; j<dataArray2.length;j++){
                 if(dataArray[i][0] == dataArray2[j][0] && dataArray[i][1] == dataArray2[j][1]){
-                  var a=dataArray[i][0];
-                  var b=dataArray2[j][1];
-                  
-                  var itemForWidget=[a,b];
+                  var a=dataArray2[j][0];
+                  var b=dataArray[i][2];
+                  var c="gold";
+                  var itemForWidget=[a,b,c];
                   dataForWidget.push(itemForWidget);
                   console.log("TODOS",dataForWidget);
                 }
@@ -74,10 +77,16 @@ var dataArray=[];
 
       var options = {
 
+           colorAxis: {colors: ['#00853f', 'black', '#e31b23']},
+           backgroundColor: '#81d4fa',
+           datalessRegionColor: '#f8bbd0',
+           defaultColor: '#f5f5f5',
+
+
       
       };
 
-      var map = new google.visualization.Map(document.getElementById('chart_div'));
+      var map = new google.visualization.BarChart(document.getElementById('chart_div'));
 
       map.draw(data_map, options);
     }

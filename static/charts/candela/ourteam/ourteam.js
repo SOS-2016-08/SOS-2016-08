@@ -3,7 +3,7 @@
 
 
 
-google.charts.load('current', {'packages':['map']});
+google.charts.load('current', {'packages':['corechart']});
 
 $(document).ready(() =>{
   var request=$.ajax({
@@ -27,7 +27,7 @@ var dataArray=[];
         request.done(function(data,status){
           for (i=0;i<data.length;i++){
             var item=data[i];
-            var itemF =[item.country,parseInt(item.year)];
+            var itemF =[item.country,parseInt(item.year),parseInt(item.sales)];
             dataArray.push(itemF);
             console.log("mios",dataArray);
            
@@ -56,15 +56,16 @@ var dataArray=[];
     
 
     function drawMap() {
-      var dataForWidget=[["country","sales"]];
+      var dataForWidget=[["Country","Year","Sales(millions/€)"]];
     
       for(i=0;i<dataArray.length;i++){
               for(j=0; j<dataArray2.length;j++){
                 if(dataArray[i][0] == dataArray2[j][0] && dataArray[i][1] == dataArray2[j][1]){
                   var a=dataArray[i][0];
+                  var c=dataArray[i][2];
                   var b=dataArray2[j][1];
                   
-                  var itemForWidget=[a,b];
+                  var itemForWidget=[a,b,c];
                   dataForWidget.push(itemForWidget);
                   console.log("TODOS",dataForWidget);
                 }
@@ -78,10 +79,11 @@ var dataArray=[];
 
       var options = {
 
+          
       
       };
 
-      var map = new google.visualization.Map(document.getElementById('chart_div'));
+      var map = new google.visualization.BubbleChart(document.getElementById('chart_div'));
 
       map.draw(data_map, options);
     }

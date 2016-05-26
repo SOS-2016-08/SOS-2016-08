@@ -147,7 +147,10 @@
                                       if(jqXHR.status==409)
                                         alert("ERROR")
                                     } if(jqXHR.status==402){
-                                      alert("Payment Required,you must buy a play");
+                                      alert("Payment Required,you must buy a plan");
+
+                                     }if(jqXHR.status==429){
+                                      alert("Too many request, buy a plan");
 
                                      }
                                     //$('#dg').datagrid('reload');

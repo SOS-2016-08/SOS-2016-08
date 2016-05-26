@@ -1,5 +1,7 @@
 
-google.charts.load('current', {'packages':['geochart']});
+
+
+
 
 google.charts.load('current', {'packages':['map']});
 
@@ -12,30 +14,72 @@ $(document).ready(() =>{
         dataType: "json",
       });
 
-  request.done(function(data,status) {
+  var request2=$.ajax({   
+          type: "GET",
+          url: 'https://restcountries.eu/rest/v1/all',
+          dataType: "json",
+          async: false
+        });
+
+
+var dataArray=[];
+        request.done(function(data,status){
+          for (i=0;i<data.length;i++){
+            var item=data[i];
+            var itemF =[item.country,parseInt(item.year),parseInt(item.sales)];
+            dataArray.push(itemF);
+            console.log("mios",dataArray);
+           
+          }
+        });
+
+
+
+
+
+  var dataArray2=[];
+        request2.done(function(data,status){
+          for (i=0;i<data.length/4;i++){
+            var item=data[i];
+            var itemF =[item.region];
+            dataArray2.push(itemF);
+            console.log("ext",dataArray2);
+           
+          }
+        });
+
+
+
+
     google.charts.setOnLoadCallback(drawMap);
     
 
-
-  
-  
-
     function drawMap() {
+      var dataForWidget=[["country","year"]];
     
+      for(i=0;i<dataArray.length;i++){
+              for(j=0; j<dataArray2.length;j++){
+                if(dataArray[i][0] == dataArray2[j][0]){
+                 
+                  var a=dataArray2[j][0];
+                  var b=dataArray[i][2];
+                  
+                  var itemForWidget=[a,b];
+                  dataForWidget.push(itemForWidget);
+                  console.log("TODOS",dataForWidget);
+                }
+              }
+              
+              
+            }
 
-      var data_resource = [ ['country', 'year']];
-      console.log("dentro de la fuinciona pinta mapa"+data_resource);
-      for(i=0;i<data.length;i++){
-          //resource=data[i];
-          
-            var resource_for_widjet=[data[i].country,data[i].year];
-            data_resource.push(resource_for_widjet);
-            console.log("dentro del done ..resource_for_widjet.."+resource_for_widjet);
-      }
-      var data_map = google.visualization.arrayToDataTable(data_resource);
+   
+      var data_map = google.visualization.arrayToDataTable(dataForWidget);
 
       var options = {
 
+        
+          
       
       };
 
@@ -43,8 +87,6 @@ $(document).ready(() =>{
 
       map.draw(data_map, options);
     }
-  })
+ 
 
 });
-
-      
