@@ -1,5 +1,5 @@
 
-google.charts.load('current', {'packages':['geochart']});
+google.charts.load('current', {'packages':['corechart']});
 
 $(document).ready(() =>{
   var request=$.ajax({
@@ -55,15 +55,15 @@ var dataArray=[];
     
 
     function drawMap() {
-      var dataForWidget=[["country","sales"]];
+      var dataForWidget=[["country","sales",{ role: 'style' }]];
     
       for(i=0;i<dataArray.length;i++){
               for(j=0; j<dataArray2.length;j++){
                 if(dataArray[i][0] == dataArray2[j][0] && dataArray[i][1] == dataArray2[j][1]){
                   var a=dataArray2[j][0];
                   var b=dataArray[i][2];
-                  
-                  var itemForWidget=[a,b];
+                  var c="gold";
+                  var itemForWidget=[a,b,c];
                   dataForWidget.push(itemForWidget);
                   console.log("TODOS",dataForWidget);
                 }
@@ -86,7 +86,7 @@ var dataArray=[];
       
       };
 
-      var map = new google.visualization.GeoChart(document.getElementById('chart_div'));
+      var map = new google.visualization.BarChart(document.getElementById('chart_div'));
 
       map.draw(data_map, options);
     }
