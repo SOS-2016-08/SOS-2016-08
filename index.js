@@ -11,6 +11,9 @@ var app= express();
 
 //donde voy a tener mi proxy, debe llamarse igual que la api que vamos a 
 //repliar
+
+//?apikey=multiPlan_C2_sos-2016-05-egf_ag
+
 var pathsCandela='/api/v1/participants-number';
 //proxy hacia el exterior
 var apiServerHostCandela = 'http://sos-2016-05.herokuapp.com';
