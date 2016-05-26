@@ -48,12 +48,15 @@ $(document).ready(() => {
   google.charts.setOnLoadCallback(drawRegionsMap);
   function drawRegionsMap() {
     var dataForWidget=[["country","sales"]];
-
+    console.log("entra en la funcion");
     
     for(i=0;i<data_country.length;i++){
+      console.log("entra en el for");
       
+      console.log("dentro del for"+data_sales);
       
       for(j=0; j<data_sales.length;j++){
+        console.log("entra en el segundo for");
         
         if(data_country[i][0] == data_sales[j][0] && data_country[i][1] == data_sales[j][1]){
           var c=data_country[i][0];
