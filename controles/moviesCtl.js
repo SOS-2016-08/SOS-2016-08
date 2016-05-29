@@ -32,7 +32,7 @@ module.exports.getLoad=function(req,res){
     var file= fs.readFileSync('social.json','utf8');
     situation= JSON.parse(file);
     res.send(situation);
-    res.sendStatus(200);
+    res.sendStatus(201);
  
 };
 
