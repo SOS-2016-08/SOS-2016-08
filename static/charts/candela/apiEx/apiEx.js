@@ -61,7 +61,6 @@ var dataArray2=[];
                 if(dataArray[i][0] == dataArray2[j][0]){
                   var a=dataArray2[j][0];
                   var b=dataArray2[j][2];
-                  
                   var itemForWidget=[a,b];
                   dataForWidget.push(itemForWidget);
                   console.log("TODOS",dataForWidget);

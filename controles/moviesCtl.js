@@ -21,22 +21,6 @@ var fs= require("fs");
 
 
 
-function CheckBody(body){
-    return body.country && body.year && body.sales && body.digital && body.nodigital;
-    
-}
-
-
-
-function validar(str1,str2,elements){
-  var cont = -1;
- for(var i=0;i<elements.length;i++)
-      if(elements[i].country==str1 && elements[i].year==str2){
-        cont=i;
-      }
-  return cont;
-};
-
 
 module.exports.getLoad=function(req,res){
   //lee datos
