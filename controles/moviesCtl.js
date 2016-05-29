@@ -204,11 +204,13 @@ module.exports.postMovie=function(req,res){
     for (var i=0; i< situation.length; i++){
       if(  situation[i].country== datos.country && situation[i].year == datos.year){
         res.sendStatus(409);
+        return 0;
 
       }
     }
     if (datos.country == "" || datos.year==""|| datos.sales==""|| datos.digital==""|| datos.nodigital==""){
       res.sendStatus(400);
+      return 0;
     }else{
       situation.push(datos);
       res.send(situation);
