@@ -14,7 +14,7 @@ $(document).ready(() => {
 
       var request2=$.ajax({
         type: "GET",
-        url: '/api/v1/mort-sickness/loadInitialdata?apikey=multiPlan_C2_sos-2016-03-pgs_ag',
+        url: '/api/v1/mort-sickness?apikey=multiPlan_C2_sos-2016-03-pgs_ag',
         data: "{}",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
