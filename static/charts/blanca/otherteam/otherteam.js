@@ -14,7 +14,7 @@ $(document).ready(() => {
 
       var request2=$.ajax({
         type: "GET",
-        url: '/api/v1/mort-sickness?apikey=multiPlan_C2_sos-2016-03-pgs_ag',
+        url: '/api/v1/mort-sickness/loadInitialdata?apikey=multiPlan_C2_sos-2016-03-pgs_ag',
         data: "{}",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -43,12 +43,11 @@ $(document).ready(() => {
         var item=data[i];    
         var itemF =[item.year,item.totalMortality];    
         data_mort.push(itemF);
+        console.log("data_mort dentro de su for "+data_mort);
       }
 
-
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var dataForWidget=[["type","totalMortality"]];    
+      var dataForWidget=[["type","totalMortality"]];  
+        console.log(" data_mort "+data_mort.length);  
 
         for( j=0; j<data_mort.length;j++){ 
           for(i=0;i<data_type.length;i++){
@@ -69,6 +68,9 @@ $(document).ready(() => {
           }
                     
         }
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+
 
 
                 

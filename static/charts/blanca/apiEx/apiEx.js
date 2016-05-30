@@ -68,7 +68,7 @@ $(document).ready(()=>{
 
           var options = {
             chart:{
-              title:'Mezcla'
+              title:'Integration budget values ​​of external api with the percentage of the type of music most listened to in a year'
             },
             bars:'horizontal'
 
