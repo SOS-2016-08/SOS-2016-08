@@ -21,30 +21,14 @@ var fs= require("fs");
 
 
 
-function CheckBody(body){
-    return body.country && body.year && body.sales && body.digital && body.nodigital;
-    
-}
-
-
-
-function validar(str1,str2,elements){
-  var cont = -1;
- for(var i=0;i<elements.length;i++)
-      if(elements[i].country==str1 && elements[i].year==str2){
-        cont=i;
-      }
-  return cont;
-};
-
 
 module.exports.getLoad=function(req,res){
 
   	situation=[];
     var file= fs.readFileSync('social.json','utf8');
     situation= JSON.parse(file);
-    res.send(situation);
-    res.sendStatus(200);
+    //res.send(situation);
+    res.sendStatus(201);
  
 };
 
@@ -216,11 +200,13 @@ module.exports.postMovie=function(req,res){
     for (var i=0; i< situation.length; i++){
       if(  situation[i].country== datos.country && situation[i].year == datos.year){
         res.sendStatus(409);
+        return 0;
 
       }
     }
     if (datos.country == "" || datos.year==""|| datos.sales==""|| datos.digital==""|| datos.nodigital==""){
       res.sendStatus(400);
+      return 0;
     }else{
       situation.push(datos);
       res.send(situation);
