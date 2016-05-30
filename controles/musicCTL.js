@@ -1,28 +1,27 @@
-var fs= require("fs");
+
 
 var musical=[ 
-{country:"Spain"    ,year:"2010",  percentage:"12%",  type:"reggaeton" },
-{country:"Mexico"    ,year:"2004",  percentage:"53%",  type:"folk" },
-{country:"Usa"    ,year:"2010", percentage :"50%",  type:"pop" },
-{country:"Italy"    ,year:"2010",  percentage:"80%", type:"classic" },
-{country:"Germany"    ,year:"2012",  percentage:"88%",  type:"reggaeton" },
-{country:"Usa"    ,year:"2012",  percentage:"90%",  type:"folk" }];
+{country:"Spain"     ,year:"2010",  percentage:"12%",   type:"reggaeton" },
+{country:"Mexico"    ,year:"2004",  percentage:"53%",   type:"folk" },
+{country:"Usa"       ,year:"2008",  percentage:"50%",   type:"pop" },
+{country:"Italy"     ,year:"2011",  percentage:"80%",   type:"classic" },
+{country:"Germany"   ,year:"2012",  percentage:"88%",   type:"electronic" },
+{country:"Usa"       ,year:"2015",  percentage:"90%",   type:"flamenco" },
+{country:"Belgium"   ,year:"2013",  percentage:"15%",   type:"latino" },
+{country:"New Zeland",year:"2009",  percentage:"58%",   type:"other" }
+
+];
 
 
-
-
-
+var fs= require("fs");
 
 module.exports.getLoad=function(req,res){
-  //lee datos
-  
-  
+  musical=[];
+  var file= fs.readFileSync('countrytypes.json','utf8');
+  musical= JSON.parse(file);
 
-  	musical=[];
-    var file= fs.readFileSync('countrytypes.json','utf8');
-    musical= JSON.parse(file);
-    //res.send(musical);
-    res.sendStatus(201);
+  res.sendStatus(201);
+
 
 };
 
@@ -43,7 +42,9 @@ module.exports.getMusic=function(req,res){
   }
   if (from && to){
     for(var i=0;i<resultado.length;i++){
+      
       if(resultado[i].year < from  ||  resultado[i].year > to){
+        
         resultado.splice(i,1);
         i = i - 1;
       }
@@ -131,11 +132,12 @@ module.exports.getMusicCountryorYear=function(req,res){ //get name or get year
   }
   
     
-  res.send(result);
+  
   if(bool){
     res.sendStatus(404); 
 
   } 
+  res.send(result);
 };
 
 

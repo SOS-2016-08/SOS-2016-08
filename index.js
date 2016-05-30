@@ -42,8 +42,8 @@ app.use(pathsCandela, function(req, res) {
 
 
 
-var pathBlanca = '/api/rest/datasets/poblacion_pais.json';
-var apiServerHostBlanca = 'http://datos.santander.es';
+var pathBlanca = '/api/v1/mort-sickness';
+var apiServerHostBlanca = 'http://sos-2016-03.herokuapp.com';
 
 app.use(pathBlanca, function(req,res){
   var url = apiServerHostBlanca + req.baseUrl + req.url;
@@ -57,6 +57,8 @@ app.use(pathBlanca, function(req,res){
     }
   })).pipe(res);
 });
+
+
 
 //multiPlan_C5_sos-2016-08-bhl_ag
 
@@ -119,7 +121,7 @@ app.use('/',express.static(__dirname + '/public'));
 
 //-----------API MUSIC-------------------------
 
-app.get("/api/v1/music/loadInitialData",musicCtl.getLoad);//funciona
+app.get("/api/v1/music/loadInitialdata",musicCtl.getLoad);//funciona
 
 app.get("/api/v1/music",musicCtl.getMusic);//funociona
 app.get("/api/v1/music/:country/:year",musicCtl.getMusicCountryandYear);// funciona (CIUDAD Y AÑO)

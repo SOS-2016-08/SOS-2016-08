@@ -12,7 +12,7 @@ $(document).ready(() => {
 //multiPlan_C2_sos-2016-08-cmg_ag
   var request2=$.ajax({
         type: "GET",
-        url: '/api/v1/social_situation?apikey=multiPlan_C1_sos-2016-08-cmg_ag',
+        url: '/api/v1/social_situation?apikey=multiPlan_C2_sos-2016-08-cmg_ag',
         data: "{}",
         contentType: "application/json; charset=utf-8",
         dataType: "json",

@@ -1,11 +1,14 @@
 [
 
-{"country":"Spain"    ,"year":"2010",  "percentage":"12%",  "type":"reggaeton" },
+{"country":"Spain"     ,"year":"2010",  "percentage":"12%",  "type":"reggaeton" },
 {"country":"Mexico"    ,"year":"2004",  "percentage":"53%",  "type":"folk" },
-{"country":"Usa"    ,"year":"2010", "percentage" :"50%",  "type":"pop" },
-{"country":"Italy"    ,"year":"2010",  "percentage":"80%", " type":"classic" },
-{"country":"Germany"    ,"year":"2012", " percentage":"88%",  "type":"reggaeton" },
-{"country":"Usa"    ,"year":"2012",  "percentage":"90%",  "type":"folk" }]
+{"country":"Usa"       ,"year":"2008",  "percentage":"50%",  "type":"pop" },
+{"country":"Italy"     ,"year":"2011",  "percentage":"80%",  "type":"classic" },
+{"country":"Germany"   ,"year":"2012",  "percentage":"88%",  "type":"electronic" },
+{"country":"Usa"       ,"year":"2015",  "percentage":"90%",  "type":"flamenco" },
+{"country":"Belgium"   ,"year":"2013",  "percentage":"15%",  "type":"latino" },
+{"country":"New Zeland","year":"2009",  "percentage":"58%",  "type":"other" }
+]
 
 
 

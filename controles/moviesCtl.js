@@ -39,11 +39,7 @@ function validar(str1,str2,elements){
 
 
 module.exports.getLoad=function(req,res){
-  //lee datos
 
-
-  
-  
   	situation=[];
     var file= fs.readFileSync('social.json','utf8');
     situation= JSON.parse(file);

@@ -1,111 +1,97 @@
-google.charts.load('current', {'packages':['geochart']});
+google.charts.load('current', {'packages':['corechart']});
+
 
 $(document).ready(() => {
-  
-  var request=$.ajax({
+
+    var request=$.ajax({
         type: "GET",
         url: '/api/v1/music?apikey=multiPlan_C5_sos-2016-08-bhl_ag',
         data: "{}",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-      });
-//multiPlan_C2_sos-2016-08-cmg_ag
-  var request2=$.ajax({
+    });
+
+
+      var request2=$.ajax({
         type: "GET",
-        url: '/api/v1/locations?apikey=multiPlan_C2_sos-2016-05-ajv_ag',
+        url: '/api/v1/mort-sickness?apikey=multiPlan_C2_sos-2016-03-pgs_ag',
         data: "{}",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
       });
 
-  var data_country=[];
-  request.done(function(data,status){
-    for (i=0;i<data.length;i++){
-      var item=data[i];
-      var itemF=[item.country,item.year];
-      data_country.push(itemF);
-      console.log("data_country[i][0]"+data_country[i][0]);
-      
-    }
-    console.log("datos mios "+data_country);
-  });
 
-  var data_sales=[];
-  request2.done(function(data,status){
-    for (i=0;i<data.length;i++){
-    var item=data[i];
+    var data_type=[];
 
-    
-    var itemF =[item.country,item.year,parseInt(item.sales)];
-    console.log("itemF"+itemF);
-    
-    data_sales.push(itemF);
-    console.log("data_sales[i][0]"+data_sales[i][0]);
-    }
-    console.log("datos candela "+data_sales);
-  });
-
-  google.charts.setOnLoadCallback(drawChart);
-  function drawChart() {
-    var dataForWidget=[["country","sales"]];
-    console.log("entra en la funcion");
-    
-    for(i=0;i<data_country.length;i++){
-      console.log("entra en el for");
-      
-      console.log("dentro del for"+data_sales);
-      
-      for(j=0; j<data_sales.length;j++){
-        console.log("entra en el segundo for");
+    request.done(function(data,status){
+      for (i=0;i<data.length;i++){
+        var item=data[i];
+        var itemF=[item.year,item.type];
+        data_type.push(itemF);
+       
         
-        if(data_country[i][0] == data_sales[j][0] && data_country[i][1] == data_sales[j][1]){
-          var c=data_country[i][0];
-          var s=data_sales[j][2];
-                  
-          var itemForWidget=[c,s];
-
-          dataForWidget.push(itemForWidget);
-          console.log("dataForWidget "+dataForWidget);
-        }
       }
-              
-              
-    }
+      
+    });
 
-    /*
 
-     var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
-        ]);
+    var data_mort=[];
 
+    request2.done(function(data,status){  
+      console.log("done 2");  
+      for (i=0;i<data.length;i++){
+        var item=data[i];    
+        var itemF =[item.year,item.totalMortality];    
+        data_mort.push(itemF);
+      }
+
+
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var dataForWidget=[["type","totalMortality"]];    
+
+        for( j=0; j<data_mort.length;j++){ 
+          for(i=0;i<data_type.length;i++){
+         
+            if(data_type[i][0] == data_mort[j][0]){// si los años son iguales, muestra el tipo de muscia con el numero de muertos
+
+              var t=data_type[i][1];
+              var m=data_mort[j][1];
+                        
+              var itemForWidget=[t,parseInt(m)];
+
+              dataForWidget.push(itemForWidget);
+              console.log(" dataForWidget "+dataForWidget);
+               
+
+
+            }
+          }
+                    
+        }
+
+
+                
+        console.log("cuando deberia pintar dataForWidget "+dataForWidget);
+          
+        var data_donu  = google.visualization.arrayToDataTable(dataForWidget);
+
+          
+        console.log("data_donu "+ data_donu);
         var options = {
-          title: 'My Daily Activities'
-        };
+        
+        pieSliceText: 'label',
+        title: 'Integration between mortality with the type of music most listened to in a given year .',
+        pieStartAngle: 100,
+      };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
-        chart.draw(data, options);
+        chart.draw(data_donu, options);
+    }
 
-    */
-            
-            
-              //console.log("dataForWidget dentro del if sales menor que cero :"+dataForWidget);
-             
-              
+    
+    });  
 
-              
-
-            
-    var data_map = google.visualization.arrayToDataTable(dataForWidget);
-    var options = {
-             
-    };
-    var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
-    chart.draw(data_map, options);
-  }
 });
+

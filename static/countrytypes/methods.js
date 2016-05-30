@@ -237,97 +237,9 @@ $(document).ready(() => {
    
  
 
- /* function diretion_bus(){    
-    if($("#payload1").val()==0 && $("#payload2").val()==0){ //todos los
-      console.log("ni country ni year");
-      dir="/api/v1/music/?apikey="+$("#apikey").val()          
-          +"&offset="+$("#offset").val()
-          +"&limit="+$("#limit").val()
-          +"&from="+$("#from").val()
-          +"&to="+$("#to").val();
-
-
-
-    }else if($("#payload1").val()!=0 && $("#payload2").val()==0){ //con country sin year
-      console.log("country si year no");
-      dir="/api/v1/music"
-          +"/"
-          +$("#payload1").val()
-          +"/?apikey="+$("#apikey").val()          
-          +"&offset="+$("#offset").val()
-          +"&limit="+$("#limit").val()
-          +"&from="+$("#from").val()
-          +"&to="+$("#to").val();
-  
-
-
-    }else if($("#payload1").val()==0 && $("#payload2").val()!=0){ //sin country con year
-      console.log("country no year si");
-      dir="/api/v1/music"
-          +"/"+$("#payload2").val()
-          +"/?apikey="+$("#apikey").val()          
-          +"&offset="+$("#offset").val()
-          +"&limit="+$("#limit").val()
-          +"&from="+$("#from").val()
-          +"&to="+$("#to").val();
-    }else{
-      console.log("el resto");
-      dir="/api/v1/music"
-          +"/"
-          +$("#payload1").val()
-          +"/"
-          +$("#payload2").val()
-          +"/?apikey="+$("#apikey").val()          
-          +"&offset="+$("#offset").val()
-          +"&limit="+$("#limit").val()
-          +"&from="+$("#from").val()
-          +"&to="+$("#to").val();
-    }
-
-    
-
-    return diretion_post();
-  };//fin function diretion
-*/
-
-  /*function diretion_put(){
-
-    if($("#payload1").val()==0 || $("#payload2").val()==0){
-      dir="/api/v1/music/?apikey="+$("#apikey").val();
-    }else{
-
-
-      dir="/api/v1/music/"
-          +$("#payload1").val()
-          +"/"
-          +$("#payload2").val()
-          +"/?apikey="+$("#apikey").val();
-    }
-    return dir;
-  }; //fin function diretion_put 
-*/
-  /*function diretion_post(){
-    
-    if($("#payload3").val()==0 && $("#payload4").val()!=0){
-      dir=dir
-          +"&type="+$("#payload4").val();
-
-    }else if($("#payload3").val()!=0 && $("#payload4").val()==0){
-      dir=dir
-          +"&percentage="+$("#payload3").val();
-
-    }else if($("#payload3").val()!=0 && $("#payload4").val()!=0){
-      dir=dir
-          +"&percentage="+$("#payload3").val()
-          +"&type="+$("#payload4").val();
-    }else{
-      dir=dir;
-  }
-  return dir;
-}; // fin funtion dirertion_post
-*/
-
+ 
 $("#ini").click(() => {
+  contador=0;
     var request2=$.ajax({
       url: "/api/v1/music/loadInitialdata?apikey=multiPlan_C5_sos-2016-08-bhl_ag",
       type: "GET",
@@ -357,6 +269,12 @@ $("#ini").click(() => {
             $("#msg").html("Too many request, buy a plan");
 
 
+          }else if (jqXHR.status==402){
+            $("#status").html(jqXHR.status);
+            $("#log").html(status);
+            $("#msg").html("Payment Required, buy a plan");
+
+
           }
         
         }else{
@@ -371,6 +289,7 @@ $("#ini").click(() => {
 
 
 $("#search").click(() => {
+  contador=0;
   console.log("Entra en search");
   dir=diretion_bus();
   console.log("direccion "+dir);
@@ -427,6 +346,18 @@ $("#search").click(() => {
             $("#msg").html("Too many request, buy a plan");
 
 
+      }else if (jqXHR.status==402){
+            $("#status").html(jqXHR.status);
+            $("#log").html(status);
+            $("#msg").html("Payment Required, buy a plan");
+
+
+      }else if (jqXHR.status==404){
+            $("#status").html(jqXHR.status);
+            $("#log").html(status);
+            $("#msg").html("There isn't resource with this data");
+
+
       }
         
     }else{
@@ -441,6 +372,7 @@ $("#search").click(() => {
 
 
 $("#edit").click(() => {
+  contador=0;
   console.log("Data updated");
   dir="/api/v1/music/"
           +$("#payload1").val()
@@ -483,9 +415,7 @@ $("#edit").click(() => {
       $('<td></td>').text(data[i].percentage).appendTo(row);
       $('<td></td>').text(data[i].type).appendTo(row);
     }
-    $("#status").html(jqXHR.status);
-    $("#log").html(status);
-    $("#msg").html("The resource has been modificated.");
+    
   });
 
   request.always(function (jqXHR,status){
@@ -508,7 +438,25 @@ $("#edit").click(() => {
             $("#msg").html("Too many request, buy a plan");
 
 
-      }
+      }else if (jqXHR.status==402){
+            $("#status").html(jqXHR.status);
+            $("#log").html(status);
+            $("#msg").html("Payment Required, buy a plan");
+
+
+      }else if (jqXHR.status==404 && $("#payload1").val()==0 || $("#payload2").val()==0){
+            $("#status").html(jqXHR.status);
+            $("#log").html(status);
+            $("#msg").html("To edit a resource is necessary to fill both the country and year box");
+
+
+      }else if (jqXHR.status==400 ){
+            $("#status").html(jqXHR.status);
+            $("#log").html(status);
+            $("#msg").html("You must fill in both the percentage and type");
+
+
+    }
     }else{
     $("#status").html(jqXHR.status);
     $("#log").html(status);
@@ -520,6 +468,7 @@ $("#edit").click(() => {
 });// fin add
 
 $("#delete").click(() => {
+  contador=0;
   console.log("Data removed");
   dir=diretion_bus();
   var request = $.ajax({
@@ -564,7 +513,7 @@ $("#delete").click(() => {
   request.always(function (jqXHR,status){
     if(status=="error"){
       console.log("Status: "+jqXHR.status);
-      $("#status").html(jqXHR.status);
+
       if($("#apikey").val()==0){
         console.log("ENTRA EN APIKEY");
         $("#status").html(jqXHR.status);
@@ -580,6 +529,16 @@ $("#delete").click(() => {
             $("#msg").html("Too many request, buy a plan");
 
 
+      }else if (jqXHR.status==402){
+            $("#status").html(jqXHR.status);
+            $("#log").html(status);
+            $("#msg").html("Payment Required, buy a plan");
+
+
+      }else if (jqXHR.status==404){
+            $("#status").html(jqXHR.status);
+            $("#log").html(status);
+            $("#msg").html("To delete a resource is necessary to fill both the country and year box");
       }
     }else{
     $("#status").html(jqXHR.status);
@@ -592,6 +551,7 @@ $("#delete").click(() => {
 });// fin delete
 
 $("#add").click(() => {
+  contador=0;
 
   console.log("Data added");
   var request = $.ajax({
@@ -612,7 +572,7 @@ $("#add").click(() => {
   });
 
   request2.done(function(data,status,jqXHR) {
-    console.log("Handling request (OK)");
+    //console.log("Handling request (OK)"+status);
     console.log("Data received:");
     $("#status").html(jqXHR.status);
     $("#log").html(status);
@@ -620,16 +580,7 @@ $("#add").click(() => {
 
   request.done(function(data,status,jqXHR) {
 
-    console.log("Handling request (OK)");
-    if(jqXHR.status==409){
-
-      $("#status").html(jqXHR.status);
-      $("#log").html("ERROR");
-      $("#msg").html("You can´t push a resource with the same country and year.");
-      
-
-
-    }else{
+    console.log("status del request done"+status);
 
 
       $("#country").find("tr:gt(0)").remove();    //delete all rows           
@@ -645,11 +596,12 @@ $("#add").click(() => {
           /*    if(jqXHR.status==201){
                 $("#log").html(status);
                 $("#msg").html("THe resource has been added.");*/
-    }
+    
            
   });
 
   request.always(function (jqXHR,status){
+    console.log("status del request always "+status);
       if(status=="error"){
         console.log("Status: "+jqXHR.status);
         if($("#apikey").val()==0){
@@ -665,19 +617,31 @@ $("#add").click(() => {
             $("#status").html(jqXHR.status);
             $("#log").html(status);
             $("#msg").html("Too many request, buy a plan");
+        }else if (jqXHR.status==402){
+            $("#status").html(jqXHR.status);
+            $("#log").html(status);
+            $("#msg").html("Payment Required, buy a plan");
 
 
-      }
-      if(status=409 && $("#apikey").val()=="multiPlan_C5_sos-2016-08-bhl_ag"){
-        $("#status").html(jqXHR.status);
-        $("#log").html("ERROR");
-        $("#msg").html("You can´t push a resource with the same country and year.");
+        }else if (jqXHR.status==400){
+            $("#status").html(jqXHR.status);
+            $("#log").html(status);
+            $("#msg").html("A box is empty , please review it and try again");
+
+
+        }else if( status=409){
+          $("#status").html(jqXHR.status);
+          $("#log").html("ERROR");
+          $("#msg").html("You can´t push a resource with the same country and year.");
+
+        }
+
       }else{
       $("#status").html(jqXHR.status);
       $("#log").html(status);
       $("#msg").html("Everything is correct.");
       }
-      }
+      
 
     });
 });// fin add
@@ -685,6 +649,7 @@ $("#add").click(() => {
 
 
 $("#previous").click(() => {  
+  console.log("contador "+contador);
 
   if( contador < 0){
 
@@ -763,6 +728,7 @@ $("#previous").click(() => {
     s=parseInt($("#limit").val());
     
     suma=suma+s;
+    console.log("valor de suma en previous "+suma);
     
     dir="/api/v1/music/?apikey="+$("#apikey").val()          
           +"&offset="+suma
@@ -836,12 +802,12 @@ $("#previous").click(() => {
  
 });// fin previous
 
-$("#back").click(() => {  
+/*$("#back").click(() => {  
   console.log("Valor de contador dentro de back  "+contador);
-  if( contador < 0){
-    contador=0;
+  if( contador2 < 0){
+    contador2=0;
 
-  }else if (contador = 0){
+  }else if (contador2 = 0){
     dir="/api/v1/music/?apikey="+$("#apikey").val()          
           +"&offset="+$("offset").val()
           +"&limit="+$("#limit").val()
@@ -899,7 +865,14 @@ $("#back").click(() => {
             $("#msg").html("Too many request, buy a plan");
 
 
+        }else if (jqXHR.status==402){
+            $("#status").html(jqXHR.status);
+            $("#log").html(status);
+            $("#msg").html("Payment Required, buy a plan");
+
+
         }
+
         
       }else{
         $("#status").html(jqXHR.status);
@@ -913,6 +886,7 @@ $("#back").click(() => {
     s=parseInt($("#limit").val());
     
     suma=suma-s;
+    console.log("valor de suma en back "+suma);
     
     dir="/api/v1/music/?apikey="+$("#apikey").val()          
           +"&offset="+suma
@@ -971,6 +945,12 @@ $("#back").click(() => {
             $("#msg").html("Too many request, buy a plan");
 
 
+        }else if (jqXHR.status==402){
+            $("#status").html(jqXHR.status);
+            $("#log").html(status);
+            $("#msg").html("Payment Required, buy a plan");
+
+
         }
         
       }else{
@@ -981,11 +961,11 @@ $("#back").click(() => {
 
     });
 
-  contador--;
+  contador++;
   }
 
 });// fin back
-
+*/
 
 
 });// final del todo
